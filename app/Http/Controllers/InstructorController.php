@@ -1,0 +1,153 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
+
+class InstructorController extends Controller
+{
+    // Hiển thị form thêm giảng viên
+    public function add_instructors()
+    {
+        $product = DB::table('tbl_product')->orderBy('product_id', 'desc')->get();
+        return view('admin.add_instructors', compact('product'));
+    }
+
+    // Lưu giảng viên mới
+    public function save_instructors(Request $request)
+    {
+        $request->validate([
+            'instructors_name'   => 'required|string|max:255',
+            'instructors_bio'    => 'required|string|max:255',
+            'instructors_image'  => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048',
+            'product_cate'       => 'required|exists:tbl_product,product_id',
+        ]);
+
+        $data = [
+            'instructors_name' => $request->instructors_name,
+            'instructors_bio'  => $request->instructors_bio,
+            'product_id'       => $request->product_cate,
+            'created_at'       => now(),
+            'updated_at'       => now(),
+        ];
+
+        if ($request->hasFile('instructors_image')) {
+            $image = $request->file('instructors_image');
+            $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
+            $uploadPath = public_path('uploads/instructors');
+
+            if (!file_exists($uploadPath)) {
+                mkdir($uploadPath, 0755, true);
+            }
+
+            $image->move($uploadPath, $imageName);
+            $data['instructors_image'] = $imageName;
+        }
+
+        DB::table('tbl_instructors')->insert($data);
+
+        Session::put('message', 'Thêm giảng viên thành công!');
+        return redirect('add-instructors');
+    }
+
+    // Hiển thị danh sách giảng viên
+    public function all_instructors()
+    {
+        $all_instructors = DB::table('tbl_instructors')
+            ->join('tbl_product', 'tbl_instructors.product_id', '=', 'tbl_product.product_id')
+            ->orderBy('tbl_instructors.instructors_id', 'desc')
+            ->get();
+
+        return view('admin.all_instructors', compact('all_instructors'));
+    }
+
+    // Hiển thị form sửa giảng viên
+    public function edit_instructors($instructors_id)
+    {
+        $product = DB::table('tbl_product')->orderBy('product_id', 'desc')->get();
+        $edit_value = DB::table('tbl_instructors')->where('instructors_id', $instructors_id)->first();
+
+        if (!$edit_value) {
+            Session::put('message', 'Giảng viên không tồn tại');
+            return Redirect::to('all-instructors');
+        }
+
+        return view('admin.edit_instructors', compact('product', 'edit_value'));
+    }
+
+    // Cập nhật giảng viên
+    public function update_instructors(Request $request, $instructors_id)
+    {
+        $request->validate([
+            'instructors_name'  => 'required|string|max:255',
+            'instructors_bio'   => 'required|string|max:255',
+            'product_cate'      => 'required|exists:tbl_product,product_id',
+            'instructors_image' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048',
+        ]);
+
+        $instructor = DB::table('tbl_instructors')->where('instructors_id', $instructors_id)->first();
+
+        if (!$instructor) {
+            return redirect()->back()->with('message', 'Không tìm thấy giảng viên!');
+        }
+
+        $data = [
+            'instructors_name' => $request->instructors_name,
+            'instructors_bio'  => $request->instructors_bio,
+            'product_id'       => $request->product_cate,
+            'updated_at'       => now(),
+        ];
+
+        if ($request->hasFile('instructors_image')) {
+            $image = $request->file('instructors_image');
+            $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
+            $uploadPath = public_path('uploads/instructors');
+
+            if (!file_exists($uploadPath)) {
+                mkdir($uploadPath, 0755, true);
+            }
+
+            $image->move($uploadPath, $imageName);
+            $data['instructors_image'] = $imageName;
+
+            // Xóa ảnh cũ nếu có
+            if (!empty($instructor->instructors_image)) {
+                $oldImagePath = $uploadPath . '/' . $instructor->instructors_image;
+                if (file_exists($oldImagePath)) {
+                    unlink($oldImagePath);
+                }
+            }
+        }
+
+        DB::table('tbl_instructors')->where('instructors_id', $instructors_id)->update($data);
+
+        return redirect::to('all-instructors')->with('message', 'Cập nhật giảng viên thành công!');
+    }
+    // Xóa giảng viên
+public function delete_instructors($instructors_id)
+{
+    $instructor = DB::table('tbl_instructors')->where('instructors_id', $instructors_id)->first();
+
+    if (!$instructor) {
+        Session::put('message', 'Không tìm thấy giảng viên!');
+        return Redirect::to('all-instructors');
+    }
+
+    // Xóa ảnh nếu tồn tại
+    if (!empty($instructor->instructors_image)) {
+        $imagePath = public_path('uploads/instructors/' . $instructor->instructors_image);
+        if (file_exists($imagePath)) {
+            unlink($imagePath);
+        }
+    }
+
+    DB::table('tbl_instructors')->where('instructors_id', $instructors_id)->delete();
+
+    Session::put('message', 'Xóa giảng viên thành công!');
+    return Redirect::to('all-instructors');
+}
+
+}

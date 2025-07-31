@@ -124,13 +124,7 @@
                         </div>
                         
                         <!-- Nav Search -->
-                        <div class="nav-search">
-                            <button class="far fa-search"></button>
-                            <form action="#" class="hide">
-                                <input type="text" placeholder="Search" class="searchbox" required="">
-                                <button type="submit" class="searchbutton far fa-search"></button>
-                            </form>
-                        </div>
+                       
                         
                         <!-- Menu Button -->
                         <div class="menu-btns py-10">
@@ -139,13 +133,7 @@
                                 <i class="fal fa-arrow-right"></i>
                             </a>
                             <!-- menu sidbar -->
-                            <div class="menu-sidebar">
-                                <button class="bg-transparent">
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                </button>
-                            </div>
+                          
                         </div>
                     </div>
                 </div>

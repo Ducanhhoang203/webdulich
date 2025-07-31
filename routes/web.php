@@ -6,6 +6,7 @@ use App\Http\Controllers\BrandController;
 use App\Http\Controllers\DanhmucController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\Baivietcontroller;
 use App\Http\Controllers\ChitietkhoahocController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\StudentController;
@@ -116,7 +117,13 @@ route::post('/save-reviews',[Reviewscontroller::class,'save_reviews'])->name('sa
 Route::get('/edit-reviews/{id}',[Reviewscontroller::class, 'edit_reviews'])->name('edit-reviews');
 Route::post('/update-reviews/{id}',[Reviewscontroller::class, 'update_reviews'])->name('update-reviews');
 Route::get('/delete-reviews/{id}',[Reviewscontroller::class, 'delete_reviews'])->name('delete-reviews');
-// 
+// trang chi tiet bai viet
+Route::get('/add-baiviet',[Baivietcontroller::class,'add_baiviet'])->name('add-baiviet');
+route::get('/all-baiviet',[Baivietcontroller::class,'all_baiviet'])->name('all-baiviet'); 
+route::post('/save-baiviet',[Baivietcontroller::class,'save_baiviet'])->name('save-baiviet');
+Route::get('/edit-baiviet/{id}',[Baivietcontroller::class, 'edit_baiviet'])->name('edit-baiviet');
+Route::post('/update-baiviet/{id}',[Baivietcontroller::class, 'update_baiviet'])->name('update-baiviet');
+Route::get('/delete-baiviet/{id}',[Baivietcontroller::class, 'delete_baiviet'])->name('delete-baiviet');
   
 
 

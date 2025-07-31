@@ -122,6 +122,12 @@
                       <li><a href="{{ URL::to('/all-reviews') }}">Liệt kê danh sách các reviews</a></li>
                     </ul>
                   </li> 
+                  <li><a><i class="fa fa-edit"></i>Quản lý bài viết<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{{ URL::to('/add-baiviet') }}">thêm bài viết </a></li>
+                      <li><a href="{{ URL::to('/all-baiviet') }}"> Danh sách các bài viêt</a></li>
+                    </ul>
+                  </li> 
              
                  
                 </ul>

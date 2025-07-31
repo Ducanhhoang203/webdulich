@@ -55,6 +55,8 @@
     overflow-x: auto;
   }
 </style>
+
+</style>
 @include('layoutadmin')
 @section('admin_content')
   <div class="canchinh col-md-14 col-sm-14">
@@ -64,30 +66,50 @@
           <thead class="thead-dark">
             <tr>
               <th>ID</th>
-              <th>Tên khóa học</th>
-              <th>Trạng thái</th>
-              <th>Mô tả</th>
+              <th>Baiviet_title </th>
+              <th>Baiviet_slug </th>
+              <th>Baiviet_content  </th>
+              <th>Baiviet_excerpt</th>
+              <th>Baiviet_image_main</th>
+              <th>Baiviet_image_extra1</th>
+              <th>Baiviet_image_extra2</th>
+              <th>Baiviet_author</th>
+             
+              <th>Baiviet_category</th>
+              <th>Hiển thị</th>
+
+   
+
               <th colspan="2">Hành động</th>
             </tr>
           </thead>
           <tbody>
-            @foreach ($all_brand_product as $key => $brand_pro)
+            @foreach ($all_posts as $key => $posts)
               <tr>
-                <td>{{ $brand_pro->brand_id }}</td>
-                <td>{{ $brand_pro->brand_name }}</td>
+                <td>{{ $posts->id }}</td>
+                <td>{{ $posts->Baiviet_title }}</td>
+                <td>{{ $posts->Baiviet_slug }}</td>
+                <td>{{ $posts->Baiviet_content }}</td>
+                <td>{{ $posts->Baiviet_excerpt }}</td>
+                <td><img src="uploads/posts/{{ $posts->Baiviet_image_main}}" alt="" height="100"width="150"></td>
+                <td><img src="uploads/posts/{{ $posts->Baiviet_image_extra1}}" alt="" height="100"width="150"></td>
+                <td><img src="uploads/posts/{{ $posts->Baiviet_image_extra2}}" alt="" height="100"width="150"></td>
+                <td>{{ $posts->Baiviet_author }}</td>
+                <td>{{ $posts->catgory_name }}</td>
+
                 <td>
-                  @if ($brand_pro->brand_status == 0)
+                  @if ($posts->Baiviet_status == 0)
                     <span class="badge badge-secondary">Ẩn</span>
                   @else
                     <span class="badge badge-success">Hiện</span>
                   @endif
                 </td>
-                <td>{{ $brand_pro->brand_desc }}</td>
+         
                 <td>
-                  <a href="{{ URL::to('/edit-brand-product/' . $brand_pro->brand_id) }}" class="btn btn-primary btn-sm">Sửa</a>
+                  <a href="{{ URL::to('/edit-baiviet/' . $posts->id) }}" class="btn btn-primary btn-sm">Sửa</a>
                 </td>
                 <td>
-                  <a onclick="return confirm('Bạn có chắc muốn xóa?')" href="{{ URL::to('/delete-brand-product/' . $brand_pro->brand_id) }}" class="btn btn-danger btn-sm">Xóa</a>
+                  <a onclick="return confirm('Bạn có chắc muốn xóa?')" href="{{ URL::to('/delete-baiviet/' . $posts->id) }}" class="btn btn-danger btn-sm">Xóa</a>
                 </td>
               </tr>
             @endforeach

@@ -10,7 +10,7 @@
                         <div class="gallery-two-item" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
                             <div class="image">
                                 <img src="assets/images/gallery/gallery1.jpg" alt="Gallery">
-                                <a href="destination-details.html" class="link"><i class="fal fa-arrow-right"></i></a>
+                                
                             </div>
                             
                         </div>
@@ -19,7 +19,7 @@
                         <div class="gallery-two-item" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
                             <div class="image">
                                 <img src="assets/images/gallery/gallery2.jpg" alt="Gallery">
-                                <a href="destination-details.html" class="link"><i class="fal fa-arrow-right"></i></a>
+                               
                             </div>
                             
                         </div>
@@ -28,7 +28,7 @@
                         <div class="gallery-two-item" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50" data-aos-delay="100">
                             <div class="image">
                                 <img src="assets/images/gallery/gallery3.jpg" alt="Gallery">
-                                <a href="destination-details.html" class="link"><i class="fal fa-arrow-right"></i></a>
+                               
                             </div>
                             
                         </div>
@@ -37,7 +37,7 @@
                         <div class="gallery-two-item" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
                             <div class="image">
                                 <img src="assets/images/gallery/gallery4.jpg" alt="Gallery">
-                                <a href="destination-details.html" class="link"><i class="fal fa-arrow-right"></i></a>
+                               
                             </div>
                              
                         </div>
@@ -46,7 +46,7 @@
                         <div class="gallery-two-item" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50" data-aos-delay="50">
                             <div class="image">
                                 <img src="assets/images/gallery/gallery5.jpg" alt="Gallery">
-                                <a href="destination-details.html" class="link"><i class="fal fa-arrow-right"></i></a>
+                               
                             </div>
                              
                         </div>
@@ -55,7 +55,7 @@
                         <div class="gallery-two-item" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50" data-aos-delay="100">
                             <div class="image">
                                 <img src="assets/images/gallery/gallery6.jpg" alt="Gallery">
-                                <a href="destination-details.html" class="link"><i class="fal fa-arrow-right"></i></a>
+                                
                             </div>
                            
                         </div>
@@ -64,7 +64,7 @@
                         <div class="gallery-two-item" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
                             <div class="image">
                                 <img src="assets/images/gallery/gallery7.jpg" alt="Gallery">
-                                <a href="destination-details.html" class="link"><i class="fal fa-arrow-right"></i></a>
+                               
                             </div>
                             
                         </div>
@@ -73,7 +73,7 @@
                         <div class="gallery-two-item" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50" data-aos-delay="50">
                             <div class="image">
                                 <img src="assets/images/gallery/gallery8.jpg" alt="Gallery">
-                                <a href="destination-details.html" class="link"><i class="fal fa-arrow-right"></i></a>
+                               
                             </div>
                              
                         </div>
@@ -82,7 +82,7 @@
                         <div class="gallery-two-item" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50" data-aos-delay="100">
                             <div class="image">
                                 <img src="assets/images/gallery/gallery9.jpg" alt="Gallery">
-                                <a href="destination-details.html" class="link"><i class="fal fa-arrow-right"></i></a>
+                               
                             </div>
                              
                         </div>

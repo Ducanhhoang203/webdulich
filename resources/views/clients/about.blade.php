@@ -107,7 +107,7 @@
                         <div class="about-us-content rmb-55" data-aos="fade-left" data-aos-duration="1500" data-aos-offset="50">
                             <div class="section-title mb-25">
                                 <h2>20% Offer Running - Join Today</h2>
-                            </div>
+                       F      </div>
                             <p>We denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of your moment, so blinded by desire those who fail in their duty through weakness. These cases are perfectly simple and easy every pleasure is to be welcomed and every pain avoided.</p>
                             <div class="row pt-25">
                                 <div class="col-6">

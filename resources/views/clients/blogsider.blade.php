@@ -6,12 +6,8 @@
                 <div class="row">
                     <div class="col-lg-8">
                         <div class="blog-details-content" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
-                            <a href="blog.html" class="category">DevproVn</a>
-                            <ul class="blog-meta mb-30">
-                                <li><img src="assets/images/blog/admin.jpg" alt="Admin"> <a href="#">Reed A. Johnson</a></li>
-                                <li><i class="far fa-calendar-alt"></i> <a href="#">25 Feb 2024</a></li>
-                                <li><i class="far fa-comments"></i> <a href="#">Comments (5)</a></li>
-                            </ul>
+                            <a href="{{ URL::to('/') }}" class="category">DevproVn</a>
+                           
                             <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam...</p>
                             <div class="image mt-40 mb-30" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
                                 <img src="assets/images/blog/blog-details.jpg" alt="Blog Details">

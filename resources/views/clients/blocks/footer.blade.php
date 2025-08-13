@@ -7,10 +7,10 @@
                 <div class="col col-small" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
                     <div class="footer-widget footer-text">
                         <div class="footer-logo mb-40">
-                            <a href="index.html"><img src="assets/images/logos/logo.png" alt="Logo"></a>
+                            <a href="index.html"><img src="{{ asset('assets/images/logos/logo.png') }}" alt="Logo"></a>
                         </div>
                         <div class="footer-map">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d96777.16150026117!2d-74.00840582560909!3d40.71171357405996!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbd!4v1706508986625!5m2!1sen!2sbd" style="border:0; width: 100%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.8080393054747!2d105.77106667471472!3d21.040365487380956!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x313454c9ae9e6b37%3A0x3c91b16cd6b4970c!2zMyBQLiBNYWkgROG7i2NoLCBNYWkgROG7i2NoLCBD4bqndSBHaeG6pXksIEjDoCBO4buZaSwgVmnhu4d0IE5hbQ!5e0!3m2!1svi!2s!4v1755060022066!5m2!1svi!2s" width="250" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
                     </div>
                 </div>
@@ -18,14 +18,13 @@
                   
                     <div class="footer-widget footer-links ms-sm-5">
                         <div class="footer-title">
-                            <h5>Services</h5>
+                            <h5>Khóa Học mới</h5>
                         </div>
                        <ul class="list-style-three">
-                            <li><a href="destination-details.html">Devprovn</a></li>
-                            <li><a href="destination-details.html">Devprovn</a></li>
-                            <li><a href="destination-details.html">Devprovn</a></li>
-                            <li><a href="destination-details.html">Devprovn</a></li>
-                            <li><a href="destination-details.html">Devprovn</a></li>
+                            @foreach ($product_ft as $key =>$pro)
+                                <li><a href="{{ URL::to('/chitietkhoahoc/'.$pro->product_id) }}">{{ $pro->product_name }}</a></li>
+                           @endforeach
+                           
                         </ul>
                     </div>
                 </div>
@@ -35,37 +34,33 @@
                             <h5>Company</h5>
                         </div>
                           <ul class="list-style-three">
-                            <li><a href="destination-details.html">Devprovn</a></li>
-                            <li><a href="destination-details.html">Devprovn</a></li>
-                            <li><a href="destination-details.html">Devprovn</a></li>
-                            <li><a href="destination-details.html">Devprovn</a></li>
-                            <li><a href="destination-details.html">Devprovn</a></li>
+                           @foreach ($posts_ft as $key =>$pt)
+                         <li><a href="{{ URL::to('/chitietbaiviet/'.$pt->id) }}">{{ $pt->Baiviet_title }}</a></li>
+                         @endforeach
                         </ul>
                     </div>
                 </div>
                 <div class="col col-small" data-aos="fade-up" data-aos-delay="150" data-aos-duration="1500" data-aos-offset="50">
                     <div class="footer-widget footer-links ms-lg-4">
                         <div class="footer-title">
-                            <h5>Destinations</h5>
+                            <h5>Event & FAQ</h5>
                         </div>
                            <ul class="list-style-three">
-                            <li><a href="destination-details.html">Devprovn</a></li>
-                            <li><a href="destination-details.html">Devprovn</a></li>
-                            <li><a href="destination-details.html">Devprovn</a></li>
-                            <li><a href="destination-details.html">Devprovn</a></li>
-                            <li><a href="destination-details.html">Devprovn</a></li>
+                               <li><a href="{{URl::to('/event')  }}">Tất cả event</a></li>
+                            <li><a href="{{URl::to('/faq')  }}">Tất cả Faq</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col col-md-6 col-10 col-small" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1500" data-aos-offset="50">
                     <div class="footer-widget footer-contact">
                         <div class="footer-title">
-                            <h5>Get In Touch</h5>
+                            <h5>Địa chỉ công ty </h5>
                         </div>
                         <ul class="list-style-one">
-                            <li><i class="fal fa-map-marked-alt"></i> 578 Level, D-block 45 Street Melbourne, Australia</li>
-                            <li><i class="fal fa-envelope"></i> <a href="mailto:supportrevelo@gmail.com">supportrevelo @gmail.com</a></li>
-                            <li><i class="fal fa-phone-volume"></i> <a href="callto:+88012334588">+880 (123) 345 88</a></li>
+                            <li><i class="fal fa-map-marked-alt"></i>  Tầng 3, Số 147, Phố Mai Dịch, Cầu giấy, Hà Nội</li>
+                            <li><i class="fal fa-envelope"></i> hangmnm@gmail.com</li>
+
+                            <li><i class="fal fa-phone-volume"></i>  0985.95.08.95</li>
                         </ul>
                     </div>
                 </div>

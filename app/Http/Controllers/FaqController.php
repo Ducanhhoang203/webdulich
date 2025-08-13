@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class FaqController extends Controller
 {
@@ -15,7 +16,8 @@ class FaqController extends Controller
     public function index()
     { 
         $title ="Câu hỏi";
-        return view('clients.faq',compact('title'));
+        $faqct = DB::table('faqct')->orderBy('id','desc')->get();
+        return view('clients.faq',compact('title','faqct'));
 
         //
     }

@@ -101,7 +101,7 @@ public function save_baiviet(Request $request)
 
     return view('admin.edit_baiviet', compact('edit_value', 'cate_product'));
 }
-public function update_baiviet(Request $request, $id)
+public function upload_baiviet(Request $request, $id)
 {
     // Validate
     $request->validate([
@@ -192,6 +192,19 @@ public function delete_baiviet($id)
     DB::table('posts')->where('id', $id)->delete();
 
     return redirect()->back()->with('success', 'Xoá bài viết thành công!');
+}
+
+public function chitietbaiviet($id){
+$title = "Trang bài viết chi tiết ";
+ $baiviet =DB::table('posts') ->join('tbl_category_product', 'tbl_category_product.catgory_id', '=', 'posts.Baiviet_category')
+ ->where('posts.id',$id)
+ ->first();
+ $product = DB::table('tbl_product')
+    ->where('product_status', 1)
+    ->orderBy('product_id', 'desc') // sắp xếp sản phẩm mới nhất
+    ->limit(3)                      // lấy 3 sản phẩm đầu tiên
+    ->get();
+ return view('clients.blogsider',compact('baiviet', 'title', 'product'));
 }
 
 }

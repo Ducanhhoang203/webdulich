@@ -63,7 +63,7 @@
 											<label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Baiviet_title<span class="required">*</span>
 											</label>
 											<div class="col-md-6 col-sm-6 ">
-												<input type="text" id="last-name" name="Baiviet_title" required="required" class="form-control" value="{{ $edit_value->Baiviet_title }}">
+												<input type="text" id="last-name" name="Baiviet_title" required="required" class="form-control" >
 											</div>
 										</div>
                                        
@@ -154,7 +154,7 @@
 										<div class="ln_solid"></div>
 										<div class="item form-group">
 											<div class="col-md-6 col-sm-6 offset-md-3">
-												<button class="btn btn-primary" type="summit" name="add_baiviet">Thêm Môn học</button>
+												<button class="btn btn-primary" type="summit" name="add_baiviet">Thêm</button>
 											
 											</div>
 										</div>

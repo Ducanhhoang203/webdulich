@@ -111,42 +111,7 @@
                             </div>
                             
                            
-                            
-                            <div class="widget widget-tour" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
-                                <h6 class="widget-title"><pre>Khóa học nổi bật</pre></h6>
-                                <div class="destination-item tour-grid style-three bgc-lighter">
-                                    <div class="image">
-                                        <span class="badge">10% Off</span>
-                                        <img src="{{ asset('assets/images/widgets/tour1.jpg') }}" alt="Tour">
-                                    </div>
-                                    <div class="content">
-                                        <div class="destination-header">
-                                            <span class="location"><i class="fal fa-map-marker-alt"></i>Ha noi </span>
-                                            <div class="ratting">
-                                                <i class="fas fa-star"></i>
-                                                <span>(4.8)</span>
-                                            </div>
-                                        </div>
-                                        <h6><a href="tour-details.html">
-Soundtrack filma Exclusive Music</a></h6>
-                                    </div>
-                                </div>
-                                <div class="destination-item tour-grid style-three bgc-lighter">
-                                    <div class="image">
-                                        <img src="{{ asset('assets/images/widgets/tour1.jpg') }}" alt="Tour">
-                                    </div>
-                                    <div class="content">
-                                        <div class="destination-header">
-                                            <span class="location"><i class="fal fa-map-marker-alt"></i> Ha noi</span>
-                                            <div class="ratting">
-                                                <i class="fas fa-star"></i>
-                                                <span>(4.8)</span>
-                                            </div>
-                                        </div>
-                                        <h6><a href="tour-details.html"></a></h6>
-                                    </div>
-                                </div>
-                            </div>
+                           
                         </div>
                         
                         
@@ -169,7 +134,7 @@ Soundtrack filma Exclusive Music</a></h6>
                         @foreach ($product as $key => $pro)
                             <div class="destination-item style-three bgc-lighter" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
                             <div class="image">
-                                <span class="badge bgc-pink">Featured</span>
+                                <span class="badge bgc-pink">{{ $pro->brand_name }}</span>
                                 <a href="#" class="heart"><i class="fas fa-heart"></i></a>
                                 <img src="{{ asset('uploads/product/' . $pro->product_image) }}" alt="Tour List">
                             </div>

@@ -171,9 +171,12 @@ class ProductController extends Controller
     $reviews = DB::table('tbl_review')
         ->where('product_id', $product_id)
         ->get();
+    $instructors3 = DB::table('tbl_instructors')
+        ->where('product_id', $product_id)
+        ->first();
 
     $title = "Trang Chi Tiết";
-    return view('clients.chitietkhoahoc', compact('title', 'product', 'curriculums', 'instructors', 'faqs', 'reviews'));
+    return view('clients.chitietkhoahoc', compact('title', 'product', 'curriculums', 'instructors', 'faqs', 'reviews','instructors3'));
 }
 
 

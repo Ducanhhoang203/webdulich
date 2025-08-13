@@ -54,7 +54,7 @@
 
                     <div class="header-inner rel d-flex align-items-center">
                         <div class="logo-outer">
-                            <div class="logo"><a href="index.html"><img src="{{ asset('assets/images/logos/logo-two.png') }}" alt="Logo" title="Logo"></a></div>
+                            <div class="logo"><a href="{{ URL::to('/') }}"><img src="{{ asset('assets/images/logos/logo-two.png') }}" alt="Logo" title="Logo"></a></div>
                         </div>
 
                         <div class="nav-outer mx-lg-auto ps-xxl-5 clearfix">
@@ -78,15 +78,8 @@
                                 
                                 <div class="navbar-collapse collapse clearfix">
                                     <ul class="navigation clearfix">
-                                        <li class="dropdown current"><a href="{{ URL::To('/') }}">Giới thiệu </a>
-                                            <ul>
-                                                <li ><a href="{{ URL::To('/home') }}">Trang chủ</a></li>
-
-                                         
-                                                <li><a href="#">Về chúng tôi </a></li>
-                                                <li><a href="{{ URL::to('/contact') }}">Tư vấn Liên hệ </a></li>
-
-                                            </ul>
+                                        <li ><a href="{{ URL::To('/') }}">Trang chủ </a>
+                                          
                                         </li>
                                         <li class="dropdown current" ><a href="about.html">about </a>
                                             <ul>
@@ -99,7 +92,7 @@
                                             <ul>
                                                 <li><a href="{{ URL::to('/courses') }}">Các Khóa Học Tại Dev Pro</a></li>
                                                 <li><a href="{{URl::to('/hocvien') }}">Học viên</a></li>
-                                                <li><a href="{{URl::to('/gallery') }}">Gallery </a></li>
+                                                <li><a href="{{URl::to('/gallery') }}">Bài viết</a></li>
                                                
                                             </ul>
                                         </li>
@@ -115,9 +108,6 @@
                                         <li class="dropdown"><a href="#">Blog</a>
                                             <ul>
                                                 <li><a href="{{ URL::to('/blogs') }}">Blogs</a></li>
-                                                <li><a href="{{ URL::to('/blogsider') }}">blogsider</a></li>
-                                                
-                                            
                                                 <li><a href="{{ URl::to('/contact') }}">Contact</a></li>
                                              
                                             </ul>
@@ -197,7 +187,7 @@
                     <h2 class="page-title mb-10" data-aos="fade-left" data-aos-duration="1500" data-aos-offset="50">{{ $title }}</h2>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb justify-content-center mb-20" data-aos="fade-right" data-aos-delay="200" data-aos-duration="1500" data-aos-offset="50">
-                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{{ URL::to('/') }}">Home</a></li>
                             <li class="breadcrumb-item active">{{ $title }}</li>
                         </ol>
                     </nav>

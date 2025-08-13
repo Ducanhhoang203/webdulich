@@ -2,84 +2,48 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\DB;
 class ContacController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * Trang hiển thị form liên hệ
      */
     public function index()
-    {  $title = "trang Contact";
-        return view('clients.Contact',compact('title'));
+    {
+        $title = "Trang Contact";
+        $product = DB::table('tbl_product')->orderBy('product_id','desc')->first();
+        $event= DB::table('tbl_event')->orderBy('id','desc')->first();
+        $instructors= DB::table('tbl_instructors')->orderBy('instructors_id','desc')->first();
+        return view('clients.Contact', compact('title','product','instructors','event'));
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     * Xử lý gửi email liên hệ
      */
-    public function create()
+    public function send(Request $request)
     {
-        //
-    }
+        // ✅ Validate dữ liệu
+        $validated = $request->validate([
+            'name'         => 'required|string|max:255',
+            'phone_number' => 'required|string|max:20',
+            'email'        => 'required|email',
+            'message'      => 'required|string',
+        ]);
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+        // ✅ Gửi email
+        Mail::send('clients.contactgui', [
+            'name'         => $validated['name'],
+            'phone_number' => $validated['phone_number'],
+            'email'        => $validated['email'],
+            'message_body' => $validated['message'] // Đổi tên key để tránh trùng "message" của Laravel
+        ], function ($mail) use ($validated) {
+            $mail->to('hangmnm@gmail.com') // Gmail nhận
+                 ->subject('Đăng Ký Khóa Học: ' . $validated['name'])
+                 ->from($validated['email'], $validated['name']); // Người gửi
+        });
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return redirect()->back()->with('success', 'Thông tin đã được gửi thành công. Chúng tôi sẽ liên hệ lại sớm!');
     }
 }

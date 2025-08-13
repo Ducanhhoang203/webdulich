@@ -14,7 +14,8 @@
     <!-- Favicon Icon -->
     <link rel="shortcut icon" href="assets/images/logos/favicon.png" type="image/x-icon">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap&subset=vietnamese" rel="stylesheet">
+
     
     <!-- Flaticon -->
     <link rel="stylesheet" href="assets/css/flaticon.min.css">
@@ -48,7 +49,7 @@
 
                     <div class="header-inner rel d-flex align-items-center">
                         <div class="logo-outer">
-                            <div class="logo"><a href="index.html"><img src="assets/images/logos/logo.png" alt="Logo" title="Logo"></a></div>
+                            <div class="logo"><a href="{{ URL::to('/') }}"><img src="{{ URL::to($footer_info2->logo_path) }}" alt="Logo" title="Logo"></a></div>
                         </div>
 
                         <div class="nav-outer mx-lg-auto ps-xxl-5 clearfix">
@@ -57,7 +58,7 @@
                                 <div class="navbar-header">
                                    <div class="mobile-logo">
                                        <a href="index.html">
-                                            <img src="assets/images/logos/logo.png" alt="Logo" title="Logo">
+                                            <img src=" {{ URL::to($footer_info2->logo_path) }}" alt="Logo" title="Logo">
                                        </a>
                                    </div>
                                    
@@ -71,15 +72,8 @@
 
                                <div class="navbar-collapse collapse clearfix">
                                     <ul class="navigation clearfix">
-                                        <li class="dropdown current"><a href="{{ URL::To('/') }}">Giới thiệu </a>
-                                            <ul>
-                                                <li ><a href="{{ URL::To('/home') }}">Trang chủ</a></li>
-
-                                         
-                                                <li><a href="#">Về chúng tôi </a></li>
-                                                <li><a href="{{ URL::to('/contact') }}">Tư vấn Liên hệ </a></li>
-
-                                            </ul>
+                                        <li ><a href="{{ URL::To('/') }}">Trang chủ </a>
+                                            
                                         </li>
                                         <li class="dropdown current" ><a href="about.html">about </a>
                                             <ul>
@@ -88,11 +82,11 @@
                                                
                                             </ul>
                                         </li>
-                                        <li class="dropdown"><a href="#">Khóa Học</a>
+                                        <li class="dropdown"><a href="#">Khóa học</a>
                                             <ul>
                                                 <li><a href="{{ URL::to('/courses') }}">Các Khóa Học Tại Dev Pro</a></li>
                                                 <li><a href="{{URl::to('/hocvien') }}">Học viên</a></li>
-                                                <li><a href="{{URl::to('/gallery') }}">Gallery </a></li>
+                                                <li><a href="{{URl::to('/gallery') }}">Bài viết </a></li>
                                                
                                             </ul>
                                         </li>
@@ -108,7 +102,7 @@
                                         <li class="dropdown"><a href="#">Blog</a>
                                             <ul>
                                                 <li><a href="{{ URL::to('/blogs') }}">Blogs</a></li>
-                                                <li><a href="{{ URL::to('/blogsider') }}">blogsider</a></li>
+                                           
                                                 
                                             
                                                 <li><a href="{{ URl::to('/contact') }}">Contact</a></li>
@@ -128,7 +122,7 @@
                         
                         <!-- Menu Button -->
                         <div class="menu-btns py-10">
-                            <a href="contact.html" class="theme-btn style-two bgc-secondary">
+                            <a href="{{ URL::to('/contact') }}" class="theme-btn style-two bgc-secondary">
                                 <span data-hover="Đăng ký ngay ">đăng ký ngay </span>
                                 <i class="fal fa-arrow-right"></i>
                             </a>

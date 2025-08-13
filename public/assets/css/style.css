@@ -821,8 +821,8 @@ a.theme-btn {
   background: var(--primary-color); }
 
 .text-white .subtitle {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.1); }
+  background: rgba(233, 228, 228, 0.05);
+  border-color: rgba(237, 231, 231, 0.1); }
 
 /*Project Filter*/
 .filter-btns-one {
@@ -8117,7 +8117,8 @@ blockquote {
 /******************* ## Main Footer *******************/
 /*******************************************************/
 .main-footer {
-  color: #B6CABC; }
+  background-image: url(assets/images/backgrounds/footer-two.jpg);
+  color: #d6dfd9; }
   .main-footer a {
     color: #B6CABC; }
     .main-footer a:hover {
@@ -8151,7 +8152,7 @@ blockquote {
 
 .footer-top {
   position: relative;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+  border-bottom: 2px solid rgba(191, 66, 13, 0.1); }
   @media only screen and (min-width: 992px) {
     .footer-top:before {
       content: '';
@@ -8160,9 +8161,9 @@ blockquote {
       top: 0;
       width: 1px;
       height: 100%;
-      background: rgba(255, 255, 255, 0.1); } }
+      background:#cf4b0e } }
   .footer-top .section-title h2 {
-    color: white; }
+    color: rgb(243, 238, 238); }
 
 .newsletter-form {
   padding: 10px;
@@ -8199,7 +8200,7 @@ blockquote {
 /* Footer Bottom */
 .footer-bottom {
   position: relative;
-  background: #222924; }
+  background: #54544d; }
   .footer-bottom .copyright-text a {
     color: var(--secondary-color); }
   .footer-bottom .scroll-top {
@@ -8765,4 +8766,14 @@ blockquote {
 .margindk{
 margin-left: 20%;
 }
+.heart i {
+  color: #ccc; /* Mặc định màu xám nhạt */
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+
+.heart.liked i {
+  color: red; /* Màu đỏ khi liked */
+}
+
 

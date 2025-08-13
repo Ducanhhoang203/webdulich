@@ -24,13 +24,13 @@ class AboutController extends Controller
         ->orderBy('brand_id', 'desc')
         ->get();
 
-    $title = "Trang About";
+    $title = "Trang About two";
     // $all_product = DB::table('tbl_product')
     //     ->join('tbl_category_product', 'tbl_category_product.catgory_id', '=', 'tbl_product.category_id')
     //     ->join('tbl_brand', 'tbl_brand.brand_id', '=', 'tbl_product.brand_id')
     //     ->orderBy('tbl_product.product_id', 'desc')
     //     ->get();
-        $all_product = DB::table('tbl_product')
+        $all_product = DB::table('tbl_product')->join('tbl_brand','tbl_product.brand_id','=','tbl_brand.brand_id')
         ->where('product_status', 1) // Cũng sửa lại đúng điều kiện
         ->orderBy('product_id', 'desc')
         ->get();
@@ -43,8 +43,11 @@ class AboutController extends Controller
         
 }
  public function About1(){
-    $title =' trang chủ ';
-    return view('clients.about', compact('title'));
+    $title =' Trang about ';
+    $instructors = DB::table('tbl_instructors')->orderBy('instructors_id','desc')->get();
+    $product = DB::table('tbl_product')->orderBy('product_id','desc')->limit(4)->get();
+
+    return view('clients.about', compact('title','instructors','product'));
  }
 
 

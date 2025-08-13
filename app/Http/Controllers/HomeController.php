@@ -13,35 +13,55 @@ class HomeController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-         $cate_product = DB::table('tbl_category_product')
-        ->where('catgory_status', 1) // Sửa đúng điều kiện
+   public function index()
+{
+    $cate_product = DB::table('tbl_category_product')
+        ->where('catgory_status', 1)
         ->orderBy('catgory_id', 'desc')
         ->get();
-        $brand_product = DB::table('tbl_brand')
-        ->where('brand_status', 1) // Cũng sửa lại đúng điều kiện
+
+    $brand_product = DB::table('tbl_brand')
+        ->where('brand_status', 1)
         ->orderBy('brand_id', 'desc')
         ->get();
 
-    $title = "Trang About";
-    // $all_product = DB::table('tbl_product')
-    //     ->join('tbl_category_product', 'tbl_category_product.catgory_id', '=', 'tbl_product.category_id')
-    //     ->join('tbl_brand', 'tbl_brand.brand_id', '=', 'tbl_product.brand_id')
-    //     ->orderBy('tbl_product.product_id', 'desc')
-    //     ->get();
-        $all_product = DB::table('tbl_product')
-        ->where('product_status', 1) // Cũng sửa lại đúng điều kiện
-        ->orderBy('product_id', 'desc')
-        ->get();
+    $title = "Trang Home";
 
+    $all_product = DB::table('tbl_product')
+        ->join('tbl_category_product', 'tbl_category_product.catgory_id', '=', 'tbl_product.category_id')
+        ->join('tbl_brand', 'tbl_brand.brand_id', '=', 'tbl_product.brand_id')
+        ->where('product_status', 1)
+        ->orderBy('tbl_product.product_id', 'desc')
+      
+        ->get();
+        
+    $product_new = DB::table('tbl_product')
+        ->join('tbl_category_product', 'tbl_category_product.catgory_id', '=', 'tbl_product.category_id')
+        ->join('tbl_brand', 'tbl_brand.brand_id', '=', 'tbl_product.brand_id')
+        ->where('product_status', 1)
+        ->orderBy('tbl_product.product_id', 'desc')
+        ->limit(3)
+        ->get();
+    $about_sections1 = DB::table('about_sections')
+    ->orderBy('id','desc')
+    ->first();
+    $about_sections = DB::table('about_sections')->orderBy('id', 'desc')->get();
+
+    $event = DB::table('tbl_event')->orderBy('id','desc')->limit(7)->get();
 
     return view('clients.Home', compact('title'))
         ->with('category', $cate_product)
         ->with('brand', $brand_product)
-        ->with('product',$all_product);
-        
-    }
+        ->with('product', $all_product)
+        ->with('new',$product_new)
+        ->with('about',$about_sections)
+        ->with('about1',$about_sections1)
+        ->with('event',$event);
+
+
+           
+}
+
 
     /**
      * Show the form for creating a new resource.

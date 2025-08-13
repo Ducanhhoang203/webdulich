@@ -50,30 +50,11 @@
                                                     <h4>{{ $pro->product_name }}</h4>
                                                     <p>{{ $pro->product_desc }}</p>
                                                     <p>{{ $pro->product_content }}</p>
-                                                    <ul class="student-list">
-                                                        <li>23,564 Total Students</li>
-                                                        <li><span class="theme_color">4.5</span> <span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span> (1254 Rating)</li>
-                                                        <li>256 Reviews</li>
-                                                    </ul>
-                                                    <h3>What you’ll learn?</h3>
-                                                    <ul class="review-list">
-                                                        <li>Phasellus enim magna, varius et commodo ut.</li>
-                                                        <li>Sed consequat justo non mauris pretium at tempor justo.</li>
-                                                        <li>Ut nulla tellus, eleifend euismod pellentesque vel, sagittis vel justo</li>
-                                                        <li>Phasellus enim magna, varius et commodo ut.</li>
-                                                        <li>Phasellus enim magna, varius et commodo ut.</li>
-                                                        <li>Sed consequat justo non mauris pretium at tempor justo.</li>
-                                                        <li>Ut nulla tellus, eleifend euismod pellentesque vel, sagittis vel justo</li>
-                                                        <li>Phasellus enim magna, varius et commodo ut.</li>
-                                                    </ul>
-                                                    <h3>Requirements</h3>
-                                                    <ul class="review-list">
-                                                        <li>Phasellus enim magna, varius et commodo ut, ultricies vitae velit. Ut nulla tellus, eleifend euismod pellentesque vel, sagittis vel justo</li>
-                                                        <li>Ultricies vitae velit. Ut nulla tellus, eleifend euismod pellentesque vel.</li>
-                                                        <li>Phasellus enim magna, varius et commodo ut.</li>
-                                                        <li>Varius et commodo ut, ultricies vitae velit. Ut nulla tellus.</li>
-                                                        <li>Phasellus enim magna, varius et commodo ut.</li>
-                                                    </ul>                                                                                                          
+                                                   
+                                               
+                                                  
+                                                  
+                                                                                                                                                         
                                                 </div>
                                             </div>                                                
                                         </div>
@@ -122,10 +103,12 @@
     
 
                  <div class="tab-pane fade" id="prod-instructor" role="tabpanel" aria-labelledby="prod-instructor-tab">
-                              @foreach ($instructors as $key =>$struct)
+                              
                 <div class="content pt-30 pb-30 pl-30 pr-30 white-bg">
                          <h3 class="instructor-title">Giảng Viên</h3>
+                      
                     <div class="row rs-team style1 orange-color transparent-bg clearfix">
+                           @foreach ($instructors as $key =>$struct)
                     <div class="col-lg-6 col-md-6 col-sm-12 sm-mb-30">
                                                
                         <div class="team-item hover-content" data-aos="fade-up" data-aos-delay="50" data-aos-duration="1500" data-aos-offset="50">
@@ -143,10 +126,12 @@
                         </div>
                 
          </div>                                                            
-                                                                                                          
-                                            </div>  
+                                                     @endforeach                                                                 
+                                            </div> 
+                                       
+
                                         </div>
-                                                  @endforeach
+                                            
                                     </div>
 
 
@@ -222,11 +207,11 @@
                             <div class="inner-column">
                             <!-- Video Box -->
                                 <div class="intro-video media-icon orange-color2">
-                                    <img class="video-img" src="{{ asset('assets/images/team/guide1.jpg') }}" alt="Video Image">
-                                    <a class="popup-videos" href="https://www.youtube.com/watch?v=atMUy_bPoQI">
+                                    <img class="video-img" src="{{ URl::to('uploads/instructors/'.$instructors3->instructors_image) }}" alt="Video Image">
+                                    <a class="popup-videos" href="https://www.youtube.com/watch?v=6vclc_Wi3GY">
                                         <i class="fa fa-play"></i>
                                     </a>
-                                    <h4>Preview this course</h4>
+                                    <h4>Video Giới thiệu</h4>
                                 </div>
                                 <!-- End Video Box -->
                                

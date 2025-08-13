@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class EventController extends Controller
 {
@@ -13,9 +14,10 @@ class EventController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {   
+        $event = DB::table('tbl_event')->orderBy('id','desc')->get();
         $title ="Trang Event";
-        return view('clients.Event',compact('title'));
+        return view('clients.Event',compact('title','event'));
     }
 
     /**

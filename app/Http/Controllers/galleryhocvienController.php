@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 class galleryhocvienController extends Controller
 {
     /**
@@ -14,8 +14,9 @@ class galleryhocvienController extends Controller
      */
     public function index()
     {
-        $title ="trang Hoc viên ";
-        return view('clients.galleryhocvien',compact('title'));
+        $title ="Trang học viên ";
+        $hocvien = DB::table('tbl_galleries')->orderBy('id','desc')->get();
+        return view('clients.galleryhocvien',compact('title','hocvien'));
     }
 
     /**

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 class galleryController extends Controller
 {
     /**
@@ -15,7 +15,11 @@ class galleryController extends Controller
     public function index()
     {
         $title = "Trang gallery";
-        return view('clients.gallery',compact('title'));
+        $all_baiviet = DB::table('posts')->join('tbl_category_product','tbl_category_product.catgory_id','=','posts.Baiviet_category')
+        ->where('Baiviet_status',1)
+        ->orderBy('id','desc')
+            ->paginate(6);
+        return view('clients.gallery',compact('title','all_baiviet'));
     }
 
     /**

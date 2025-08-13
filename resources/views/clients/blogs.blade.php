@@ -7,98 +7,31 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8">
-                        <div class="blog-item style-three" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
+                        @foreach ($products as $key => $pro)
+                            <div class="blog-item style-three" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
                             <div class="image">
-                                <img src="assets/images/blog/blog-list1.jpg" alt="Blog List">
+                                <img src="{{ asset('uploads/product/'.$pro->product_image) }}" alt="Blog">
                             </div>
                             <div class="content">
-                                <a href="blog.html" class="category">DevproVN</a>
-                                <h5><a href="blog-details.html">Modern School the lovely valley team work</a></h5>
+                                <a href="{{ URL::to('/chitietkhoahoc/'.$pro->product_id) }}" class="category">{{ $pro->product_name }}</a>
+                                <h5>{{ $pro->product_desc }}</h5>
                                 <ul class="blog-meta">
-                                    <li><i class="far fa-calendar-alt"></i> <a href="#">25 February 2024</a></li>
-                                    <li><i class="far fa-comments"></i> <a href="#">Comments (5)</a></li>
+                                    
+                                    <li><i class="fas fa-money-bill"></i>{{ $pro->product_price }}<span> VNĐ</span></li>
+                                   
                                 </ul>
-                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam...</p>
-                                <a href="blog-details.html" class="theme-btn style-two style-three">
+                                <p>{{ $pro->product_content }}</p>
+                                <a href="{{URL::to('/contact') }}" class="theme-btn style-two style-three">
                                     <span data-hover="Đăng ký ">bấm vào xem </span>
                                     <i class="fal fa-arrow-right"></i>
                                 </a>
                             </div>
                         </div>
-                        <div class="blog-item style-three" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
-                            <div class="image">
-                                <img src="assets/images/blog/blog-list2.jpg" alt="Blog List">
-                            </div>
-                             <div class="content">
-                                <a href="blog.html" class="category">DevproVN</a>
-                                <h5><a href="blog-details.html">Modern School the lovely valley team work</a></h5>
-                                <ul class="blog-meta">
-                                    <li><i class="far fa-calendar-alt"></i> <a href="#">25 February 2024</a></li>
-                                    <li><i class="far fa-comments"></i> <a href="#">Comments (5)</a></li>
-                                </ul>
-                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam...</p>
-                                <a href="blog-details.html" class="theme-btn style-two style-three">
-                                    <span data-hover="Đăng ký ">bấm vào xem </span>
-                                    <i class="fal fa-arrow-right"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="blog-item style-three" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
-                            <div class="image">
-                                <img src="assets/images/blog/blog-list3.jpg" alt="Blog List">
-                            </div>
-                              <div class="content">
-                                <a href="blog.html" class="category">DevproVN</a>
-                                <h5><a href="blog-details.html">Modern School the lovely valley team work</a></h5>
-                                <ul class="blog-meta">
-                                    <li><i class="far fa-calendar-alt"></i> <a href="#">25 February 2024</a></li>
-                                    <li><i class="far fa-comments"></i> <a href="#">Comments (5)</a></li>
-                                </ul>
-                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam...</p>
-                                <a href="blog-details.html" class="theme-btn style-two style-three">
-                                    <span data-hover="Đăng ký ">bấm vào xem </span>
-                                    <i class="fal fa-arrow-right"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="blog-item style-three" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
-                            <div class="image">
-                                <img src="assets/images/blog/blog-list4.jpg" alt="Blog List">
-                            </div>
-                             <div class="content">
-                                <a href="blog.html" class="category">DevproVN</a>
-                                <h5><a href="blog-details.html">Modern School the lovely valley team work</a></h5>
-                                <ul class="blog-meta">
-                                    <li><i class="far fa-calendar-alt"></i> <a href="#">25 February 2024</a></li>
-                                    <li><i class="far fa-comments"></i> <a href="#">Comments (5)</a></li>
-                                </ul>
-                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam...</p>
-                                <a href="blog-details.html" class="theme-btn style-two style-three">
-                                    <span data-hover="Đăng ký ">bấm vào xem </span>
-                                    <i class="fal fa-arrow-right"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="blog-item style-three" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
-                            <div class="image">
-                                <img src="assets/images/blog/blog-list5.jpg" alt="Blog List">
-                            </div>
-                             <div class="content">
-                                <a href="blog.html" class="category">DevproVN</a>
-                                <h5><a href="blog-details.html">Modern School the lovely valley team work</a></h5>
-                                <ul class="blog-meta">
-                                    <li><i class="far fa-calendar-alt"></i> <a href="#">25 February 2024</a></li>
-                                    <li><i class="far fa-comments"></i> <a href="#">Comments (5)</a></li>
-                                </ul>
-                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam...</p>
-                                <a href="blog-details.html" class="theme-btn style-two style-three">
-                                    <span data-hover="Đăng ký ">bấm vào xem </span>
-                                    <i class="fal fa-arrow-right"></i>
-                                </a>
-                            </div>
-                        </div>
-                        
-                        <ul class="pagination pt-15 flex-wrap" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
+                        @endforeach
+  <div class="col-lg-12">
+      {{ $products->links('pagination::bootstrap-4') }}
+
+                        {{-- <ul class="pagination pt-15 flex-wrap" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
                             <li class="page-item disabled">
                                 <span class="page-link"><i class="far fa-chevron-left"></i></span>
                             </li>
@@ -114,61 +47,55 @@
                             <li class="page-item">
                                 <a class="page-link" href="#"><i class="far fa-chevron-right"></i></a>
                             </li>
-                        </ul>
+                        </ul> --}}
+                          </div>
                     </div>
                     <div class="col-lg-4 col-md-8 col-sm-10 rmt-75">
                         <div class="blog-sidebar">
                             
-                            <div class="widget widget-search" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
-                                <form action="#" class="default-search-form">
-                                    <input type="text" placeholder="Search" required="">
-                                    <button type="submit" class="searchbutton far fa-search"></button>
+                            <div class="widget widget-search" data-aos="fade-up" data-aos-duration="2000" data-aos-offset="50">
+                                <form action="{{ route('blogs.search') }}"method="GET" class="default-search-form">
+                                         <div style="position: relative;">
+                                    <input type="text" id="search-box" name="keyword" placeholder="Tìm kiếm..." value="{{ request('keyword') }}">
+                                     <div id="suggestions-box"  style="position: absolute; background: white; z-index: 999; width: 100%; display: none;" ></div>
+                                         </div>
+                                    <button type="submit" ></button>
                                 </form>
+             
+
                             </div>
                             
-                            <div class="widget widget-category" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
-                                <h5 class="widget-title">Categories</h5>
-                                <ul class="list-style-three">
-                                    <li><a href="blog.html">College</a></li>
-                                    <li><a href="blog.html">High School</a></li>
-                                    <li><a href="blog.html">Primary</a></li>
-                                    <li><a href="blog.html">School</a></li>
-                                    <li><a href="blog.html">University</a></li>
+                      
+                                <div class="widget widget-category" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
+                                <h5 class="widget-title">Danh Mục</h5>
+                                @foreach ($category as $key =>$dm)
+                                    <ul class="list-style-three">
+                                    <li><a href="{{ URL::to('/danh-muc-san-pham/{catgory_id}') }}">{{$dm->catgory_name}}</a></li>
+                                 
                                  
                                 </ul>
+                                @endforeach
                             </div>
+                   
                             
                             <div class="widget widget-news" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
-                                <h5 class="widget-title">Recent News</h5>
-                                <ul>
+                                <h5 class="widget-title">Các khóa học mới nhất </h5>
+                               
+                                    <ul>
+                                         @foreach ($products as $key =>$pro)
                                     <li>
                                         <div class="image">
-                                            <img src="assets/images/widgets/news1.jpg" alt="News">
+                                            <img src="{{ asset('uploads/product/'.$pro->product_image) }}" alt="News">
                                         </div>
                                         <div class="content">
-                                            <h6><a href="blog-details.html">Modern School the lovely valley team work</a></h6>
-                                            <span class="date"><i class="far fa-calendar-alt"></i> 25 Feb 2025</span>
+                                            <h6><a href="{{ URL::to('/chitietkhoahoc/'.$pro->product_id) }}">{{ $pro->product_desc }}</a></h6>
+                                            <span class="date"><i class=""></i> {{ $pro->product_price }} VNĐ</span>
                                         </div>
                                     </li>
-                                    <li>
-                                        <div class="image">
-                                            <img src="assets/images/widgets/news2.jpg" alt="News">
-                                        </div>
-                                        <div class="content">
-                                            <h6><a href="blog-details.html">Modern School the lovely valley team work</a></h6>
-                                            <span class="date"><i class="far fa-calendar-alt"></i> 25 Feb 2025</span>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="image">
-                                            <img src="assets/images/widgets/news3.jpg" alt="News">
-                                        </div>
-                                        <div class="content">
-                                            <h6><a href="blog-details.html">Modern School the lovely valley team work</a></h6>
-                                            <span class="date"><i class="far fa-calendar-alt"></i> 25 Feb 2025</span>
-                                        </div>
-                                    </li>
+                                    
+                                         @endforeach
                                 </ul>
+                           
                             </div>
                             
                            
@@ -182,6 +109,36 @@
             </div>
         </section>
         <!-- Blog List Area end -->
-        
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('#search-box').keyup(function() {
+        let query = $(this).val();
+        if (query.length > 1) {
+            $.ajax({
+                url: "/search-suggest",
+                method: "GET",
+                data: { query: query },
+                success: function(data) {
+                    let suggestions = '';
+                    data.forEach(function(item) {
+                        suggestions += `<div class="suggest-item" data-id="${item.id}">${item.name}</div>`;
+                    });
+                    $('#suggestions-box').html(suggestions).show();
+                }
+            });
+        } else {
+            $('#suggestions-box').hide();
+        }
+    });
+
+    $(document).on('click', '.suggest-item', function() {
+        $('#search-box').val($(this).text());
+        $('#suggestions-box').hide();
+        $('form').submit();
+    });
+});
+</script>
+
 
       @include('clients.blocks.footer');

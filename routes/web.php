@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\about_section;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BrandController;
@@ -23,9 +25,14 @@ use App\Http\Controllers\ContacController;
 use App\Http\Controllers\formdk;
 use App\Http\Controllers\SummitController;
 use App\Http\Controllers\CoursesController;
+use App\Http\Controllers\EventsController;
+use App\Http\Controllers\faqct;
 use App\Http\Controllers\faqs_chitiet;
+use App\Http\Controllers\FooterController;
 use App\Http\Controllers\InstructorController;
 use App\Http\Controllers\Reviewscontroller;
+use App\Http\Controllers\galleries;
+use App\Http\Controllers\Gallery2Controller;
 
 Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register.form');
 Route::post('/register', [AuthController::class, 'register'])->name('register');
@@ -118,13 +125,57 @@ Route::get('/edit-reviews/{id}',[Reviewscontroller::class, 'edit_reviews'])->nam
 Route::post('/update-reviews/{id}',[Reviewscontroller::class, 'update_reviews'])->name('update-reviews');
 Route::get('/delete-reviews/{id}',[Reviewscontroller::class, 'delete_reviews'])->name('delete-reviews');
 // trang chi tiet bai viet
-Route::get('/add-baiviet',[Baivietcontroller::class,'add_baiviet'])->name('add-baiviet');
-route::get('/all-baiviet',[Baivietcontroller::class,'all_baiviet'])->name('all-baiviet'); 
-route::post('/save-baiviet',[Baivietcontroller::class,'save_baiviet'])->name('save-baiviet');
+Route::get('/add-baiviet',[Baivietcontroller::class,'add_baiviet'],
+      )->name('add-baiviet');
+route::get('/all-baiviet',[Baivietcontroller::class,'all_baiviet'],)->name('all.baiviet'); 
+route::post('/save-baiviet',[Baivietcontroller::class,'save_baiviet']
+)->name('save-baiviet');
 Route::get('/edit-baiviet/{id}',[Baivietcontroller::class, 'edit_baiviet'])->name('edit-baiviet');
-Route::post('/update-baiviet/{id}',[Baivietcontroller::class, 'update_baiviet'])->name('update-baiviet');
+Route::post('/upload-baiviet/{id}',[Baivietcontroller::class, 'upload_baiviet'])->name('upload-baiviet');
 Route::get('/delete-baiviet/{id}',[Baivietcontroller::class, 'delete_baiviet'])->name('delete-baiviet');
-  
+Route::get('/chitietbaiviet/{id}',[Baivietcontroller::class ,'chitietbaiviet'])->name('chitietbaiviet');
+//trang cau hoi
+Route::get('/add-faqct',[faqct::class,'add_faqct'])->name('add-faqct');
+route::get('/all-faqct',[faqct::class,'all_faqct'])->name('all.faqct'); 
+route::post('/save-faqct',[faqct::class,'save_faqct'])->name('save-faqct');
+Route::get('/edit-faqct/{id}',[faqct::class, 'edit_faqct'])->name('edit-faqct');
+Route::post('/update-faqct/{id}',[faqct::class, 'update_faqct'])->name('upload-faqct');
+Route::get('/delete-faqct/{id}',[faqct::class, 'delete_faqct'])->name('delete-faqct');
+// trang event
+Route::get('/add-event',[EventsController::class,'add_event'])->name('add-event');
+route::get('/all-event',[EventsController::class,'all_event'])->name('all-event'); 
+route::post('/save-event',[EventsController::class,'save_event'])->name('save-event');
+Route::get('/edit-event/{id}',[EventsController::class, 'edit_event'])->name('edit-event');
+Route::post('/update-event/{id}',[EventsController::class, 'update_event'])->name('upload-event');
+Route::get('/delete-event/{id}',[EventsController::class, 'delete_event'])->name('event-faqct');
+Route::get('/blogs/search', [blogsController::class, 'search'])->name('blogs.search');
+Route::get('/contact', [ContacController::class, 'index'])->name('contact.form');
+Route::post('/contact/send', [ContacController::class, 'send'])->name('contact.send');
+// trang section
+//trang cau hoi
+Route::get('/add-section',[about_section::class,'add_section'])->name('add-section');
+Route::post('/save-section',[about_section::class,'save_section'])->name('save-section');
+Route::get('about_sections', [about_section::class, 'all_section'])->name('admin.all_section');
+Route::get('/admin/about_sections/edit/{id}', [about_section::class, 'edit_section'])->name('admin.edit_section');
+Route::post('/admin/about_sections/update/{id}', [about_section::class, 'update_section'])->name('admin.update_section');
+Route::delete('/admin/about_sections/delete/{id}', [about_section::class, 'delete_section'])->name('admin.delete_section');
+//footer
+Route::get('/add-footer',[FooterController::class,'add_footer'])->name('add-reviews');
+route::get('/all-footer',[FooterController::class,'all_footer'])->name('all-reviews'); 
+route::post('/save-footer',[FooterController::class,'save_footer'])->name('save-reviews');
+Route::get('/edit-footer/{id}',[FooterController::class, 'edit_footer'])->name('edit-reviews');
+Route::post('/update-footer/{id}',[FooterController::class, 'update_footer'])->name('update-reviews');
+Route::get('/delete-footer/{id}',[FooterController::class, 'delete_footer'])->name('delete-reviews');
+//hoc vien
+Route::get('/add-hocvien', [Gallery2Controller::class, 'add_hocvien']);
+Route::get('/all-hocvien', [Gallery2Controller::class, 'all_hocvien']);
+Route::post('/save-hocvien', [Gallery2Controller::class, 'save_hocvien']);
+Route::get('/edit-hocvien/{id}', [Gallery2Controller::class, 'edit_hocvien']);
+Route::post('/update-hocvien/{id}', [Gallery2Controller::class, 'update_hocvien']);
+Route::get('/delete-hocvien/{id}', [Gallery2Controller::class, 'delete_hocvien']);
+
+
+
 
 
 

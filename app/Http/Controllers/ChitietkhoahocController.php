@@ -53,7 +53,7 @@ public function save_chitietkhoahoc(Request $request){
 }
 public function edit_chitietkhoahoc($curriculums_id){
     $product = DB::table('tbl_product')->orderBy('product_id','desc')->get();
-        $edit_value = DB::table('tbl_curriculums')->orderBy('curriculums_id','desc')->get()->first();
+        $edit_value = DB::table('tbl_curriculums')->orderBy('curriculums_id','desc')->first();
         
         if (!$edit_value) {
             Session::put('message', 'Sản phẩm không tồn tại');

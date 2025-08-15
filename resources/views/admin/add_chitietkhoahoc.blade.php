@@ -69,7 +69,7 @@
 											<label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Khóa Đang học</label>
 											<div class="col-md-9 col-sm-9 ">
 											
-												<select class="form-control chon" style="max-with:200px;" name="product_faq">
+												<select class="form-control chon" style="max-with:200px;" name="product">
 													@foreach ($product as $key=> $pro)
                                                        <option value="{{ $pro->product_id }}">{{ $pro->product_name }}</option>  
                                                     @endforeach

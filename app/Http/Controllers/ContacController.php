@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 class ContacController extends Controller
 {
     /**
@@ -22,28 +23,43 @@ class ContacController extends Controller
     /**
      * Xử lý gửi email liên hệ
      */
+
     public function send(Request $request)
     {
-        // ✅ Validate dữ liệu
+        // Validate dữ liệu
         $validated = $request->validate([
-            'name'         => 'required|string|max:255',
+            'name' => 'required|string|max:255',
             'phone_number' => 'required|string|max:20',
-            'email'        => 'required|email',
-            'message'      => 'required|string',
+            'email' => 'required|email',
+            'message' => 'required|string',
         ]);
 
-        // ✅ Gửi email
-        Mail::send('clients.contactgui', [
-            'name'         => $validated['name'],
-            'phone_number' => $validated['phone_number'],
-            'email'        => $validated['email'],
-            'message_body' => $validated['message'] // Đổi tên key để tránh trùng "message" của Laravel
-        ], function ($mail) use ($validated) {
-            $mail->to('hangmnm@gmail.com') // Gmail nhận
-                 ->subject('Đăng Ký Khóa Học: ' . $validated['name'])
-                 ->from($validated['email'], $validated['name']); // Người gửi
-        });
+        try {
+            // Gửi mail
+            Mail::send('clients.contactgui', [
+                'name' => $validated['name'],
+                'phone_number' => $validated['phone_number'],
+                'email' => $validated['email'],
+                'message_body' => $validated['message'],
+            ], function($mail) use ($validated) {
+                $mail->to('hangmnm@gmail.com')
+                     ->subject('Đăng Ký Khóa Học: ' . $validated['name'])
+                     ->from($validated['email'], $validated['name']);
+            });
 
-        return redirect()->back()->with('success', 'Thông tin đã được gửi thành công. Chúng tôi sẽ liên hệ lại sớm!');
+            // Trả về JSON chắc chắn
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Thông tin đã được gửi thành công. Chúng tôi sẽ liên hệ lại sớm!'
+            ], 200);
+
+        } catch (\Exception $e) {
+            Log::error('Mail error: ' . $e->getMessage()); // log lỗi để debug
+
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Có lỗi xảy ra khi gửi mail. Vui lòng thử lại sau.'
+            ], 500);
+        }
     }
 }

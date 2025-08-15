@@ -107,7 +107,7 @@
                 </div>
             @endif
 
-          <form method="POST" action="{{ route('dashboard_admin') }}">
+          <form method="POST" action="{{ route('login') }}">
 
                 @csrf
 
@@ -122,9 +122,7 @@
                 <button type="submit" class="submit-btn">Đăng nhập</button>
             </form>
 
-            <div class="register-link">
-                <p>Chưa có tài khoản? <a href="{{ route('register.form') }}">Đăng ký</a></p>
-            </div>
+           
         </div>
     </body>
     </html>

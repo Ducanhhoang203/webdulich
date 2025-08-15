@@ -54,9 +54,6 @@
 
 									<form role="form" action="{{ URL::to('save-event') }}" method="post" data-parsley-validate class="form-horizontal form-label-left" enctype="multipart/form-data">
     @csrf
-										
-										
-                                       
                                                                                <div class="item form-group">
 											<label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Title<span class="required">*</span>
 											</label>

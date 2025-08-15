@@ -25,52 +25,84 @@
                 @endif
 
                 <div class="comment-form bgc-lighter z-1 rel mb-30 rmb-55">
-                    <form id="contactForm" class="contactForm" name="contactForm" 
-                          action="{{ route('contact.send') }}" method="POST">
+                   <form id="contactForm" action="{{ route('contact.send') }}" method="POST">
                         @csrf
                         <div class="section-title">
-                            <h2>Liên hệ với chúng tôi</h2>
+                            <h2 style="color: black">Liên hệ với chúng tôi</h2>
                         </div>
                         <p>Vui lòng nhập đầy đủ thông tin để nhận được tư vấn nhanh nhất</p>
+
+                        <div id="formAlert"></div> {{-- Nơi hiển thị thông báo AJAX --}}
+
                         <div class="row mt-35">
                             <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="name">Nhập tên</label>
-                                    <input type="text" id="name" name="name" class="form-control" 
-                                           placeholder="Tên của bạn :" value="{{ old('name') }}" required>
-                                </div>
+                                <input type="text" name="name" class="form-control" placeholder="Tên của bạn" required>
                             </div>
                             <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="phone_number">Nhập số điện thoại</label>
-                                    <input type="text" id="phone_number" name="phone_number" class="form-control" 
-                                           placeholder="Số điện thoại của bạn :" value="{{ old('phone_number') }}" required>
-                                </div>
+                                <input type="text" name="phone_number" class="form-control" placeholder="Số điện thoại" required>
                             </div>
                             <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="email">Nhập email</label>
-                                    <input type="email" id="email" name="email" class="form-control" 
-                                           placeholder="Nhập email :" value="{{ old('email') }}" required>
-                                </div>
+                                <input type="email" name="email" class="form-control" placeholder="Email" required>
                             </div>
                             <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="message">Khóa Học Cần Tư Vấn</label>
-                                    <textarea name="message" id="message" class="form-control" rows="5" 
-                                              placeholder="Nội dung" required>{{ old('message') }}</textarea>
-                                </div>
+                                <textarea name="message" class="form-control" rows="5" placeholder="Khóa học cần tư vấn" required></textarea>
                             </div>
-                            <div class="col-md-12">
-                                <div class="form-group mb-0">
-                                    <button type="submit" class="theme-btn style-two">
-                                        <span data-hover="Đăng Ký Ngay">Đăng Ký Nhận Hỗ Trợ</span>
-                                        <i class="fal fa-arrow-right"></i>
-                                    </button>
-                                </div>
+                            <div class="col-md-12 mt-3">
+                                <button type="submit" id="btnSubmit" class="theme-btn style-two">
+                                    <span data-hover="Đăng Ký Ngay">Đăng Ký Nhận Hỗ Trợ</span>
+                                    <i class="fal fa-arrow-right"></i>
+                                </button>
                             </div>
                         </div>
                     </form>
+
+{{-- Thêm đoạn script AJAX --}}
+<script>
+                    document.addEventListener('DOMContentLoaded', function () {
+                        const form = document.getElementById('contactForm');
+                        const btn = document.getElementById('btnSubmit');
+                        const alertBox = document.getElementById('formAlert');
+
+                        form.addEventListener('submit', function (e) {
+                            e.preventDefault();
+                            btn.disabled = true;
+                            btn.innerHTML = 'Đang gửi...';
+
+                            let formData = new FormData(form);
+
+                            fetch(form.action, {
+                                method: 'POST',
+                                headers: {
+                                    'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                                    'Accept': 'application/json'
+                                },
+                                body: formData
+                            })
+                            .then(async res => {
+                                let data;
+                                try {
+                                    data = await res.json();
+                                } catch(e) {
+                                    data = { status: 'success', message: 'Gửi thành công!' };
+                                }
+
+                                if (res.ok && data.status === 'success') {
+                                    alertBox.innerHTML = `<div class="alert alert-success">${data.message}</div>`;
+                                    form.reset();
+                                } else {
+                                    alertBox.innerHTML = `<div class="alert alert-danger">${data.message || 'Có lỗi xảy ra. Vui lòng thử lại.'}</div>`;
+                                }
+                            })
+                            .catch(err => {
+                                alertBox.innerHTML = `<div class="alert alert-danger">Có lỗi xảy ra. Vui lòng thử lại.</div>`;
+                            })
+                            .finally(() => {
+                                btn.disabled = false;
+                                btn.innerHTML = '<span data-hover="Đăng Ký Ngay">Đăng Ký Nhận Hỗ Trợ</span><i class="fal fa-arrow-right"></i>';
+                            });
+                        });
+                    });
+                    </script>
                 </div>
             </div>
 

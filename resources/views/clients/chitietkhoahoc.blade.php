@@ -207,7 +207,7 @@
                             <div class="inner-column">
                             <!-- Video Box -->
                                 <div class="intro-video media-icon orange-color2">
-                                    <img class="video-img" src="{{ URl::to('uploads/instructors/'.$instructors3->instructors_image) }}" alt="Video Image">
+                           <img src="{{ asset('uploads/instructors/' . ($instructors3->instructors_image ?? 'default.png')) }}" alt="">
                                     <a class="popup-videos" href="https://www.youtube.com/watch?v=6vclc_Wi3GY">
                                         <i class="fa fa-play"></i>
                                     </a>
@@ -218,7 +218,7 @@
                                 
                                 <div class="btn-part">
                                    
-                                    <a href="#" class="btn readon2 orange-transparent">Buy Now</a>
+                                    <a href="#" class="btn readon2 orange-transparent">Đăng Ký</a>
                                 </div>
                             </div>
                         </div>                        

@@ -2,18 +2,31 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable; // <-- dùng Authenticatable
+use Illuminate\Notifications\Notifiable;
 
-class Admin extends Model
+class Admin extends Authenticatable
 {
-    protected $table = 'tbl_admin'; // Tên bảng cụ thể
+    use Notifiable;
+
+    protected $table = 'tbl_admin'; // tên bảng admin
 
     protected $fillable = [
         'admin_email',
         'admin_password',
-        // thêm các cột khác nếu cần
+        // các cột khác nếu cần
     ];
 
-    public $timestamps = false; // nếu bảng không có cột created_at, updated_at
-}
+    protected $hidden = [
+        'admin_password', // ẩn mật khẩu
+        'remember_token',
+    ];
 
+    public $timestamps = false; // nếu bảng không có created_at, updated_at
+
+    // Thêm hàm getAuthPassword() nếu cột mật khẩu không tên mặc định 'password'
+    public function getAuthPassword()
+    {
+        return $this->admin_password;
+    }
+}

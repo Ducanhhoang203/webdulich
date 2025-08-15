@@ -22,13 +22,19 @@
                         <h2>Nhập mail để nhận hỗ trợ</h2>
                        
                     </div>
-                    <form class="newsletter-form mb-50" action="#">
-                        <input id="news-email" type="email" placeholder="Email Bạn: " required>
-                        <button type="submit" class="theme-btn bgc-secondary style-two">
-                            <span data-hover="Subscribe">Gửi</span>
-                            <i class="fal fa-arrow-right"></i>
-                        </button>
-                    </form>
+                    <form id="newsletter-form" class="newsletter-form mb-50">
+    @csrf
+    <input id="news-email" name="email" type="email" placeholder="Email Bạn: " required>
+    <button type="submit" class="theme-btn bgc-secondary style-two">
+        <span data-hover="Gửi">Gửi</span>
+        <i class="fal fa-arrow-right"></i>
+    </button>
+</form>
+
+<!-- Chỗ hiển thị thông báo -->
+<div id="newsletter-message"></div>
+
+
                 </div>
             </div>
         </div>
@@ -112,6 +118,37 @@
 
 </div>
 <!--End pagewrapper-->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById('newsletter-form').addEventListener('submit', function (e) {
+        e.preventDefault(); // Ngăn reload
+
+        let email = document.getElementById('news-email').value;
+        let token = document.querySelector('input[name="_token"]').value;
+
+        fetch("{{ route('newsletter.send') }}", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRF-TOKEN": token
+            },
+            body: JSON.stringify({ email: email })
+        })
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('newsletter-message').innerHTML =
+                `<p style="color:green">${data.message}</p>`;
+            document.getElementById('newsletter-form').reset();
+        })
+        .catch(error => {
+            console.error(error);
+            document.getElementById('newsletter-message').innerHTML =
+                `<p style="color:red">Có lỗi xảy ra!</p>`;
+        });
+    });
+});
+</script>
+
 
 
 <!-- Jquery -->

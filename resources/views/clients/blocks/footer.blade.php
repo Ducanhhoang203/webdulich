@@ -10,7 +10,7 @@
                             <a href="index.html"><img src="{{ asset('assets/images/logos/logo.png') }}" alt="Logo"></a>
                         </div>
                         <div class="footer-map">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.8080393054747!2d105.77106667471472!3d21.040365487380956!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x313454c9ae9e6b37%3A0x3c91b16cd6b4970c!2zMyBQLiBNYWkgROG7i2NoLCBNYWkgROG7i2NoLCBD4bqndSBHaeG6pXksIEjDoCBO4buZaSwgVmnhu4d0IE5hbQ!5e0!3m2!1svi!2s!4v1755060022066!5m2!1svi!2s" width="250" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7447.617173988881!2d105.77198267508126!3d21.040343580611918!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x313454c90a66a4fd%3A0x1c9a2fe43fae27dd!2zMTQ3IFAuIE1haSBE4buLY2gsIE1haSBE4buLY2gsIEPhuqd1IEdp4bqleSwgSMOgIE7hu5lpLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2sus!4v1755225179845!5m2!1svi!2sus" width="250" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
                     </div>
                 </div>
@@ -31,7 +31,7 @@
                 <div class="col col-small" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1500" data-aos-offset="50">
                     <div class="footer-widget footer-links ms-md-4">
                         <div class="footer-title">
-                            <h5>Company</h5>
+                            <h5>Bài viết</h5>
                         </div>
                           <ul class="list-style-three">
                            @foreach ($posts_ft as $key =>$pt)

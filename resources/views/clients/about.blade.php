@@ -40,7 +40,7 @@
                                 <li>Hỗ trợ 24/7</li>
                                 <li>Các Khóa học chất lượng cao</li>
                             </ul>
-                            <a href="{{ URL::to('/contact') }}" class="theme-btn style-three mt-30">
+                            <a href="{{ URL::to('/contact/#nhay') }}" class="theme-btn style-three mt-30">
                                 <span data-hover="Đăng ký ngay">Đăng ký ngay</span>
                                 <i class="fal fa-arrow-right"></i>
                             </a>

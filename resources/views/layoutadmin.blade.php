@@ -32,10 +32,6 @@
 <!-- Custom Theme Style -->
 <link href="{{ asset('admin/build/css/custom.min.css') }}" rel="stylesheet">
 <link href="{{ asset('admin/build/css/custom.css') }}" rel="stylesheet">
-
-
-
-
     <!-- Font Awesome -->
 
   </head>
@@ -68,7 +64,7 @@
               <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
-                  <li><a><i class="fa fa-home"></i>Damh muc  <span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-home"></i>Danh mục  <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="{{ URL::to('/add-cartegory-product') }}">Thêm danh mục lớp học</a></li>
                       <li><a href="{{ URL::to('/all-cartegory-product') }}">liệt kê lớp học</a></li>
@@ -83,31 +79,25 @@
                      
                     </ul>
                   </li>
-                   <li><a><i class="fa fa-edit"></i>Khóa Học <span class="fa fa-chevron-down"></span></a>
+                   <li><a><i class="fa fa-edit"></i>Lớp học <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="{{ URL::to('/add-product') }}">Thêm Khóa học</a></li>
-                      <li><a href="{{URL::to('/all-product') }}">liệt kê các Khóa học </a></li>
-                    
-                     
+                      <li><a href="{{ URL::to('/add-product') }}">Thêm lớp học</a></li>
+                      <li><a href="{{URL::to('/all-product') }}">liệt kê các lớp học </a></li>
+ 
                     </ul>
                   </li>
 
-                  <li><a><i class="fa fa-edit"></i>Học Viên<span class="fa fa-chevron-down"></span></a>
+                 
+                  <li><a><i class="fa fa-edit"></i>Quản lý chương trình<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="{{ URL::to('/add-student') }}">thêm Học viên </a></li>
-                      <li><a href="{{ URL::to('/all-student') }}">Liệt Kê Danh Sách Học Viên</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="fa fa-edit"></i>quản lý curriculum<span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="{{ URL::to('/add-chitietkhoahoc') }}">thêm Học viên </a></li>
+                      <li><a href="{{ URL::to('/add-chitietkhoahoc') }}">thêm chương trình </a></li>
                       <li><a href="{{ URL::to('/all-chitietkhoahoc') }}">Liệt Kê Danh Sách Học Viên</a></li>
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-edit"></i>Instructors<span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-edit"></i>Giáo viên<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="{{ URL::to('/add-instructors') }}">Thêm Giáo Viên</a></li>
-                      <li><a href="{{ URL::to('/all-instructors') }}">Liệt Kê Danh Sách</a></li>
+                      <li><a href="{{ URL::to('/add-instructors') }}">Thêm giáo viên</a></li>
+                      <li><a href="{{ URL::to('/all-instructors') }}">Liệt Kê </a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-edit"></i>faqs trang chi tiết <span class="fa fa-chevron-down"></span></a>
@@ -124,14 +114,14 @@
                   </li> 
                   <li><a><i class="fa fa-edit"></i>Quản lý bài viết<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="{{ URL::to('/add-baiviet') }}">thêm bài viết </a></li>
-                      <li><a href="{{ URL::to('/all-baiviet') }}"> Danh sách các bài viêt</a></li>
+                      <li><a href="{{ URL::to('/add-baiviet') }}">Thêm bài viết </a></li>
+                      <li><a href="{{ URL::to('/all-baiviet') }}">Danh sách các bài viêt</a></li>
                     </ul>
                   </li> 
                    <li><a><i class="fa fa-edit"></i>Quản lý faqs<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="{{ URL::to('/add-faqct') }}">thêm faqs </a></li>
-                      <li><a href="{{ URL::to('/all-faqct') }}"> Danh sách faqs</a></li>
+                      <li><a href="{{ URL::to('/add-faqct') }}">Thêm faqs </a></li>
+                      <li><a href="{{ URL::to('/all-faqct') }}">Danh sách faqs</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-edit"></i>Quản lý event<span class="fa fa-chevron-down"></span></a>
@@ -158,8 +148,19 @@
                       <li><a href="{{ URL::to('/all-hocvien') }}">Danh Sách</a></li>
                     </ul>
                   </li> 
-             
-                 
+                     <li><a><i class="fa fa-edit"></i>Quản lý menu<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{{ route('menus.create') }}">Thêm </a></li>
+                      <li><a href="{{ route('menus.index') }}">Danh Sách</a></li>
+                    </ul>
+                  </li> 
+                   <li><a><i class="fa fa-edit"></i>Quản banner<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{{URl::to('/add-banner') }}">Thêm </a></li>
+                      <li><a href="{{ URl::to('/all-banner')}}">Danh Sách</a></li>
+                    </ul>
+                  </li> 
+                   
                 </ul>
               </div>
               

@@ -52,14 +52,14 @@
     @csrf
 										
 										<div class="item form-group">
-											<label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">reviews name<span class="required">*</span>
+											<label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Tên review<span class="required">*</span>
 											</label>
 											<div class="col-md-6 col-sm-6 ">
 												<input type="text" id="last-name" name="review_name" required="required" class="form-control">
 											</div>
 										</div>
                                         <div class="item form-group">
-											<label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">review_star 1->5<span class="required">*</span>
+											<label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Đánh giá 1 đến 5 sao<span class="required">*</span>
 											</label>
 											<div class="col-md-6 col-sm-6 ">
 												<input type="text" id="last-name" name="review_star" required="required" class="form-control">
@@ -67,7 +67,7 @@
 										</div>
                                        
 										<div class="item form-group">
-											<label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">review content</label>
+											<label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Nội dung của đánh giắ</label>
 											<div class="col-md-6 col-sm-6 ">
 												<textarea style="resize: none" rows="5"  class="form-control" type="text" name="reviews_content"></textarea>
 											</div>

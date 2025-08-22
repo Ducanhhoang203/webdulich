@@ -357,8 +357,6 @@ body {
         <button type="submit" class="Dkngay">Đăng ký ngay</button>
       </form>
     </div>
-  
-
   <div class="phandoi">
     <h3>Khóa học lập trình Java Spring Boot</h3>
     <p><strong>Ai nên tham gia khóa học:</strong></p>

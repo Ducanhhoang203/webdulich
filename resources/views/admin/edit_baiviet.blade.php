@@ -33,7 +33,7 @@
 
                         <!-- Slug -->
                         <div class="item form-group">
-                            <label class="col-form-label col-md-3">Slug</label>
+                            <label class="col-form-label col-md-3">Mở đầu </label>
                             <div class="col-md-6">
                                 <input type="text" name="Baiviet_slug" class="form-control" value="{{ $edit_value->Baiviet_slug }}">
                             </div>
@@ -90,7 +90,7 @@
 
                         <!-- Author -->
                         <div class="item form-group">
-                            <label class="col-form-label col-md-3">Tác giả</label>
+                            <label class="col-form-label col-md-3">Tên đơn vị</label>
                             <div class="col-md-6">
                                 <input type="text" name="Baiviet_author" class="form-control" value="{{ $edit_value->Baiviet_author }}">
                             </div>

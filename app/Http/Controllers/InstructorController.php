@@ -49,8 +49,7 @@ class InstructorController extends Controller
 
         DB::table('tbl_instructors')->insert($data);
 
-        Session::put('message', 'Thêm giảng viên thành công!');
-        return redirect('add-instructors');
+        return redirect('add-instructors')->with('message', 'Thêm giảng viên thành công!');
     }
 
     // Hiển thị danh sách giảng viên
@@ -71,8 +70,7 @@ class InstructorController extends Controller
         $edit_value = DB::table('tbl_instructors')->where('instructors_id', $instructors_id)->first();
 
         if (!$edit_value) {
-            Session::put('message', 'Giảng viên không tồn tại');
-            return Redirect::to('all-instructors');
+            return redirect('all-instructors')->with('message', 'Giảng viên không tồn tại');
         }
 
         return view('admin.edit_instructors', compact('product', 'edit_value'));
@@ -124,30 +122,28 @@ class InstructorController extends Controller
 
         DB::table('tbl_instructors')->where('instructors_id', $instructors_id)->update($data);
 
-        return redirect::to('all-instructors')->with('message', 'Cập nhật giảng viên thành công!');
+        return redirect('all-instructors')->with('message', 'Cập nhật giảng viên thành công!');
     }
+
     // Xóa giảng viên
-public function delete_instructors($instructors_id)
-{
-    $instructor = DB::table('tbl_instructors')->where('instructors_id', $instructors_id)->first();
+    public function delete_instructors($instructors_id)
+    {
+        $instructor = DB::table('tbl_instructors')->where('instructors_id', $instructors_id)->first();
 
-    if (!$instructor) {
-        Session::put('message', 'Không tìm thấy giảng viên!');
-        return Redirect::to('all-instructors');
-    }
-
-    // Xóa ảnh nếu tồn tại
-    if (!empty($instructor->instructors_image)) {
-        $imagePath = public_path('uploads/instructors/' . $instructor->instructors_image);
-        if (file_exists($imagePath)) {
-            unlink($imagePath);
+        if (!$instructor) {
+            return redirect('all-instructors')->with('message', 'Không tìm thấy giảng viên!');
         }
+
+        // Xóa ảnh nếu tồn tại
+        if (!empty($instructor->instructors_image)) {
+            $imagePath = public_path('uploads/instructors/' . $instructor->instructors_image);
+            if (file_exists($imagePath)) {
+                unlink($imagePath);
+            }
+        }
+
+        DB::table('tbl_instructors')->where('instructors_id', $instructors_id)->delete();
+
+        return redirect('all-instructors')->with('message', 'Xóa giảng viên thành công!');
     }
-
-    DB::table('tbl_instructors')->where('instructors_id', $instructors_id)->delete();
-
-    Session::put('message', 'Xóa giảng viên thành công!');
-    return Redirect::to('all-instructors');
-}
-
 }

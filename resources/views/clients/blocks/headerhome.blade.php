@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="zxx">
 
-<!-- Mirrored from webtendtheme.net/html/2024/ravelo/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 07 Oct 2024 09:26:27 GMT -->
-<head>
+
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="description" content="">
@@ -10,13 +9,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Title -->
-    <title>DevproVN -{{ $title }}</title>
+    <title>DevproVN-{{ $title }}</title>
     <!-- Favicon Icon -->
     <link rel="shortcut icon" href="assets/images/logos/favicon.png" type="image/x-icon">
     <!-- Google Fonts -->
    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap&subset=vietnamese" rel="stylesheet">
-
-    
     <!-- Flaticon -->
     <link rel="stylesheet" href="assets/css/flaticon.min.css">
     <!-- Font Awesome -->
@@ -49,80 +46,64 @@
 
                     <div class="header-inner rel d-flex align-items-center">
                         <div class="logo-outer">
-                            <div class="logo"><a href="{{ URL::to('/') }}"><img src="{{ URL::to($footer_info2->logo_path) }}" alt="Logo" title="Logo"></a></div>
+                            <a href="{{ URL::to('/') }}">
+        @if($footer_info2 && $footer_info2->logo_path)
+              <div class="logo"><img src="{{ asset($footer_info2->logo_path) }}" alt="Logo" title="Logo" ></div>
+        @else
+            <img src="{{ URL::to('uploads/footer/default-logo.png') }}" alt="Logo" title="Logo">
+        @endif
+    </a>
                         </div>
 
                         <div class="nav-outer mx-lg-auto ps-xxl-5 clearfix">
                             <!-- Main Menu -->
-                            <nav class="main-menu navbar-expand-lg">
-                                <div class="navbar-header">
-                                   <div class="mobile-logo">
-                                       <a href="index.html">
-                                            <img src=" {{ URL::to($footer_info2->logo_path) }}" alt="Logo" title="Logo">
-                                       </a>
-                                   </div>
-                                   
-                                    <!-- Toggle Button -->
-                                    <button type="button" class="navbar-toggle" data-bs-toggle="collapse" data-bs-target=".navbar-collapse">
-                                        <span class="icon-bar"></span>
-                                        <span class="icon-bar"></span>
-                                        <span class="icon-bar"></span>
-                                    </button>
-                                </div>
+                          <nav class="main-menu navbar-expand-lg">
+    <div class="navbar-header">
+        <div class="mobile-logo">
+            <a href="{{ URL::to('/') }}">
+                @if($footer_info2 && $footer_info2->logo_path)
+                    <img src="{{ URL::to($footer_info2->logo_path) }}" alt="Logo" title="Logo">
+                @else
+                    <img src="{{ URL::to('uploads/footer/default-logo.png') }}" alt="Logo" title="Logo">
+                @endif
+            </a>
+        </div>
 
-                               <div class="navbar-collapse collapse clearfix">
-                                    <ul class="navigation clearfix">
-                                        <li ><a href="{{ URL::To('/') }}">Trang chủ </a>
-                                            
-                                        </li>
-                                        <li class="dropdown current" ><a href="about.html">about </a>
-                                            <ul>
-                                           <li><a href="{{ URL::to('/about') }}">About</a></li>
-                                                <li><a href="{{ URL::to('/abouttwo') }}">AboutTwo</a></li>
-                                               
-                                            </ul>
-                                        </li>
-                                        <li class="dropdown"><a href="#">Khóa học</a>
-                                            <ul>
-                                                <li><a href="{{ URL::to('/courses') }}">Các Khóa Học Tại Dev Pro</a></li>
-                                                <li><a href="{{URl::to('/hocvien') }}">Học viên</a></li>
-                                                <li><a href="{{URl::to('/gallery') }}">Bài viết </a></li>
-                                               
-                                            </ul>
-                                        </li>
-                                        <li class="dropdown"><a href="#">Pages </a>
-                                            <ul>
-                                                <li><a href="{{ URL::to('/event') }}">Event</a></li>
-                                                <li><a href="{{ URL::to('/faq') }}">Faqs</a></li>
-                                               
+        <!-- Toggle Button -->
+        <button type="button" class="navbar-toggle" data-bs-toggle="collapse" data-bs-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+    </div>
 
+    <div class="navbar-collapse collapse clearfix">
+        <ul class="navigation clearfix">
+            @foreach($menus as $menu)
+                @php
+                    $submenus = $children->where('parent_id', $menu->id);
+                @endphp
 
-                                            </ul>
-                                        </li>
-                                        <li class="dropdown"><a href="#">Blog</a>
-                                            <ul>
-                                                <li><a href="{{ URL::to('/blogs') }}">Blogs</a></li>
-                                           
-                                                
-                                            
-                                                <li><a href="{{ URl::to('/contact') }}">Contact</a></li>
-                                             
-                                            </ul>
-                                        </li>
-                                        
-                                    </ul>
-                                </div>
+                <li class="{{ $submenus->count() ? 'dropdown' : '' }}">
+                    <a href="{{ $menu->url ?? '#' }}">{{ $menu->title }}</a>
 
-                            </nav>
+                    @if($submenus->count())
+                        <ul>
+                            @foreach($submenus as $submenu)
+                                <li><a href="{{ $submenu->url ?? '#' }}">{{ $submenu->title }}</a></li>
+                            @endforeach
+                        </ul>
+                    @endif
+                </li>
+            @endforeach
+        </ul>
+    </div>
+</nav>
+
                             <!-- Main Menu End-->
                         </div>
-                        
-                        <!-- Nav Search -->
-                       
-                        
-                        <!-- Menu Button -->
                         <div class="menu-btns py-10">
-                            <a href="{{ URL::to('/contact') }}" class="theme-btn style-two bgc-secondary">
+                            <a href="{{ URL::to('/contact/#nhay') }}" class="theme-btn style-two bgc-secondary">
                                 <span data-hover="Đăng ký ngay ">đăng ký ngay </span>
                                 <i class="fal fa-arrow-right"></i>
                             </a>
@@ -134,4 +115,18 @@
             </div>
             <!--End Header Upper-->
         </header>
-       
+           <!-- Hero Area Start -->
+        <section class="hero-area bgc-black pt-200 rpt-120 rel z-2">
+            <div class="container-fluid">
+                <h1 class="hero-title" data-aos="flip-up" data-aos-delay="50" data-aos-duration="1500" data-aos-offset="50">
+    {{ $banner->tile_baner ?? 'Devpro' }}
+</h1>
+ <div class="main-hero-image bgs-cover" 
+     style="background-image: url({{ $banner ? URL::to($banner->image) : asset('assets/images/default-banner.jpg') }});">
+</div>
+
+               
+            </div>
+            
+        </section>
+        <!-- Hero Area End -->

@@ -328,7 +328,8 @@ input[type=checkbox], input[type=radio] {
   }
   @media only screen and (min-width: 376px) {
     .section-title p {
-      font-size: 18px; } }
+      font-size: 18px; 
+  } }
   .section-title p span {
     color: rgb(247, 242, 242);
     font-weight: 500;
@@ -8762,7 +8763,7 @@ blockquote {
 }
 
 .categoryname a:hover {
-    background-color: #c78417;
+    background-color:#ff6b00;
     color: #fff;
 }
 .margindk{
@@ -8777,5 +8778,9 @@ margin-left: 20%;
 .heart.liked i {
   color: red; /* Màu đỏ khi liked */
 }
+.tt{
+  text-align: center;
+}
+
 
 

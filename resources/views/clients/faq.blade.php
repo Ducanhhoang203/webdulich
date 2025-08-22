@@ -1,7 +1,4 @@
 @include('clients.blocks.header');
-        
-        
-       
         <section class="faq-page-area pt-70 pb-85 rel z-1">
             <div class="container">
                 <div class="row justify-content-center">
@@ -25,14 +22,7 @@
                                 </div>
                             </div>
                      @endforeach
-                          
-                           
-                       
-                       
-                         
-                          
-                       
-                       
+
                         </div>
                     </div>
                     </div>

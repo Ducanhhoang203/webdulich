@@ -66,13 +66,13 @@
           <thead class="thead-dark">
             <tr>
               <th>ID</th>
-              <th>Baiviet_title </th>
-              <th>Baiviet_slug </th>
-              <th>Baiviet_content  </th>
-              <th>Baiviet_excerpt</th>
-              <th>Baiviet_image_main</th>
-              <th>Baiviet_image_extra1</th>
-              <th>Baiviet_image_extra2</th>
+              <th>Tiêu đề bài viết* </th>
+              <th>Mở đầu  </th>
+              <th>Nội dung bài viết  </th>
+              <th>Tóm tắt</th>
+              <th>Ảnh chính bài viết*</th>
+              <th>Ảnh phụ 1 bài viết*</th>
+              <th>Ảnh phụ 2 bài viết*</th>
               <th>Baiviet_author</th>
              
               <th>Baiviet_category</th>

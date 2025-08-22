@@ -5,7 +5,6 @@
 @include('layoutadmin')
 @section('admin_content')
 <div class="right_col canchinh" role="main">
-	
 	<div class="row">
 						<div class="col-md-12 col-sm-12 ">
 							<div class="x_panel">
@@ -85,21 +84,6 @@
 												</select>
 											</div>
 										</div>
-		
-										{{-- <div class="item form-group">
-											<label class="col-form-label col-md-3 col-sm-3 label-align">Date Of Birth <span class="required">*</span>
-											</label>
-											<div class="col-md-6 col-sm-6 ">
-												<input id="birthday" class="date-picker form-control" placeholder="dd-mm-yyyy" type="text" required="required" type="text" onfocus="this.type='date'" onmouseover="this.type='date'" onclick="this.type='date'" onblur="this.type='text'" onmouseout="timeFunctionLong(this)">
-												<script>
-													function timeFunctionLong(input) {
-														setTimeout(function() {
-															input.type = 'text';
-														}, 60000);
-													}
-												</script>
-											</div>
-										</div> --}}
 										<div class="ln_solid"></div>
 										<div class="item form-group">
 											<div class="col-md-6 col-sm-6 offset-md-3">

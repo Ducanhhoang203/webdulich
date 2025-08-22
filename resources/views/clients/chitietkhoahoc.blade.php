@@ -49,12 +49,7 @@
                                                 <div class="inner-box">
                                                     <h4>{{ $pro->product_name }}</h4>
                                                     <p>{{ $pro->product_desc }}</p>
-                                                    <p>{{ $pro->product_content }}</p>
-                                                   
-                                               
-                                                  
-                                                  
-                                                                                                                                                         
+                                                    <p>{{ $pro->product_content }}</p>                                                                                                    
                                                 </div>
                                             </div>                                                
                                         </div>
@@ -218,7 +213,7 @@
                                 
                                 <div class="btn-part">
                                    
-                                    <a href="#" class="btn readon2 orange-transparent">Đăng Ký</a>
+                                    <a href="{{ URl::to('/contact/#nhay') }}" class="btn readon2 orange-transparent">Đăng Ký</a>
                                 </div>
                             </div>
                         </div>                        

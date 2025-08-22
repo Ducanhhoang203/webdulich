@@ -34,8 +34,8 @@ use App\Http\Controllers\Reviewscontroller;
 use App\Http\Controllers\galleries;
 use App\Http\Controllers\Gallery2Controller;
 use App\Http\Controllers\NewsletterController;
-
-
+use App\Http\Controllers\MenuController;
+use App\Http\Controllers\BannerController;
 
 Route::get('/quanly', [AuthController::class, 'showLoginForm'])->name('login.form'); // form login
 Route::post('/login', [AuthController::class, 'login'])->name('login'); // xử lý login
@@ -43,16 +43,13 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout'); // lo
 
 Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('dashboard')->middleware('auth:admin'); // dashboard admin
 
-Route::get('/danh-muc-san-pham/{catgory_id}',[DanhmucController::class,'showcategory_about'])->name('showcategory_about')->middleware('auth:admin');
-Route::get('/khoa-hoc/{brand_id}',[BrandController::class,'showcategory_brand'])->name('showcategory_brand')->middleware('auth:admin');
-Route::get('/chi-tiet-san-pham/{product_id}',[ProductController::class,'chi_tiet_san_pham'])->name('chi_tiet_san_pham')->middleware('auth:admin');
-
+Route::get('/danh-muc-san-pham/{catgory_id}',[DanhmucController::class,'showcategory_about'])->name('showcategory_about');
+Route::get('/khoa-hoc/{brand_id}',[BrandController::class,'showcategory_brand'])->name('showcategory_brand');
+Route::get('/chi-tiet-san-pham/{product_id}',[ProductController::class,'chi_tiet_san_pham'])->name('chi_tiet_san_pham');
 //route home
 Route::get('/',[HomeController::class,'index'])->name('home');
 // Route đăng nhập
 Route::post('/dashboard_admin', [AuthController::class, 'dashboard_admin'])->name('dashboard_admin');
-
-
 //category product
 route::get('/add-cartegory-product',[DanhmucController::class,'add_cartegory_product'])->name('add-cartegory-product')->middleware('auth:admin'); 
 route::get('/all-cartegory-product',[DanhmucController::class,'all_cartegory_product'])->name('all-cartegory-product')->middleware('auth:admin'); 
@@ -133,7 +130,7 @@ route::post('/save-baiviet',[Baivietcontroller::class,'save_baiviet']
 Route::get('/edit-baiviet/{id}',[Baivietcontroller::class, 'edit_baiviet'])->name('edit-baiviet')->middleware('auth:admin');
 Route::post('/upload-baiviet/{id}',[Baivietcontroller::class, 'upload_baiviet'])->name('upload-baiviet')->middleware('auth:admin');
 Route::get('/delete-baiviet/{id}',[Baivietcontroller::class, 'delete_baiviet'])->name('delete-baiviet')->middleware('auth:admin');
-Route::get('/chitietbaiviet/{id}',[Baivietcontroller::class ,'chitietbaiviet'])->name('chitietbaiviet')->middleware('auth:admin');
+Route::get('/chitietbaiviet/{id}',[Baivietcontroller::class ,'chitietbaiviet'])->name('chitietbaiviet');
 //trang cau hoi
 Route::get('/add-faqct',[faqct::class,'add_faqct'])->name('add-faqct')->middleware('auth:admin');
 route::get('/all-faqct',[faqct::class,'all_faqct'])->name('all.faqct')->middleware('auth:admin'); 
@@ -177,7 +174,20 @@ Route::get('/edit-hocvien/{id}', [Gallery2Controller::class, 'edit_hocvien'])->m
 Route::post('/update-hocvien/{id}', [Gallery2Controller::class, 'update_hocvien'])->middleware('auth:admin');
 Route::get('/delete-hocvien/{id}', [Gallery2Controller::class, 'delete_hocvien'])->middleware('auth:admin');
 Route::post('/newsletter', [NewsletterController::class, 'sendEmail'])->name('newsletter.send');
-
+//menu
+Route::get('menus', [MenuController::class, 'index'])->name('menus.index');
+    Route::get('menus/add', [MenuController::class, 'create'])->name('menus.create');
+    Route::post('menus/store', [MenuController::class, 'store'])->name('menus.store');
+    Route::get('menus/edit/{id}', [MenuController::class, 'edit'])->name('menus.edit');
+    Route::post('menus/update/{id}', [MenuController::class, 'update'])->name('menus.update');
+    Route::get('menus/delete/{id}', [MenuController::class, 'destroy'])->name('menus.destroy');
+    //banner
+Route::get('/add-banner', [BannerController::class, 'add_banner']);
+Route::post('/save-banner', [BannerController::class, 'save_banner']);
+Route::get('/all-banner', [BannerController::class, 'all_banner']);
+Route::get('/edit-banner/{id}', [BannerController::class, 'edit_banner']);
+Route::post('/update-banner/{id}', [BannerController::class, 'update_banner']);
+Route::get('/delete-banner/{id}', [BannerController::class, 'delete_banner']);
 
 
 

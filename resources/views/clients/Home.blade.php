@@ -7,15 +7,7 @@
         <!--End Hidden Sidebar -->
        
         
-        <!-- Hero Area Start -->
-        <section class="hero-area bgc-black pt-200 rpt-120 rel z-2">
-            <div class="container-fluid">
-                <h1 class="hero-title" data-aos="flip-up" data-aos-delay="50" data-aos-duration="1500" data-aos-offset="50">Devpro.edu.vn</h1>
-                <div class="main-hero-image bgs-cover" style="background-image: url(assets/images/hero/hero.jpg);"></div>
-            </div>
-            
-        </section>
-        <!-- Hero Area End -->
+    
         
         
         <!-- Destinations Area start -->
@@ -44,7 +36,7 @@
                             </div>
                             <div class="destination-footer">
                                 <span class="price">{{ number_format($pro->product_price).' '.('VNĐ') }} </span>
-                                <a href="{{ URL::to('/contact') }}" class="read-more">Đăng Kí ngay  <i class="fal fa-angle-right"></i></a>
+                                <a href="{{ URL::to('/contact/#nhay') }}" class="read-more">Đăng Kí ngay  <i class="fal fa-angle-right"></i></a>
                             </div>
                         </div>
                     </div> 
@@ -63,25 +55,31 @@
                     <div class="col-xl-5 col-lg-6">
                         <div class="about-us-content rmb-55" data-aos="fade-left" data-aos-duration="1500" data-aos-offset="50">
                             <div class="section-title mb-25">
-                                <h2>{{ $about1->title }}</h2>
+                               @if($about1 && $about1->title)
+    <h2>{{ $about1->title }}</h2>
+@else
+    <h2>Chưa có tiêu đề</h2>
+@endif
+
                             </div>
-                            <p>{{ $about1->description }}</p>
-                            <div class="divider counter-text-wrap mt-45 mb-55"><span>Chúng tôi có <span><span class="count-text plus" data-speed="3000" data-stop="{{ $about1->experience_years }}">0</span> năm</span> kinh nghiệm đào tạo</span></div>
+                           <p>{{ $about1?->description ?? 'Chưa có nội dung' }}</p>
+
+                            <div class="divider counter-text-wrap mt-45 mb-55"><span>Chúng tôi có <span><span class="count-text plus" data-speed="3000" data-stop="{{ $about1->experience_years ??'chưa có năm nào '}}">0</span> năm</span> kinh nghiệm đào tạo</span></div>
                             <div class="row">
                                 <div class="col-6">
                                     <div class="counter-item counter-text-wrap">
-                                        <span class="count-text k-plus" data-speed="3000" data-stop="{{ $about1->popular_destinations }}">0</span>
+                                        <span class="count-text k-plus" data-speed="3000" data-stop="{{ $about1->popular_destinations ??'chưa có mô tả'}}">0</span>
                                         <span class="counter-title">Tham gia học</span>
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="counter-item counter-text-wrap">
-                                        <span class="count-text m-plus" data-speed="3000" data-stop="{{ $about1->satisfied_clients }}">0</span>
+                                        <span class="count-text m-plus" data-speed="3000" data-stop="{{ $about1->satisfied_clients??'' }}">0</span>
                                         <span class="counter-title">Số người quan tâm</span>
                                     </div>
                                 </div>
                             </div>
-                            <a href="{{ URL::to('/contact') }}" class="theme-btn mt-10 style-two">
+                            <a href="{{ URL::to('/contact/#nhay') }}" class="theme-btn mt-10 style-two">
                                 <span data-hover="Đăng Ký Ngay">Đăng ký khóa học </span>
                                 <i class="fal fa-arrow-right"></i>
                             </a>
@@ -103,7 +101,8 @@
     @endif
 @endforeach
                           
-                            <img src="{{ URl::to('uploads/about/'.$about1->image_main) }}" alt="About">
+                           <img src="{{ URL::to('uploads/about/'.$about1?->image_main ?? '') }}" alt="About">
+
                         </div>
                     </div>
                 </div>
@@ -172,9 +171,9 @@
                                 </ul>
                             </div>
                             <div class="image">
-                                <img src="assets/images/blog/blog1.jpg" alt="Blog">
+                                <img src="{{URL::to('uploads/product/'.$new_pro->product_image)}}" alt="course">
                             </div>
-                            <a href="{{ URL::to('/contact') }}" class="theme-btn">
+                            <a href="{{ URL::to('/contact/#nhay') }}" class="theme-btn">
                                 <span data-hover="Đăng ký ngay">Đăng ký ngay </span>
                                 <i class="fal fa-arrow-right"></i>
                             </a>

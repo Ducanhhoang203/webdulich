@@ -12,8 +12,8 @@ margin-left: 15%;
           <thead class="thead-dark">
             <tr>
               <th>ID</th>
-              <th>curriculum_title</th>
-              <th>curriculum content</th>
+              <th>Tên chương trình</th>
+              <th>Nội dung chương trình</th>
               <th>Khóa học </th>
             <th></th>
               <th colspan="2">Hành động</th>

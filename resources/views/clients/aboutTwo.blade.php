@@ -6,16 +6,7 @@
                 <div class="row">
                     <div class="col-lg-3 col-md-6 col-sm-10 rmb-75">
                         <div class="shop-sidebar mb-30">
-                            <div class="widget widget-filter" data-aos="fade-up" data-aos-delay="50" data-aos-duration="1500" data-aos-offset="50">
-                                <h6 class="widget-title">Money</h6>
-                                <div class="price-filter-wrap">
-                                    <div class="price-slider-range"></div>
-                                    <div class="price">
-                                        <span>Price </span>
-                                        <input type="text" id="price" readonly>
-                                    </div>
-                                </div>
-                            </div>
+                            
                             
                             <div class="widget widget-activity" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
                                 <h6 class="widget-title">Danh mục</h6>
@@ -119,12 +110,15 @@
                     </div>
                     <div class="col-lg-9">
                         <div class="shop-shorter rel z-3 mb-20">
-                            <ul class="grid-list mb-15 me-2">
-                                <li><a href="#"><i class="fal fa-border-all"></i></a></li>
-                                <li><a href="#"><i class="far fa-list"></i></a></li>
-                            </ul>
-                            <div class="sort-text mb-15 me-4 me-xl-auto">
-                                34 Tours found
+                          
+                        <div class="sort-text mb-15 me-4 me-xl-auto">
+                            Số lớp học :
+                            @foreach ($product as $pro)
+                            @if ($loop->last)
+                                {{ $loop->iteration }}
+                            @endif
+                        @endforeach
+
                             </div>
                             <div class="sort-text mb-15 me-4">
                                 Khóa Học mới
@@ -136,7 +130,7 @@
                             <div class="image">
                                 <span class="badge bgc-pink">{{ $pro->brand_name }}</span>
                                 <a href="#" class="heart"><i class="fas fa-heart"></i></a>
-                                <img src="{{ asset('uploads/product/' . $pro->product_image) }}" alt="Tour List">
+                                <img src="{{ asset('uploads/product/' . $pro->product_image) }}" alt="course List">
                             </div>
                             <div class="content">
                                 <div class="destination-header">
@@ -149,12 +143,12 @@
                                         <i class="fas fa-star"></i>
                                     </div>
                                 </div>
-                                <h5><a href="tour-details.html">{{ $pro->product_name }}</a></h5>
+                                <h5><a href="{{ URL::to('/chitietkhoahoc/'.$pro->product_id) }}">{{ $pro->product_name }}</a></h5>
                                 <p>{{ $pro->product_desc }}</p>
                                 
                                 <div class="destination-footer">
                                     <span class="price"><span>{{ number_format($pro->product_price).' '.'VNĐ' }}</span></span>
-                                    <a href="tour-details.html" class="theme-btn style-two style-three">
+                                    <a href="{{ URl::to('/contact/#nhay') }}" class="theme-btn style-two style-three">
                                         <span data-hover="Đăng ký ">Đăng Ký </span>
                                         <i class="fal fa-arrow-right"></i>
                                     </a>

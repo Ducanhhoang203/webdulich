@@ -50,7 +50,7 @@ class BlogsController extends Controller
         ->orderBy('product_id', 'desc')
         ->paginate(6);
 
-    $title = "Kết quả tìm kiếm cho: " . $keyword;
+    $title = "Kết quả tìm kiếm " . $keyword;
 
     $category = DB::table('tbl_category_product')
         ->where('catgory_status', 1)

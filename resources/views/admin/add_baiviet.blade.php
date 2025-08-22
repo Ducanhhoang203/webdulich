@@ -60,7 +60,7 @@
     @csrf
 										
 										<div class="item form-group">
-											<label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Baiviet_title<span class="required">*</span>
+											<label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Tiêu đề bài viết*<span class="required">*</span>
 											</label>
 											<div class="col-md-6 col-sm-6 ">
 												<input type="text" id="last-name" name="Baiviet_title" required="required" class="form-control" >
@@ -68,33 +68,33 @@
 										</div>
                                        
                                                                                <div class="item form-group">
-											<label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Baiviet_slug <span class="required">*</span>
+											<label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Mở đầu bài viết <span class="required">*</span>
 											</label>
 											<div class="col-md-6 col-sm-6 ">
 												<input type="text" id="last-name" name="Baiviet_slug" required="required" class="form-control">
 											</div>
 										</div>
 										<div class="item form-group">
-											<label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Baiviet_content</label>
+											<label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Nội dung bài viết</label>
 											<div class="col-md-6 col-sm-6 ">
 												<textarea style="resize: none" rows="5"  class="form-control" type="text" name="Baiviet_content"></textarea>
 											</div>
 										</div>
 										<div class="item form-group">
-											<label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Baiviet_excerpt</label>
+											<label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Trích dẫn bài viết</label>
 											<div class="col-md-6 col-sm-6 ">
 												<textarea style="resize: none" rows="5"  class="form-control" type="text" name="Baiviet_excerpt"></textarea>
 											</div>
 										</div>
                                          <div class="item form-group">
-											<label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Baiviet_image_main<span class="required">*</span>
+											<label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Ảnh chính bài viết<span class="required">*</span>
 											</label>
 											<div class="col-md-6 col-sm-6 ">
 												<input type="file" id="last-name" name="Baiviet_image_main" required="required" class="form-control">
 											</div>
 										</div>
                                          <div class="item form-group">
-											<label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Baiviet_image_extra1<span class="required">*</span>
+											<label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Ảnh phụ 2 bài viết*<span class="required">*</span>
 											</label>
 											<div class="col-md-6 col-sm-6 ">
 												<input type="file" id="last-name" name="Baiviet_image_extra1" required="required" class="form-control">

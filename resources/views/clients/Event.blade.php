@@ -1,6 +1,5 @@
 @include('clients.blocks.header');
-    
-   
+
         <section class="gallery-two-area py-100 rel z-1">
             <div class="container">
                 <div class="row justify-content-center">
@@ -8,7 +7,6 @@
                         
                     </div>
                 </div>
-              
                     <div class="row">
                         @foreach ($event as $key => $eva)
                     <div class="col-lg-4 col-sm-6">

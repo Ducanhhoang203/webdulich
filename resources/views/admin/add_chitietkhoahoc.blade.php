@@ -52,7 +52,7 @@
     @csrf
 										
 										<div class="item form-group">
-											<label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">title curriculum<span class="required">*</span>
+											<label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Tên của chương trình<span class="required">*</span>
 											</label>
 											<div class="col-md-6 col-sm-6 ">
 												<input type="text" id="last-name" name="curriculums_title" required="required" class="form-control">
@@ -60,7 +60,7 @@
 										</div>
 										
 										<div class="item form-group">
-											<label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">curriculum content *</label>
+											<label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Nội dung chương trình *</label>
 											<div class="col-md-6 col-sm-6 ">
 												<textarea style="resize: none" rows="5"  class="form-control" type="longtext" name="curriculums_content"></textarea>
 											</div>

@@ -72,6 +72,10 @@ public function update_cartegory_product(Request $request, $category_product_id)
         return Redirect::to('all-cartegory-product');
     }
 public function showcategory_about($category_id) {
+    $product = DB::table('tbl_product')
+    ->where('product_status',1)
+    ->orderBy('product_id','desc')
+    ->get();
     // Danh mục (chỉ hiển thị danh mục đang bật)
     $cate_product = DB::table('tbl_category_product')
         ->where('catgory_status', 1)
@@ -98,7 +102,9 @@ public function showcategory_about($category_id) {
         ->with('category', $cate_product)
         ->with('brand_product', $brand_product)
         ->with('title', $title)
-        ->with('category_by_id', $category_by_id);
+        ->with('category_by_id', $category_by_id)
+        ->with('product',$product);
+        
 }
 
 }

@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <html lang="zxx">
-
-<!-- Mirrored from webtendtheme.net/html/2024/ravelo/about.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 07 Oct 2024 09:27:53 GMT -->
 <head>
     
     <!-- Required meta tags -->
@@ -53,77 +51,68 @@
                 <div class="container-fluid clearfix">
 
                     <div class="header-inner rel d-flex align-items-center">
-                        <div class="logo-outer">
-                            <div class="logo"><a href="{{ URL::to('/') }}"><img src="{{ asset('assets/images/logos/logo-two.png') }}" alt="Logo" title="Logo"></a></div>
+                          <div class="logo-outer">
+                            <a href="{{ URL::to('/') }}">
+        @if($footer_info2 && $footer_info2->logo_path)
+              <div class="logo"><img src="{{ asset($footer_info2->logo_path) }}" alt="Logo" title="Logo" ></div>
+        @else
+            <img src="{{ URL::to('uploads/footer/default-logo.png') }}" alt="Logo" title="Logo">
+        @endif
+    </a>
                         </div>
 
                         <div class="nav-outer mx-lg-auto ps-xxl-5 clearfix">
                             <!-- Main Menu -->
-                            <nav class="main-menu navbar-expand-lg">
-                                <div class="navbar-header">
-                                   <div class="mobile-logo">
-                                       <a href="index.html">
-                                            <img src="{{ asset('assets/images/logos/logo-two.png') }}" alt="Logo" title="Logo">
-                                       </a>
-                                   </div>
-                                   
-                                    <!-- Toggle Button -->
-                                    <button type="button" class="navbar-toggle" data-bs-toggle="collapse" data-bs-target=".navbar-collapse">
-                                        <span class="icon-bar"></span>
-                                        <span class="icon-bar"></span>
-                                        <span class="icon-bar"></span>
-                                    </button>
-                                </div>
+                         <nav class="main-menu navbar-expand-lg">
+    <div class="navbar-header">
+        <div class="mobile-logo">
+            <a href="{{ URL::to('/') }}">
+                @if($footer_info2 && $footer_info2->logo_path)
+                    <img src="{{ URL::to($footer_info2->logo_path) }}" alt="Logo" title="Logo">
+                @else
+                    <img src="{{ URL::to('uploads/footer/default-logo.png') }}" alt="Logo" title="Logo">
+                @endif
+            </a>
+        </div>
 
-                                
-                                <div class="navbar-collapse collapse clearfix">
-                                    <ul class="navigation clearfix">
-                                        <li ><a href="{{ URL::To('/') }}">Trang chủ </a>
-                                          
-                                        </li>
-                                        <li class="dropdown current" ><a href="about.html">about </a>
-                                            <ul>
-                                           <li><a href="{{ URL::to('/about') }}">About</a></li>
-                                                <li><a href="{{ URL::to('/abouttwo') }}">AboutTwo</a></li>
-                                               
-                                            </ul>
-                                        </li>
-                                        <li class="dropdown"><a href="#">Khóa Học</a>
-                                            <ul>
-                                                <li><a href="{{ URL::to('/courses') }}">Các Khóa Học Tại Dev Pro</a></li>
-                                                <li><a href="{{URl::to('/hocvien') }}">Học viên</a></li>
-                                                <li><a href="{{URl::to('/gallery') }}">Bài viết</a></li>
-                                               
-                                            </ul>
-                                        </li>
-                                        <li class="dropdown"><a href="#">Pages </a>
-                                            <ul>
-                                                <li><a href="{{ URL::to('/event') }}">Event</a></li>
-                                                <li><a href="{{ URL::to('/faq') }}">Faqs</a></li>
-                                               
+        <!-- Toggle Button -->
+        <button type="button" class="navbar-toggle" data-bs-toggle="collapse" data-bs-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+    </div>
 
+    <div class="navbar-collapse collapse clearfix">
+        <ul class="navigation clearfix">
+            @foreach($menus as $menu)
+                @php
+                    $submenus = $children->where('parent_id', $menu->id);
+                @endphp
 
-                                            </ul>
-                                        </li>
-                                        <li class="dropdown"><a href="#">Blog</a>
-                                            <ul>
-                                                <li><a href="{{ URL::to('/blogs') }}">Blogs</a></li>
-                                                <li><a href="{{ URl::to('/contact') }}">Contact</a></li>
-                                             
-                                            </ul>
-                                        </li>
-                                        
-                                    </ul>
-                                </div>
+                <li class="{{ $submenus->count() ? 'dropdown' : '' }}">
+                    <a href="{{ $menu->url ?? '#' }}">{{ $menu->title }}</a>
 
-                            </nav>
+                    @if($submenus->count())
+                        <ul>
+                            @foreach($submenus as $submenu)
+                                <li><a href="{{ $submenu->url ?? '#' }}">{{ $submenu->title }}</a></li>
+                            @endforeach
+                        </ul>
+                    @endif
+                </li>
+            @endforeach
+        </ul>
+    </div>
+</nav>
+
                             <!-- Main Menu End-->
                         </div>
                         
                         <!-- Menu Button -->
                         <div class="menu-btns py-10">
-                            <a href="{{URL::to('/contact') }}" class="theme-btn style-two bgc-secondary">
-                                <span data-hover="Đăng ký ">Đăng ký </span>
+                            <a href="{{URL::to('/contact/#nhay') }}" class="theme-btn style-two bgc-secondary">
+                                <span data-hover="Đăng ký">Đăng ký </span>
                                 <i class="fal fa-arrow-right"></i>
                             </a>
                             <!-- menu sidbar -->
@@ -147,32 +136,13 @@
                     <h4>Get Appointment</h4>
                 </div>
 
-                <!--Appointment Form-->
-                <div class="appointment-form">
-                    <form method="post" action="https://webtendtheme.net/html/2024/ravelo/contact.html">
-                        <div class="form-group">
-                            <input type="text" name="text" value="" placeholder="Name" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" name="email" value="" placeholder="Email Address" required>
-                        </div>
-                        <div class="form-group">
-                            <textarea placeholder="Message" rows="5"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" class="theme-btn style-two">
-                                <span data-hover="Submit now">Submit now</span>
-                                <i class="fal fa-arrow-right"></i>
-                            </button>
-                        </div>
-                    </form>
-                </div>
+                
 
                 <!--Social Icons-->
                 <div class="social-style-one">
-                    <a href="contact.html"><i class="fab fa-twitter"></i></a>
-                    <a href="contact.html"><i class="fab fa-facebook-f"></i></a>
-                    <a href="contact.html"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
                     <a href="#"><i class="fab fa-pinterest-p"></i></a>
                 </div>
             </div>

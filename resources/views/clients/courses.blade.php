@@ -80,7 +80,7 @@
                               
                                 <div class="destination-footer">
                                     <span class="price"><span>{{ $pro->product_price }}</span>/VNĐ</span>
-                                    <a href="{{ URL::to('/chitietkhoahoc/'.$pro->product_id) }}" class="theme-btn style-two style-three">
+                                    <a href="{{ URl::to('/contact/#nhay') }}" class="theme-btn style-two style-three">
                                         <span data-hover="đăng ký ngay ">đăng ký ngay </span>
                                         <i class="fal fa-arrow-right"></i>
                                     </a>
@@ -91,23 +91,7 @@
         @endforeach
                     <div class="col-lg-12">
                         {{ $all_product->links('pagination::bootstrap-4') }}
-                        {{-- <ul class="pagination justify-content-center pt-15 flex-wrap" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
-                            <li class="page-item disabled">
-                                <span class="page-link"><i class="far fa-chevron-left"></i></span>
-                            </li>
-                            <li class="page-item active">
-                                <span class="page-link">
-                                    1
-                                    <span class="sr-only">(current)</span>
-                                </span>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link" href="#">...</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#"><i class="far fa-chevron-right"></i></a>
-                            </li>
-                        </ul> --}}
+                       
                     </div>
                 </div>
             </div>

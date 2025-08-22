@@ -10,7 +10,7 @@
 						<div class="col-md-12 col-sm-12 ">
 							<div class="x_panel">
 								<div class="x_title">
-									<h2>Quản lý faqct <small>thêm faqct</small></h2>
+									<h2>Quản lý faqct <small>thêm faq chi tiết</small></h2>
 									<ul class="nav navbar-right panel_toolbox">
 										<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
 										</li>
@@ -52,17 +52,17 @@
     @csrf
 										
 										<div class="item form-group">
-											<label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">question<span class="required">*</span>
+											<label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Câu hỏi<span class="required">*</span>
 											</label>
 											<div class="col-md-6 col-sm-6 ">
-												<input type="text" id="last-name" name="question" required="required" class="form-control">
+												<input type="text" id="last-name" name="question" required="required" class="form-control" value="{{ $edit_value->question }}">
 											</div>
 										</div>
                                         <div class="item form-group">
-											<label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">answer<span class="required">*</span>
+											<label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Câu trả lời<span class="required">*</span>
 											</label>
 											<div class="col-md-6 col-sm-6 ">
-												<textarea style="resize: none" rows="5"  class="form-control" type="text" name="answer"></textarea>
+												<textarea style="resize: none" rows="5"  class="form-control" type="text" name="answer">{{$edit_value->answer  }}</textarea>
 											</div>
 										</div>
                                     

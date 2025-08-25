@@ -1,7 +1,6 @@
 <?php
-
 use App\Http\Controllers\about_section;
-use Illuminate\Support\Facades\DB;
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BrandController;
@@ -12,14 +11,11 @@ use App\Http\Controllers\Baivietcontroller;
 use App\Http\Controllers\ChitietkhoahocController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\StudentController;
-use App\Http\Controllers\clients\AboutTwoController;
 use App\Http\Controllers\FaqController;
-use App\Http\Controllers\clients\ChitietController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\galleryController;
 use App\Http\Controllers\galleryhocvienController;
 use App\Http\Controllers\blogsController;
-
 use App\Http\Controllers\BlogssiderController;
 use App\Http\Controllers\ContacController;
 use App\Http\Controllers\formdk;
@@ -31,7 +27,6 @@ use App\Http\Controllers\faqs_chitiet;
 use App\Http\Controllers\FooterController;
 use App\Http\Controllers\InstructorController;
 use App\Http\Controllers\Reviewscontroller;
-use App\Http\Controllers\galleries;
 use App\Http\Controllers\Gallery2Controller;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\MenuController;
@@ -147,11 +142,9 @@ Route::post('/update-event/{id}',[EventsController::class, 'update_event'])->nam
 Route::get('/delete-event/{id}',[EventsController::class, 'delete_event'])->name('event-faqct')->middleware('auth:admin');
 Route::get('/blogs/search', [blogsController::class, 'search'])->name('blogs.search');
 Route::get('/contact', [ContacController::class, 'index'])->name('contact.form');
-
-
 Route::post('/contact/send', [ContacController::class, 'send'])->name('contact.send');
-
 // trang section
+
 //trang cau hoi
 Route::get('/add-section',[about_section::class,'add_section'])->name('add-section')->middleware('auth:admin');
 Route::post('/save-section',[about_section::class,'save_section'])->name('save-section')->middleware('auth:admin');
@@ -175,19 +168,20 @@ Route::post('/update-hocvien/{id}', [Gallery2Controller::class, 'update_hocvien'
 Route::get('/delete-hocvien/{id}', [Gallery2Controller::class, 'delete_hocvien'])->middleware('auth:admin');
 Route::post('/newsletter', [NewsletterController::class, 'sendEmail'])->name('newsletter.send');
 //menu
-Route::get('menus', [MenuController::class, 'index'])->name('menus.index');
-    Route::get('menus/add', [MenuController::class, 'create'])->name('menus.create');
-    Route::post('menus/store', [MenuController::class, 'store'])->name('menus.store');
-    Route::get('menus/edit/{id}', [MenuController::class, 'edit'])->name('menus.edit');
-    Route::post('menus/update/{id}', [MenuController::class, 'update'])->name('menus.update');
-    Route::get('menus/delete/{id}', [MenuController::class, 'destroy'])->name('menus.destroy');
-    //banner
-Route::get('/add-banner', [BannerController::class, 'add_banner']);
-Route::post('/save-banner', [BannerController::class, 'save_banner']);
-Route::get('/all-banner', [BannerController::class, 'all_banner']);
-Route::get('/edit-banner/{id}', [BannerController::class, 'edit_banner']);
-Route::post('/update-banner/{id}', [BannerController::class, 'update_banner']);
-Route::get('/delete-banner/{id}', [BannerController::class, 'delete_banner']);
+Route::get('menus', [MenuController::class,'index'])->name('menus.index');
+Route::get('menus/add', [MenuController::class,'create'])->name('menus.create')->middleware('auth:admin');
+Route::post('menus/store', [MenuController::class,'store'])->name('menus.store')->middleware('auth:admin');
+Route::get('menus/edit/{id}', [MenuController::class,'edit'])->name('menus.edit')->middleware('auth:admin');
+Route::post('menus/update/{id}', [MenuController::class,'update'])->name('menus.update')->middleware('auth:admin');
+Route::get('menus/delete/{id}', [MenuController::class,'destroy'])->name('menus.destroy')->middleware('auth:admin');
+//banner
+Route::get('/add-banner', [BannerController::class, 'add_banner'])->middleware('auth:admin');
+Route::post('/save-banner', [BannerController::class, 'save_banner'])->middleware('auth:admin');
+Route::get('/all-banner', [BannerController::class, 'all_banner'])->middleware('auth:admin');
+Route::get('/edit-banner/{id}', [BannerController::class, 'edit_banner'])->middleware('auth:admin');
+Route::post('/update-banner/{id}', [BannerController::class, 'update_banner'])->middleware('auth:admin');
+Route::get('/delete-banner/{id}', [BannerController::class, 'delete_banner'])->middleware('auth:admin');
+
 
 
 

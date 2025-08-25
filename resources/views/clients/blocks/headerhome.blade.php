@@ -118,9 +118,9 @@
            <!-- Hero Area Start -->
         <section class="hero-area bgc-black pt-200 rpt-120 rel z-2">
             <div class="container-fluid">
-                <h1 class="hero-title" data-aos="flip-up" data-aos-delay="50" data-aos-duration="1500" data-aos-offset="50">
+                <p class="hero-title" data-aos="flip-up" data-aos-delay="50" data-aos-duration="1500" data-aos-offset="50">
     {{ $banner->tile_baner ?? 'Devpro' }}
-</h1>
+                </p>
  <div class="main-hero-image bgs-cover" 
      style="background-image: url({{ $banner ? URL::to($banner->image) : asset('assets/images/default-banner.jpg') }});">
 </div>

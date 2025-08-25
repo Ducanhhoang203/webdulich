@@ -76,7 +76,12 @@
                             <img src="{{ URL::to('uploads/product/'.$product->product_image) }}" class="img-fluid rounded" alt="Contact">
                         </div>
                         <div class="col-6">
-                            <img src="{{ URL::to($event->image) }}" class="img-fluid rounded" alt="Event">
+                            @if($event && $event->image)
+                    <img src="{{ asset($event->image) }}" class="img-fluid rounded" alt="Event">
+                @else
+                    <img src="{{ asset('') }}" class="img-fluid rounded" alt="Event">
+                @endif
+
                         </div>
                         <div class="col-6">
                             <img src="{{ URL::to('uploads/instructors/'.$instructors->instructors_image) }}" class="img-fluid rounded" alt="Instructor">

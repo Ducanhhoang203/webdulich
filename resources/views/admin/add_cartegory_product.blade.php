@@ -50,46 +50,48 @@
 <form role="form" action="{{ URL::to('save-cartegory-product') }}" method="post" data-parsley-validate class="form-horizontal form-label-left">
     @csrf
 
-	<div class="item form-group">
-		<label class="col-form-label col-md-3 col-sm-3 label-align">Tên danh mục <span class="required">*</span></label>
-		<div class="col-md-6 col-sm-6 ">
-			<input type="text" id="last-name" name="cartegory_product_name" class="form-control" value="{{ old('cartegory_product_name') }}">
-			@error('cartegory_product_name')
-				<span class="text-danger">{{ $message }}</span>
-			@enderror
-		</div>
-	</div>
+    <div class="item form-group">
+        <label class="col-form-label col-md-3 col-sm-3 label-align">Tên danh mục <span class="required">*</span></label>
+        <div class="col-md-6 col-sm-6 ">
+            <input type="text" name="cartegory_product_name" class="form-control" value="{{ old('cartegory_product_name') }}">
+            @error('cartegory_product_name')
+                <span class="text-danger">{{ $message }}</span>
+            @enderror
+        </div>
+    </div>
 
-	<div class="item form-group">
-		<label class="col-form-label col-md-3 col-sm-3 label-align">Mô tả</label>
-		<div class="col-md-6 col-sm-6 ">
-			<textarea name="cartegory_product_desc" rows="5" class="form-control" style="resize: none">{{ old('cartegory_product_desc') }}</textarea>
-			@error('cartegory_product_desc')
-				<span class="text-danger">{{ $message }}</span>
-			@enderror
-		</div>
-	</div>
+    <div class="item form-group">
+        <label class="col-form-label col-md-3 col-sm-3 label-align">Mô tả <span class="required">*</span></label>
+        <div class="col-md-6 col-sm-6 ">
+            <textarea name="cartegory_product_desc" rows="5" class="form-control" style="resize: none">{{ old('cartegory_product_desc') }}</textarea>
+            @error('cartegory_product_desc')
+                <span class="text-danger">{{ $message }}</span>
+            @enderror
+        </div>
+    </div>
 
-	<div class="item form-group">
-		<label class="col-form-label col-md-3 col-sm-3 label-align">Hiển thị</label>
-		<div class="col-md-6 col-sm-6 ">
-			<select class="form-control chon" name="cartegory_product_status">
-				<option value="0" {{ old('cartegory_product_status') == '0' ? 'selected' : '' }}>Ẩn</option>
-				<option value="1" {{ old('cartegory_product_status') == '1' ? 'selected' : '' }}>Hiện</option>
-			</select>
-			@error('cartegory_product_status')
-				<span class="text-danger">{{ $message }}</span>
-			@enderror
-		</div>
-	</div>
+    <div class="item form-group">
+        <label class="col-form-label col-md-3 col-sm-3 label-align">Hiển thị <span class="required">*</span></label>
+        <div class="col-md-6 col-sm-6 ">
+            <select class="form-control chon" name="cartegory_product_status">
+                <option value="">--Chọn trạng thái--</option>
+                <option value="0" {{ old('cartegory_product_status') == '0' ? 'selected' : '' }}>Ẩn</option>
+                <option value="1" {{ old('cartegory_product_status') == '1' ? 'selected' : '' }}>Hiện</option>
+            </select>
+            @error('cartegory_product_status')
+                <span class="text-danger">{{ $message }}</span>
+            @enderror
+        </div>
+    </div>
 
-	<div class="ln_solid"></div>
-	<div class="item form-group">
-		<div class="col-md-6 col-sm-6 offset-md-3">
-			<button class="btn btn-primary" type="submit" name="add_cartegory_product">Thêm danh mục</button>
-		</div>
-	</div>
+    <div class="ln_solid"></div>
+    <div class="item form-group">
+        <div class="col-md-6 col-sm-6 offset-md-3">
+            <button class="btn btn-primary" type="submit">Thêm danh mục</button>
+        </div>
+    </div>
 </form>
+
 
 								</div>
 							</div>

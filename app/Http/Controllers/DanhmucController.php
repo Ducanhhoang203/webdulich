@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
-use App\Models\CategoryProduct; // Dùng model để sửa, xóa, cập nhật
+use App\Models\CategoryProduct;
 
 class DanhmucController extends Controller
 {
@@ -28,14 +28,23 @@ class DanhmucController extends Controller
     // Lưu danh mục vào DB
     public function save_cartegory_product(Request $request)
     {
-          $request->validate([
-        'cartegory_product_name'   => 'required|string|max:255',
-        'cartegory_product_desc'   => 'required|string',
-        'cartegory_product_status' => 'required|in:1,0'
-    ]);
+        // Validate dữ liệu thêm mới
+        $request->validate([
+            'cartegory_product_name'   => 'required|string|max:255',
+            'cartegory_product_desc'   => 'required|string|max:500',
+            'cartegory_product_status' => 'required|in:0,1'
+        ], [
+            'cartegory_product_name.required'   => 'Tên danh mục không được để trống',
+            'cartegory_product_name.max'        => 'Tên danh mục tối đa 255 ký tự',
+            'cartegory_product_desc.required'   => 'Mô tả không được để trống',
+            'cartegory_product_desc.max'        => 'Mô tả tối đa 500 ký tự',
+            'cartegory_product_status.required' => 'Trạng thái danh mục là bắt buộc',
+            'cartegory_product_status.in'       => 'Trạng thái không hợp lệ',
+        ]);
+
         $data = [];
-        $data['catgory_name'] = $request->cartegory_product_name;
-        $data['catgory_desc'] = $request->cartegory_product_desc;
+        $data['catgory_name']   = $request->cartegory_product_name;
+        $data['catgory_desc']   = $request->cartegory_product_desc ?? '';
         $data['catgory_status'] = $request->cartegory_product_status;
 
         DB::table('tbl_category_product')->insert($data);
@@ -45,24 +54,42 @@ class DanhmucController extends Controller
     }
 
     // Hiển thị form sửa danh mục
-   public function edit_cartegory_product($category_product_id)
-{
-    $edit_value = DB::table('tbl_category_product')->where('catgory_id', $category_product_id)->first();
-    return view('admin.edit_cartegory_product')->with('edit_value', $edit_value);
-}
+    public function edit_cartegory_product($category_product_id)
+    {
+        $edit_value = DB::table('tbl_category_product')->where('catgory_id', $category_product_id)->first();
+        return view('admin.edit_cartegory_product')->with('edit_value', $edit_value);
+    }
 
-public function update_cartegory_product(Request $request, $category_product_id)
-{
-    $data = array();
-    $data['catgory_name'] = $request->cartegory_product_name;
-    $data['catgory_desc'] = $request->cartegory_product_desc;
-    $data['catgory_status'] = $request->category_product_status;
+    // Cập nhật danh mục
+    public function update_cartegory_product(Request $request, $category_product_id)
+    {
+        // Validate dữ liệu khi cập nhật
+        $request->validate([
+            'cartegory_product_name'  => 'required|string|max:255',
+            'cartegory_product_desc'  => 'required|string|max:500',
+            'category_product_status' => 'required|in:0,1',
+        ], [
+            'cartegory_product_name.required'   => 'Tên danh mục không được để trống',
+            'cartegory_product_name.max'        => 'Tên danh mục tối đa 255 ký tự',
+            'cartegory_product_desc.required'   => 'Mô tả không được để trống',
+            'cartegory_product_desc.max'        => 'Mô tả tối đa 500 ký tự',
+            'category_product_status.required'  => 'Trạng thái danh mục là bắt buộc',
+            'category_product_status.in'        => 'Trạng thái không hợp lệ',
+        ]);
 
-    DB::table('tbl_category_product')->where('catgory_id', $category_product_id)->update($data);
-    Session::put('message', 'Cập nhật danh mục thành công');
-    return Redirect::to('all-cartegory-product');
-}
+        $data = [
+            'catgory_name'   => $request->cartegory_product_name,
+            'catgory_desc'   => $request->cartegory_product_desc ?? '',
+            'catgory_status' => $request->category_product_status,
+        ];
 
+        DB::table('tbl_category_product')
+            ->where('catgory_id', $category_product_id)
+            ->update($data);
+
+        Session::put('message', '✅ Cập nhật danh mục thành công');
+        return Redirect::to('all-cartegory-product');
+    }
 
     // Xóa danh mục
     public function delete_cartegory_product($category_product_id)
@@ -71,40 +98,39 @@ public function update_cartegory_product(Request $request, $category_product_id)
         Session::put('message', 'Xóa danh mục thành công');
         return Redirect::to('all-cartegory-product');
     }
-public function showcategory_about($category_id) {
-    $product = DB::table('tbl_product')
-    ->where('product_status',1)
-    ->orderBy('product_id','desc')
-    ->get();
-    // Danh mục (chỉ hiển thị danh mục đang bật)
-    $cate_product = DB::table('tbl_category_product')
-        ->where('catgory_status', 1)
-        ->orderBy('catgory_id', 'desc')
-        ->get();
 
-    // Thương hiệu (chỉ hiển thị thương hiệu đang bật)
-    $brand_product = DB::table('tbl_brand')
-        ->where('brand_status', 1)
-        ->orderBy('brand_id', 'desc')
-        ->get();
+    // Hiển thị sản phẩm theo danh mục
+    public function showcategory_about($category_id) 
+    {
+        $product = DB::table('tbl_product')
+            ->where('product_status',1)
+            ->orderBy('product_id','desc')
+            ->get();
 
-    // Lấy danh sách sản phẩm theo danh mục
-    $category_by_id = DB::table('tbl_product')
-        ->join('tbl_category_product', 'tbl_product.category_id', '=', 'tbl_category_product.catgory_id')
-        ->where('tbl_product.category_id', $category_id)
-        ->where('tbl_product.product_status', 1) // nếu có cột trạng thái
-        ->select('tbl_product.*') // nếu cần lấy riêng product
-        ->get();
+        $cate_product = DB::table('tbl_category_product')
+            ->where('catgory_status', 1)
+            ->orderBy('catgory_id', 'desc')
+            ->get();
 
-    $title = 'Danh mục';
+        $brand_product = DB::table('tbl_brand')
+            ->where('brand_status', 1)
+            ->orderBy('brand_id', 'desc')
+            ->get();
 
-    return view('clients.aboutdanhmuc')
-        ->with('category', $cate_product)
-        ->with('brand_product', $brand_product)
-        ->with('title', $title)
-        ->with('category_by_id', $category_by_id)
-        ->with('product',$product);
-        
-}
+        $category_by_id = DB::table('tbl_product')
+            ->join('tbl_category_product', 'tbl_product.category_id', '=', 'tbl_category_product.catgory_id')
+            ->where('tbl_product.category_id', $category_id)
+            ->where('tbl_product.product_status', 1)
+            ->select('tbl_product.*')
+            ->get();
 
+        $title = 'Danh mục';
+
+        return view('clients.aboutdanhmuc')
+            ->with('category', $cate_product)
+            ->with('brand_product', $brand_product)
+            ->with('title', $title)
+            ->with('category_by_id', $category_by_id)
+            ->with('product',$product);
+    }
 }

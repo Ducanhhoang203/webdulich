@@ -1,4 +1,13 @@
-<style></style>
+<style>
+    .thumb-image {
+        max-width: 200px;
+        max-height: 150px;
+        margin-bottom: 10px;
+        border: 1px solid #ddd;
+        padding: 5px;
+    }
+</style>
+
 @include('layoutadmin')
 @section('admin_content')
 <div class="right_col canchinh" role="main">
@@ -6,7 +15,7 @@
         <div class="col-md-12 col-sm-12 ">
             <div class="x_panel">
                 <div class="x_title">
-                    <h2>Quản lý <small>Cập nhật banner</small></h2>
+                    <h2>Quản lý <small>Cập nhật Banner</small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
                         <li class="dropdown">
@@ -16,15 +25,13 @@
                     </ul>
                     <div class="clearfix">
                         <br />
-                        <?php
-                        $message = Session::get('message');
-                        if($message){
-                            echo '<span class="text-alert">'.$message.'</span>';
-                            Session::put('message', null);
-                        }
-                        ?>
+                        @if (Session::has('message'))
+                            <span class="text-alert">{{ Session::get('message') }}</span>
+                            {{ Session::forget('message') }}
+                        @endif
                     </div>
                 </div>
+
                 <div class="x_content">
                     @if ($errors->any())
                     <div class="alert alert-danger">
@@ -36,8 +43,10 @@
                     </div>
                     @endif
 
-                    <form role="form" action="{{ URL::to('/update-banner') }}" method="post" enctype="multipart/form-data" class="form-horizontal form-label-left">
+                    <form role="form" action="{{ URL::to('/update-banner/'.$edit_banner->id) }}" method="post" enctype="multipart/form-data" class="form-horizontal form-label-left">
                         @csrf
+
+                        <!-- Tiêu đề Banner -->
                         <div class="item form-group">
                             <label class="col-form-label col-md-3 col-sm-3 label-align">Tiêu đề Banner<span class="required">*</span></label>
                             <div class="col-md-6 col-sm-6 ">
@@ -45,11 +54,16 @@
                             </div>
                         </div>
 
+                        <!-- Hình ảnh Banner -->
                         <div class="item form-group">
                             <label class="col-form-label col-md-3 col-sm-3 label-align">Hình ảnh Banner<span class="required">*</span></label>
                             <div class="col-md-6 col-sm-6 ">
-                                <img src="{{ URL::to('uploads/banner/'.$edit_banner->image) }}" alt="">
-                                <input type="file" name="image" required="required" class="form-control">
+                                <!-- Hiển thị ảnh hiện tại -->
+                                @if($edit_banner->image)
+                                    <img src="{{ URL::to($edit_banner->image) }}" alt="Banner" class="thumb-image">
+                                @endif
+                                <input type="file" name="image" class="form-control">
+                                <small class="text-muted">Chọn ảnh mới nếu muốn thay thế ảnh hiện tại</small>
                             </div>
                         </div>
 

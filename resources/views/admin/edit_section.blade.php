@@ -5,7 +5,7 @@
         <div class="col-md-12 col-sm-12 ">
             <div class="x_panel">
                 <div class="x_title">
-                    <h2>Quản lý section <small> Chỉnh sửa </small></h2>
+                    <h2>Quản lý Section <small>Chỉnh sửa</small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
                         <li class="dropdown">
@@ -23,6 +23,7 @@
                         @endif
                     </div>
                 </div>
+
                 <div class="x_content">
                     @if ($errors->any())
                     <div class="alert alert-danger">
@@ -36,54 +37,78 @@
 
                     <form action="{{ url('/admin/about_sections/update/'.$section->id) }}" method="post" enctype="multipart/form-data" class="form-horizontal form-label-left" data-parsley-validate>
                         @csrf
+
+                        <!-- Title -->
                         <div class="item form-group">
-                            <label class="col-form-label col-md-3 col-sm-3 label-align">Title <span class="required">*</span></label>
+                            <label class="col-form-label col-md-3 col-sm-3 label-align">Tiêu đề <span class="required">*</span></label>
                             <div class="col-md-6 col-sm-6 ">
                                 <input type="text" name="title" required class="form-control" value="{{ old('title', $section->title) }}">
+                                @error('title')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
 
+                        <!-- Description -->
                         <div class="item form-group">
-                            <label class="col-form-label col-md-3 col-sm-3 label-align">Description <span class="required">*</span></label>
+                            <label class="col-form-label col-md-3 col-sm-3 label-align">Mô tả <span class="required">*</span></label>
                             <div class="col-md-6 col-sm-6 ">
                                 <input type="text" name="description" required class="form-control" value="{{ old('description', $section->description) }}">
+                                @error('description')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
 
+                        <!-- Experience Years -->
                         <div class="item form-group">
-                            <label class="col-form-label col-md-3 col-sm-3 label-align">Experience Years</label>
+                            <label class="col-form-label col-md-3 col-sm-3 label-align">Số năm</label>
                             <div class="col-md-6 col-sm-6 ">
                                 <input type="number" name="experience_years" required class="form-control" value="{{ old('experience_years', $section->experience_years) }}">
+                                @error('experience_years')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
 
+                        <!-- Popular Destinations -->
                         <div class="item form-group">
-                            <label class="col-form-label col-md-3 col-sm-3 label-align">Popular Destinations <span class="required">*</span></label>
+                            <label class="col-form-label col-md-3 col-sm-3 label-align">Số người tham gia <span class="required">*</span></label>
                             <div class="col-md-6 col-sm-6 ">
                                 <input type="number" name="popular_destinations" required class="form-control" value="{{ old('popular_destinations', $section->popular_destinations) }}">
+                                @error('popular_destinations')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
 
+                        <!-- Satisfied Clients -->
                         <div class="item form-group">
-                            <label class="col-form-label col-md-3 col-sm-3 label-align">Satisfied Clients <span class="required">*</span></label>
+                            <label class="col-form-label col-md-3 col-sm-3 label-align">Số người theo học <span class="required">*</span></label>
                             <div class="col-md-6 col-sm-6 ">
                                 <input type="number" name="satisfied_clients" required class="form-control" value="{{ old('satisfied_clients', $section->satisfied_clients) }}">
+                                @error('satisfied_clients')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
 
                         <!-- Ảnh chính -->
                         <div class="item form-group">
-                            <label class="col-form-label col-md-3 col-sm-3 label-align">Image Main <span class="required">*</span></label>
+                            <label class="col-form-label col-md-3 col-sm-3 label-align">Ảnh chính <span class="required">*</span></label>
                             <div class="col-md-6 col-sm-6 ">
                                 <input type="file" name="image_main" class="form-control" accept="image/*" onchange="previewImage(event, 'preview_main')">
                                 <br>
                                 <img id="preview_main" src="{{ asset('uploads/about/'.$section->image_main) }}" alt="Image Main" width="150" style="display: inline-block;">
+                                @error('image_main')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
 
                         <!-- Shapes -->
                         <div class="item form-group">
-                            <label class="col-form-label col-md-3 col-sm-3 label-align">Shapes</label>
+                            <label class="col-form-label col-md-3 col-sm-3 label-align">Ảnh bao quanh</label>
                             <div class="col-md-6 col-sm-6 ">
                                 @for ($i = 0; $i < 7; $i++)
                                     <input type="file" name="shapes[]" class="form-control mb-2" accept="image/*" onchange="previewImage(event, 'preview_shape_{{$i}}')">
@@ -95,6 +120,9 @@
                                         style="display: {{ isset($shapes[$i]) ? 'inline-block' : 'none' }}; margin-bottom: 10px;"
                                     >
                                 @endfor
+                                @error('shapes.*')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
 
@@ -102,7 +130,7 @@
 
                         <div class="item form-group">
                             <div class="col-md-6 col-sm-6 offset-md-3">
-                                <button type="submit" class="btn btn-primary" name="edit_section">Cập nhật</button>
+                                <button type="submit" class="btn btn-primary">Cập nhật</button>
                             </div>
                         </div>
 
@@ -117,15 +145,12 @@
 function previewImage(event, previewId) {
     const input = event.target;
     const preview = document.getElementById(previewId);
-
     if (input.files && input.files[0]) {
         const reader = new FileReader();
-
         reader.onload = function(e) {
             preview.src = e.target.result;
             preview.style.display = 'inline-block';
         };
-
         reader.readAsDataURL(input.files[0]);
     } else {
         preview.src = "";

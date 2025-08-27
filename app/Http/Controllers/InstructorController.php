@@ -19,35 +19,43 @@ class InstructorController extends Controller
     // Lưu giảng viên mới
     public function save_instructors(Request $request)
     {
+        // Validate tất cả trường bắt buộc
         $request->validate([
             'instructors_name'   => 'required|string|max:255',
             'instructors_bio'    => 'required|string|max:255',
-            'instructors_image'  => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048',
+            'instructors_image'  => 'required|image|mimes:jpg,jpeg,png,gif|max:2048',
             'product_cate'       => 'required|exists:tbl_product,product_id',
+        ], [
+            'instructors_name.required'   => 'Tên giảng viên không được để trống.',
+            'instructors_name.max'        => 'Tên giảng viên không được vượt quá 255 ký tự.',
+            'instructors_bio.required'    => 'Tiểu sử giảng viên không được để trống.',
+            'instructors_bio.max'         => 'Tiểu sử giảng viên không được vượt quá 255 ký tự.',
+            'instructors_image.required'  => 'Bạn phải chọn hình ảnh giảng viên.',
+            'instructors_image.image'     => 'File tải lên phải là hình ảnh.',
+            'instructors_image.mimes'     => 'Hình ảnh phải có định dạng jpg, jpeg, png, gif.',
+            'instructors_image.max'       => 'Hình ảnh không được lớn hơn 2MB.',
+            'product_cate.required'       => 'Bạn phải chọn khóa học.',
+            'product_cate.exists'         => 'Khóa học chọn không tồn tại.',
         ]);
 
-        $data = [
+        // Upload ảnh
+        $image = $request->file('instructors_image');
+        $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
+        $uploadPath = public_path('uploads/instructors');
+        if (!file_exists($uploadPath)) {
+            mkdir($uploadPath, 0755, true);
+        }
+        $image->move($uploadPath, $imageName);
+
+        // Lưu vào database
+        DB::table('tbl_instructors')->insert([
             'instructors_name' => $request->instructors_name,
             'instructors_bio'  => $request->instructors_bio,
             'product_id'       => $request->product_cate,
+            'instructors_image'=> $imageName,
             'created_at'       => now(),
             'updated_at'       => now(),
-        ];
-
-        if ($request->hasFile('instructors_image')) {
-            $image = $request->file('instructors_image');
-            $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
-            $uploadPath = public_path('uploads/instructors');
-
-            if (!file_exists($uploadPath)) {
-                mkdir($uploadPath, 0755, true);
-            }
-
-            $image->move($uploadPath, $imageName);
-            $data['instructors_image'] = $imageName;
-        }
-
-        DB::table('tbl_instructors')->insert($data);
+        ]);
 
         return redirect('add-instructors')->with('message', 'Thêm giảng viên thành công!');
     }
@@ -84,6 +92,16 @@ class InstructorController extends Controller
             'instructors_bio'   => 'required|string|max:255',
             'product_cate'      => 'required|exists:tbl_product,product_id',
             'instructors_image' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048',
+        ], [
+            'instructors_name.required'   => 'Tên giảng viên không được để trống.',
+            'instructors_name.max'        => 'Tên giảng viên không được vượt quá 255 ký tự.',
+            'instructors_bio.required'    => 'Tiểu sử giảng viên không được để trống.',
+            'instructors_bio.max'         => 'Tiểu sử giảng viên không được vượt quá 255 ký tự.',
+            'instructors_image.image'     => 'File tải lên phải là hình ảnh.',
+            'instructors_image.mimes'     => 'Hình ảnh phải có định dạng jpg, jpeg, png, gif.',
+            'instructors_image.max'       => 'Hình ảnh không được lớn hơn 2MB.',
+            'product_cate.required'       => 'Bạn phải chọn khóa học.',
+            'product_cate.exists'         => 'Khóa học chọn không tồn tại.',
         ]);
 
         $instructor = DB::table('tbl_instructors')->where('instructors_id', $instructors_id)->first();
@@ -99,25 +117,22 @@ class InstructorController extends Controller
             'updated_at'       => now(),
         ];
 
+        // Nếu upload ảnh mới
         if ($request->hasFile('instructors_image')) {
             $image = $request->file('instructors_image');
             $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
             $uploadPath = public_path('uploads/instructors');
 
-            if (!file_exists($uploadPath)) {
-                mkdir($uploadPath, 0755, true);
-            }
-
+            if (!file_exists($uploadPath)) mkdir($uploadPath, 0755, true);
             $image->move($uploadPath, $imageName);
-            $data['instructors_image'] = $imageName;
 
             // Xóa ảnh cũ nếu có
             if (!empty($instructor->instructors_image)) {
                 $oldImagePath = $uploadPath . '/' . $instructor->instructors_image;
-                if (file_exists($oldImagePath)) {
-                    unlink($oldImagePath);
-                }
+                if (file_exists($oldImagePath)) unlink($oldImagePath);
             }
+
+            $data['instructors_image'] = $imageName;
         }
 
         DB::table('tbl_instructors')->where('instructors_id', $instructors_id)->update($data);
@@ -134,12 +149,9 @@ class InstructorController extends Controller
             return redirect('all-instructors')->with('message', 'Không tìm thấy giảng viên!');
         }
 
-        // Xóa ảnh nếu tồn tại
         if (!empty($instructor->instructors_image)) {
             $imagePath = public_path('uploads/instructors/' . $instructor->instructors_image);
-            if (file_exists($imagePath)) {
-                unlink($imagePath);
-            }
+            if (file_exists($imagePath)) unlink($imagePath);
         }
 
         DB::table('tbl_instructors')->where('instructors_id', $instructors_id)->delete();

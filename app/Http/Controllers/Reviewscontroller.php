@@ -123,4 +123,18 @@ class ReviewsController extends Controller
 
         return Redirect::to('all-reviews')->with('message', 'Cập nhật review thành công!');
     }
+    // Xóa review
+public function delete_reviews($reviews_id)
+{
+    $review = DB::table('tbl_review')->where('reviews_id', $reviews_id)->first();
+
+    if (!$review) {
+        return Redirect::to('all-reviews')->with('message', 'Không tìm thấy review để xóa!');
+    }
+
+    DB::table('tbl_review')->where('reviews_id', $reviews_id)->delete();
+
+    return Redirect::to('all-reviews')->with('message', 'Xóa review thành công!');
+}
+
 }

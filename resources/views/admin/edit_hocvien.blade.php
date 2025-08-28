@@ -53,21 +53,28 @@
 
                         <!-- Tên học viên -->
                         <div class="item form-group">
-                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="alt_text">Tên học viên<span class="required">*</span></label>
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="name">Tên học viên<span class="required">*</span></label>
                             <div class="col-md-6 col-sm-6 ">
-                                <input type="text" id="alt_text" name="alt_text" required="required" class="form-control" value="{{ $edit_gallery->alt_text }}">
+                                <input type="text" id="name" name="name" required="required" class="form-control" value="{{ $edit_gallery->name }}">
+                            </div>
+                        </div>
+
+                        <!-- Tiểu sử học viên -->
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="bio">Tiểu sử học viên<span class="required">*</span></label>
+                            <div class="col-md-6 col-sm-6 ">
+                                <textarea id="bio" name="bio" required="required" class="form-control" rows="4">{{ $edit_gallery->bio }}</textarea>
                             </div>
                         </div>
 
                         <!-- Hình ảnh học viên -->
                         <div class="item form-group">
-                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="image_path">Hình ảnh học viên<span class="required">*</span></label>
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="avatar">Hình ảnh học viên<span class="required">*</span></label>
                             <div class="col-md-6 col-sm-6 ">
-                                <!-- Hiển thị ảnh hiện tại -->
-                                @if($edit_gallery->image_path)
-                                    <img src="{{ asset($edit_gallery->image_path) }}" alt="{{ $edit_gallery->alt_text }}" class="thumb-image">
+                                @if($edit_gallery->avatar)
+                                    <img src="{{ asset($edit_gallery->avatar) }}" alt="{{ $edit_gallery->name }}" class="thumb-image">
                                 @endif
-                                <input type="file" id="image_path" name="image_path" class="form-control">
+                                <input type="file" id="avatar" name="avatar" class="form-control">
                                 <small class="text-muted">Chọn ảnh mới nếu muốn thay thế ảnh hiện tại</small>
                             </div>
                         </div>

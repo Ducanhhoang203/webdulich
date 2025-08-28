@@ -57,7 +57,7 @@
                             </div>
                             <div class="col-md-12">
                                 <button type="submit" id="btnSubmit" class="theme-btn style-two w-100">
-                                    <span data-hover="Đăng Ký Ngay">Đăng Ký Nhận Hỗ Trợ</span>
+                                    <span data-hover="Đăng Ký Nhận Hỗ Trợ">Đăng Ký Nhận Hỗ Trợ</span>
                                     <i class="fal fa-arrow-right"></i>
                                 </button>
                             </div>

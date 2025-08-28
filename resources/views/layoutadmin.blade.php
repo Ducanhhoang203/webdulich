@@ -91,7 +91,7 @@
                   <li><a><i class="fa fa-edit"></i>Quản lý chương trình<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="{{ URL::to('/add-chitietkhoahoc') }}">thêm chương trình </a></li>
-                      <li><a href="{{ URL::to('/all-chitietkhoahoc') }}">Liệt Kê Danh Sách Học Viên</a></li>
+                      <li><a href="{{ URL::to('/all-chitietkhoahoc') }}">Liệt Kê </a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-edit"></i>Giáo viên<span class="fa fa-chevron-down"></span></a>

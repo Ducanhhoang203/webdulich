@@ -133,7 +133,7 @@
                                         <i class="fas fa-star"></i>
                                     </div>
                                 </div>
-                                <h5><a href="tour-details.html">{{ $pro->product_name }}</a></h5>
+                                <h5><a href="{{URL::to('/chitietkhoahoc/'.$pro->product_id)}}">{{ $pro->product_name }}</a></h5>
                                 <p>{{ $pro->product_desc }}</p>
                                 
                                 <div class="destination-footer">
@@ -143,7 +143,7 @@
                                         <i class="fal fa-arrow-right"></i>
                                     </a>
                                 </div>
-                            </div>
+                            </div> 
                         </div>
                         @endforeach
 

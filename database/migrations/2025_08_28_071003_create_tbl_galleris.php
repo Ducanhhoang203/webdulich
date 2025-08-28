@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tbl_galleries', function (Blueprint $table) {
+        Schema::create('tbl_galleris', function (Blueprint $table) {
             $table->id();
-            $table->string('image_path'); // đường dẫn hình ảnh
-            $table->string('alt_text')->nullable(); // alt text cho SEO
+            $table->string('name');
+            $table->string('avatar')->nullable(); // lưu đường dẫn ảnh
+            $table->text('bio')->nullable();
             $table->timestamps();
         });
     }
@@ -24,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tbl_galleries');
+        Schema::dropIfExists('tbl_galleris');
     }
 };

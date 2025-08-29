@@ -70,7 +70,7 @@
                         <div class="ln_solid"></div>
                         <div class="item form-group">
                             <div class="col-md-6 col-sm-6 offset-md-3">
-                                <button class="btn btn-primary" type="submit" name="edit_banner">Cập nhật Banner</button>
+                                <button class="btn btn-primary" type="submit" name="edit_banner">Cập nhật </button>
                             </div>
                         </div>
 

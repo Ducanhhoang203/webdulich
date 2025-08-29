@@ -82,7 +82,7 @@
                         <div class="ln_solid"></div>
                         <div class="item form-group">
                             <div class="col-md-6 col-sm-6 offset-md-3">
-                                <button class="btn btn-success" type="submit">Cập nhật Menu</button>
+                                <button class="btn btn-success" type="submit">Cập nhật </button>
                             </div>
                         </div>
 

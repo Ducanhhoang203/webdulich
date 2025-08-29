@@ -67,7 +67,7 @@
 
                         <div class="item form-group">
                             <div class="col-md-6 col-sm-6 offset-md-3">
-                                <button class="btn btn-primary" type="submit" name="add_hocvien">Thêm học viên</button>
+                                <button class="btn btn-primary" type="submit" name="add_hocvien">Thêm</button>
                             </div>
                         </div>
                     </form>

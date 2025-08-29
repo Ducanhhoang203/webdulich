@@ -75,7 +75,7 @@
 
                         <div class="item form-group">
                             <div class="col-md-6 col-sm-6 offset-md-3">
-                                <button type="submit" class="btn btn-primary" name="add_instructors">Thêm giảng viên</button>
+                                <button type="submit" class="btn btn-primary" name="add_instructors">Thêm </button>
                             </div>
                         </div>
                     </form>

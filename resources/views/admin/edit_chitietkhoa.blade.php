@@ -70,7 +70,7 @@
                         <div class="ln_solid"></div>
                         <div class="item form-group">
                             <div class="col-md-6 col-sm-6 offset-md-3">
-                                <button class="btn btn-primary" type="submit">Cập nhật chương trình</button>
+                                <button class="btn btn-primary" type="submit">Cập nhật </button>
                                 <a href="{{ URL::to('all-chitietkhoahoc') }}" class="btn btn-secondary">Hủy</a>
                             </div>
                         </div>

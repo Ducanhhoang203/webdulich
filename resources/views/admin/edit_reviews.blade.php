@@ -99,7 +99,7 @@
                         {{-- Nút submit --}}
                         <div class="item form-group">
                             <div class="col-md-6 col-sm-6 offset-md-3">
-                                <button class="btn btn-success" type="submit">Cập nhật Review</button>
+                                <button class="btn btn-success" type="submit">Cập nhật </button>
                             </div>
                         </div>
 

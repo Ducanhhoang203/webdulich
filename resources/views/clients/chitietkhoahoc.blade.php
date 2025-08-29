@@ -149,22 +149,26 @@
             </div>
 
             <!-- Video Column -->
-            <div class="video-column col-lg-4">
-                <div class="inner-column">
-                    <div class="intro-video media-icon orange-color2">
-                        <img src="{{ asset('uploads/instructors/' . ($instructors3->instructors_image ?? 'default.png')) }}" alt="Video Giới thiệu">
-                       <a href="https://www.youtube.com/watch?v=n-etlfVH8NE" class="mfp-iframe video-play" tabindex="-1">
+         <div class="video-column col-lg-4">
+    <div class="inner-column">
+        <div class="intro-video media-icon orange-color2">
+            <img src="{{ asset('uploads/instructors/' . ($instructors3->instructors_image ?? 'default.png')) }}" alt="Video Giới thiệu">
+            
+            <a href="https://www.youtube.com/watch?v=n-etlfVH8NE" 
+               class="mfp-iframe video-play video-center" 
+               tabindex="-1">
                 <i class="fas fa-play"></i>
             </a>
-                        <h4>Video Giới thiệu</h4>
-                    </div>
-      
 
-                    <div class="btn-part">
-                        <a href="{{ URL::to('/contact/#nhay') }}" class="btn readon2 orange-transparent">Đăng Ký</a>
-                    </div>
-                </div>
-            </div>
+            <h4>Video Giới thiệu</h4>
+        </div>
+
+        <div class="btn-part">
+            <a href="{{ URL::to('/contact/#nhay') }}" class="btn readon2 orange-transparent">Đăng Ký</a>
+        </div>
+    </div>
+</div>
+
 
         </div>
     </div>

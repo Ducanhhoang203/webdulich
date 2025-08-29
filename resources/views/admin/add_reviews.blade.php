@@ -94,7 +94,7 @@
                         {{-- Nút submit --}}
                         <div class="item form-group">
                             <div class="col-md-6 col-sm-6 offset-md-3">
-                                <button class="btn btn-success" type="submit">Thêm Review</button>
+                                <button class="btn btn-success" type="submit">Thêm </button>
                             </div>
                         </div>
 

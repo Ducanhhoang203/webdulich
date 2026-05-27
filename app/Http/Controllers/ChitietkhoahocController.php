@@ -13,7 +13,7 @@ class ChitietkhoahocController extends Controller
 {
     public function index()
     {
-        $title = 'Trang chi tiết khóa học';
+        $title = 'Trang chi tiết Loại Hình Tour';
         return view('clients.chitietkhoahoc', compact('title'));
     }
 
@@ -36,8 +36,8 @@ class ChitietkhoahocController extends Controller
             'curriculums_content.required' => 'Vui lòng nhập nội dung chương trình.',
             'curriculums_content.string'   => 'Nội dung không hợp lệ.',
             'curriculums_content.max'      => 'Nội dung quá dài.',
-            'product.required'             => 'Vui lòng chọn khóa học.',
-            'product.exists'               => 'Khóa học không tồn tại trong cơ sở dữ liệu.',
+            'product.required'             => 'Vui lòng chọn Loại Hình Tour.',
+            'product.exists'               => 'Loại Hình Tour không tồn tại trong cơ sở dữ liệu.',
         ]);
 
         DB::table('tbl_curriculums')->insert([
@@ -88,8 +88,8 @@ class ChitietkhoahocController extends Controller
             'curriculums_content.required' => 'Vui lòng nhập nội dung chương trình.',
             'curriculums_content.string'   => 'Nội dung không hợp lệ.',
             'curriculums_content.max'      => 'Nội dung quá dài.',
-            'product.required'             => 'Vui lòng chọn khóa học.',
-            'product.exists'               => 'Khóa học không tồn tại trong cơ sở dữ liệu.',
+            'product.required'             => 'Vui lòng chọn Loại Hình Tour.',
+            'product.exists'               => 'Loại Hình Tour không tồn tại trong cơ sở dữ liệu.',
         ]);
 
         $curriculums = DB::table('tbl_curriculums')->where('curriculums_id', $curriculums_id)->first();

@@ -14,7 +14,7 @@ class galleryhocvienController extends Controller
      */
     public function index()
     {
-        $title ="Trang học viên ";
+        $title ="Destination-detail";
        
         $hocvien = DB::table('tbl_galleris')->orderBy('id','desc')->get();
         return view('clients.galleryhocvien',compact('title','hocvien'));

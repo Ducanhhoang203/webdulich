@@ -16,13 +16,29 @@ class BrandController extends Controller
     }
 
     // Hiển thị danh sách tất cả danh mục
-    public function all_brand_product()
-    {
-        $all_category_product = DB::table('tbl_brand')->get();
+   public function all_brand_product(Request $request)
+{
+    // Tạo query để thêm điều kiện linh hoạt
+    $query = DB::table('tbl_brand');
 
-        return view('admin.all_brand_product')
-            ->with('all_brand_product', $all_category_product);
+    // Tìm kiếm theo tên (brand_name)
+    if ($request->keyword) {
+        $query->where('brand_name', 'LIKE', '%' . $request->keyword . '%');
     }
+
+    // Lọc theo trạng thái (brand_status)
+    if ($request->status !== null && $request->status !== '') {
+        $query->where('brand_status', $request->status);
+    }
+
+    // Lấy dữ liệu
+    $all_brand_product = $query->orderBy('brand_id', 'desc')->get();
+
+    // Trả về view
+    return view('admin.all_brand_product')
+            ->with('all_brand_product', $all_brand_product);
+}
+
 
     // Lưu danh mục vào DB
     public function save_brand_product(Request $request)
@@ -33,11 +49,11 @@ class BrandController extends Controller
             'brand_product_desc' => 'required|string',
             'brand_product_status' => 'required|in:0,1',
         ], [
-            'brand_product_name.required' => 'Tên khóa học không được để trống',
-            'brand_product_name.string' => 'Tên khóa học phải là chuỗi ký tự',
-            'brand_product_name.max' => 'Tên khóa học không vượt quá 255 ký tự',
-            'brand_product_desc.required' => 'Mô tả khóa học không được để trống',
-            'brand_product_desc.string' => 'Mô tả khóa học phải là chuỗi ký tự',
+            'brand_product_name.required' => ' không được để trống',
+            'brand_product_name.string' => ' phải là chuỗi ký tự',
+            'brand_product_name.max' => ' không vượt quá 255 ký tự',
+            'brand_product_desc.required' => 'Mô tả không được để trống',
+            'brand_product_desc.string' => 'Mô tả phải là chuỗi ký tự',
             'brand_product_status.required' => 'Vui lòng chọn trạng thái',
             'brand_product_status.in' => 'Trạng thái không hợp lệ',
         ]);
@@ -48,7 +64,7 @@ class BrandController extends Controller
         $data['brand_status'] = $request->brand_product_status;
 
         DB::table('tbl_brand')->insert($data);
-        Session::put('message', 'Thêm khóa học thành công');
+        Session::put('message', 'Thêm Tour thành công');
 
         return Redirect::to('add-brand-product');
     }
@@ -68,10 +84,10 @@ class BrandController extends Controller
             'brand_product_desc' => 'nullable|string', // cho phép trống
             'brand_product_status' => 'required|in:0,1',
         ], [
-            'brand_product_name.required' => 'Tên khóa học không được để trống',
-            'brand_product_name.string' => 'Tên khóa học phải là chuỗi ký tự',
-            'brand_product_name.max' => 'Tên khóa học không vượt quá 255 ký tự',
-            'brand_product_desc.string' => 'Mô tả khóa học phải là chuỗi ký tự',
+            'brand_product_name.required' => ' không được để trống',
+            'brand_product_name.string' => ' phải là chuỗi ký tự',
+            'brand_product_name.max' => ' không vượt quá 255 ký tự',
+            'brand_product_desc.string' => 'Mô tả phải là chuỗi ký tự',
             'brand_product_status.required' => 'Vui lòng chọn trạng thái',
             'brand_product_status.in' => 'Trạng thái không hợp lệ',
         ]);
@@ -82,7 +98,7 @@ class BrandController extends Controller
         $data['brand_status'] = $request->brand_product_status;
 
         DB::table('tbl_brand')->where('brand_id', $brand_product_id)->update($data);
-        Session::put('message', 'Cập nhật khóa học thành công');
+        Session::put('message', 'Cập nhật tour thành công');
         return Redirect::to('all-brand-product');
     }
 
@@ -90,7 +106,7 @@ class BrandController extends Controller
     public function delete_brand_product($brand_id)
     {
         BrandProduct::find($brand_id)->delete();
-        Session::put('message', 'Xóa khóa học thành công');
+        Session::put('message', 'Xóa  thành công');
         return Redirect::to('all-brand-product');
     }
 

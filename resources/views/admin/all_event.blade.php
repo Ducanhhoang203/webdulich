@@ -1,49 +1,63 @@
-<style>
-  .canchinh{
-margin-left: 15%; 
-}
-</style>
 @include('layoutadmin')
 @section('admin_content')
-  <div class="canchinh col-md-14 col-sm-14">
-    <div class="x_panel">
-      <div class="x_content">
-        <table class="table table-bordered">
-          <thead class="thead-dark">
-            <tr>
-              <th>ID</th>
-              <th>Title</th>
-              <th>image </th>
-              <th>Mô tả </th>
 
-    
+<div class="right_col canchinh" role="main">
+    <div class="row">
+        <div class="col-md-12 col-sm-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Danh sách Sự kiện <small>quản lý</small></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+                        <li><a class="close-link"><i class="fa fa-close"></i></a></li>
+                    </ul>
+                    <div class="clearfix"></div>
+                    <br />
+                    <?php
+                        $message = Session::get('message');
+                        if($message){
+                            echo '<span class="text-alert">'.$message.'</span>';
+                            Session::put('message', null);
+                        }
+                    ?>
+                </div>
 
-              <th colspan="2">Hành động</th>
-            </tr>
-          </thead>
-          <tbody>
-            @foreach ($events as $key => $eve)
-              <tr>
-                    <td>{{ $eve->id }}</td>
-                <td>{{ $eve->title }}</td>
-                <td><img src="{{ $eve->image }}" alt="" height="100" width="100"></td>
-                <td>{{ $eve->category}}</td>
+                <div class="x_content">
+                    <a href="{{ URL::to('/add-event') }}" class="btn btn-success mb-3">Thêm sự kiện mới</a>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Title</th>
+                                    <th>Image</th>
+                                  
+                                    <th colspan="2">Hành động</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($events as $key => $eve)
+                                    <tr>
+                                        <td>{{ $eve->id }}</td>
+                                        <td>{{ $eve->title }}</td>
+                                        <td><img src="{{ $eve->image }}" alt="Ảnh sự kiện" height="100" width="100"></td>
+                                        
+                                        <td>
+                                            <a href="{{ URL::to('/edit-event/' . $eve->id) }}" class="btn btn-primary btn-sm">Sửa</a>
+                                        </td>
+                                        <td>
+                                            <a onclick="return confirm('Bạn có chắc muốn xóa?')" href="{{ URL::to('/delete-event/' . $eve->id) }}" class="btn btn-danger btn-sm">Xóa</a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
 
-
-                
-                <td>
-                  <a href="{{ URL::to('/edit-event/' . $eve->id) }}" class="btn btn-primary btn-sm">Sửa</a>
-                </td>
-                <td>
-                  <a onclick="return confirm('Bạn có chắc muốn xóa?')" href="{{ URL::to('/delete-event/' . $eve->id) }}" class="btn btn-danger btn-sm">Xóa</a>
-                </td>
-              </tr>
-            @endforeach
-          </tbody>
-        </table>
-      </div>
+            </div>
+        </div>
     </div>
-  </div>
-
+</div>
 
 

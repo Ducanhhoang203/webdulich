@@ -2,7 +2,7 @@
 @section('admin_content')
 
 <div class="csslai">
-    <h3>Cập nhật Khóa Học</h3>
+    <h3>Cập Nhật Tours</h3>
 
     {{-- Hiển thị thông báo thành công --}}
     @if(Session::has('message'))
@@ -28,7 +28,7 @@
 
         {{-- Tên khóa học --}}
         <div class="form-group">
-            <label for="brand_product_name">Tên Khóa Học:</label>
+            <label for="brand_product_name">Tên :</label>
             <input type="text" class="form-control" name="brand_product_name"
                    value="{{ old('brand_product_name', $edit_value->brand_name) }}" required>
             @error('brand_product_name')
@@ -38,7 +38,7 @@
 
         {{-- Mô tả --}}
         <div class="form-group">
-            <label for="brand_product_desc">Mô tả Khóa Học:</label>
+            <label for="brand_product_desc">Mô tả Loại Hình Tour:</label>
             <textarea class="form-control" name="brand_product_desc" rows="3">{{ old('brand_product_desc', $edit_value->brand_desc) }}</textarea>
             @error('brand_product_desc')
                 <span class="text-danger">{{ $message }}</span>

@@ -14,7 +14,7 @@ class ContacController extends Controller
      */
     public function index()
     {
-        $title = "Trang Contact";
+        $title = "Trang liên hệ";
         $product = DB::table('tbl_product')->orderBy('product_id', 'desc')->first();
         $event = DB::table('tbl_event')->orderBy('id', 'desc')->first();
         $instructors = DB::table('tbl_instructors')->orderBy('instructors_id', 'desc')->first();
@@ -44,8 +44,8 @@ class ContacController extends Controller
                 'email' => $validated['email'],
                 'message_body' => $validated['message'],
             ], function ($mail) use ($validated) {
-                $mail->to('hangmnm@gmail.com')
-                     ->subject('Đăng Ký Khóa Học: ' . $validated['name'])
+                $mail->to('hducanh68@gmail.com')
+                     ->subject('Cần được hỗ trợ: ' . $validated['name'])
                      ->from($validated['email'], $validated['name']);
             });
 

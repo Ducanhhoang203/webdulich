@@ -111,7 +111,7 @@
 
                             </div>
                             <div class="sort-text mb-15 me-4">
-                                Khóa Học mới
+                                 Tours Mới
                             </div>
                             
                         </div>

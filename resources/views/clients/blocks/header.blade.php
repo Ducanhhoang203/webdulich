@@ -9,14 +9,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Title -->
-    <title>DevproVn -{{ $title }}</title>
+    <title>Travel -{{ $title }}</title>
     <!-- Favicon Icon -->
     <link rel="shortcut icon" href="{{ asset('assets/images/logos/favicon.png') }}" type="image/x-icon">
     <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
 
-</style>
     <!-- Flaticon -->
     <link rel="stylesheet" href="{{ asset('assets/css/flaticon.min.css') }}">
     <!-- Font Awesome -->
@@ -76,7 +75,7 @@
         </div>
 
         <!-- Toggle Button -->
-        <button type="button" class="navbar-toggle" data-bs-toggle="collapse" data-bs-target=".navbar-collapse">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-bs-target=".navbar-collapse">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -110,14 +109,167 @@
                         </div>
                         
                         <!-- Menu Button -->
-                        <div class="menu-btns py-10">
-                            <a href="{{URL::to('/contact/#nhay') }}" class="theme-btn style-two bgc-secondary">
-                                <span data-hover="Đăng ký">Đăng ký </span>
-                                <i class="fal fa-arrow-right"></i>
-                            </a>
-                            <!-- menu sidbar -->
-                           
-                        </div>
+                             <div class="menu-btns py-10">
+    @guest
+        <a href="{{ route('dangnhap') }}" class="theme-btn style-two bgc-secondary">
+            <span data-hover="Đăng nhập">Đăng nhập</span>
+            <i class="fal fa-arrow-right"></i>
+        </a>
+       
+    @endguest
+
+ @auth
+<style>
+.user-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Nút avatar */
+.user-dropdown .btn-avatar {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* Hiệu ứng hover */
+.user-dropdown .btn-avatar:hover {
+    background-color: #f8f9fa;
+    border-color: #d0d0d0;
+    transform: translateY(-1px);
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+}
+
+/* Ảnh đại diện */
+.user-dropdown .btn-avatar img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Menu rơi xuống */
+.user-dropdown .dropdown-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 110%;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    min-width: 220px;
+    z-index: 999;
+    overflow: hidden;
+}
+
+.user-dropdown .dropdown-menu.show {
+    display: block;
+    animation: fadeIn 0.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.user-dropdown .dropdown-item {
+    display: block;
+    padding: 10px 15px;
+    color: #333;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+.user-dropdown .dropdown-item:hover {
+    background: #f5f5f5;
+}
+
+.user-dropdown .dropdown-header {
+    padding: 10px;
+}
+
+.user-dropdown .dropdown-divider {
+    height: 1px;
+    background: #eee;
+    margin: 5px 0;
+}
+.canchinh {
+ margin-left: 2%;
+}
+.btn{
+    border-radius: 50%;
+}
+</style>
+
+<div class="user-dropdown d-inline-block">
+     <button class="btn btn-secondary d-flex align-items-center" type="button" id="userMenuButton">
+    <img src="{{ Auth::user()->avatar ? asset(Auth::user()->avatar) : asset('images/default-avatar.png') }}"
+         alt="Avatar"
+         class="rounded-circle me-2 canchinh"
+         width="35" height="35">
+</button>
+
+    <div class="dropdown-menu shadow-lg" id="userMenu">
+    <div class="dropdown-header text-center">
+        <strong>{{ Auth::user()->name }}</strong><br>
+        <small>{{ Auth::user()->email }}</small>
+    </div>
+    <div class="dropdown-divider"></div>
+
+    <!-- Hồ sơ cá nhân -->
+    <a class="dropdown-item" href="{{ url('/bs5') }}">
+        <i class="fas fa-user-circle me-2 text-primary"></i> Hồ sơ cá nhân
+    </a>
+
+    <!-- Yêu thích -->
+    <a class="dropdown-item" href="{{ url('/yeu-thich') }}">
+        <i class="fas fa-heart me-2 text-danger"></i> Yêu thích
+    </a>
+
+    <!-- Lịch sử đặt hàng -->
+    <a class="dropdown-item" href="{{ url('/my-bookings') }}">
+        <i class="fas fa-history me-2 text-warning"></i> Lịch sử đặt hàng
+    </a>
+
+    <div class="dropdown-divider"></div>
+
+    <!-- Đăng xuất -->
+    <a class="dropdown-item text-danger" href="{{ route('logout') }}">
+        <i class="fas fa-sign-out-alt me-2"></i> Đăng xuất
+    </a>
+</div>
+
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const toggle = document.getElementById("userMenuButton");
+    const menu = document.getElementById("userMenu");
+
+    toggle.addEventListener("click", function (e) {
+        e.stopPropagation();
+        menu.classList.toggle("show");
+    });
+
+    document.addEventListener("click", function (e) {
+        if (!menu.contains(e.target) && !toggle.contains(e.target)) {
+            menu.classList.remove("show");
+        }
+    });
+});
+</script>
+@endauth
+</div>
                     </div>
                 </div>
             </div>
@@ -151,7 +303,7 @@
        
         
         <!-- Page Banner Start -->
-        <section class="page-banner-area pt-50 pb-35 rel z-1 bgs-cover" style="background-image: url('{{ asset('assets/images/banner/banner.jpg') }}');">
+        <section class="page-banner-area pt-50 pb-35 rel z-1 bgs-cover" style="background-image: url('{{ asset($banner->image) }}');">
             <div class="container">
                 <div class="banner-inner text-white">
                     <h2 class="page-title mb-10" data-aos="fade-left" data-aos-duration="1500" data-aos-offset="50">{{ $title }}</h2>
@@ -162,7 +314,7 @@
                         </ol>
                     </nav>
                 </div>
-            </div>
+</div>                                                                          
         </section>
         <!-- Page Banner End -->
         

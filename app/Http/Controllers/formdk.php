@@ -14,7 +14,7 @@ class formdk extends Controller
      */
     public function index()
     {
-        $title ="trang đăng ký khóa học ";
+        $title ="Tour-Detail";
          return view('clients.formdk',compact('title'));
     }
 

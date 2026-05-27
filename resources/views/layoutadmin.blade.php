@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" href="{{ asset('admin/production/images/favicon.ico') }}" type="image/ico" />
+	<link rel="icon" href="{{ asset('/admin/production/images/favicon.ico') }}" type="image/ico" />
 
 
     <title>Quản trị viên</title>
@@ -41,20 +41,17 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Trang quản trị</span></a>
+              <a href="index.html" class="site_title"><i class="fa fa-dashboard"></i> <span>Trang quản trị</span></a>
             </div>
 
             <div class="clearfix"></div>
 
             <!-- menu profile quick info -->
-            <div class="profile clearfix">
-              <div class="profile_pic">
-                <img src="{{ asset('admin/production/images/img.jpg') }}" alt="..." class="img-circle profile_img">
-              </div>
+        
               <div class="profile_info">
             @yield('admin_content')
               </div>
-            </div>
+         
             <!-- /menu profile quick info -->
 
             <br />
@@ -62,66 +59,90 @@
             <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
-                <h3>General</h3>
+              
                 <ul class="nav side-menu">
-                  <li><a><i class="fa fa-home"></i>Danh mục  <span class="fa fa-chevron-down"></span></a>
+                   <li><a><i class="fa fa-edit"></i>Phân Quyền<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="{{ URL::to('/add-cartegory-product') }}">Thêm danh mục lớp học</a></li>
-                      <li><a href="{{ URL::to('/all-cartegory-product') }}">liệt kê lớp học</a></li>
-            
+               
+                      <li><a href="{{ URL::to('/all_admin') }}">Danh Sách</a></li>
                     </ul>
-                  </li>
-                  <li><a><i class="fa fa-edit"></i>Quản lý Khóa Học <span class="fa fa-chevron-down"></span></a>
+                  </li> 
+                  <li><a><i class="fa fa-edit"></i>Thông kê và Booking <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="{{ URL::to('/add-brand-product') }}">Thêm Khóa học</a></li>
-                      <li><a href="{{URL::to('/all-brand-product') }}">liệt kê các Khóa học </a></li>
-                    
-                     
-                    </ul>
-                  </li>
-                   <li><a><i class="fa fa-edit"></i>Lớp học <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="{{ URL::to('/add-product') }}">Thêm lớp học</a></li>
-                      <li><a href="{{URL::to('/all-product') }}">liệt kê các lớp học </a></li>
+                 
+                      <li><a href="{{URL::to('/admin/bookings') }}">Danh Sách </a></li>
  
                     </ul>
                   </li>
+                  <li><a><i class="fa fa-edit"></i>Danh mục địa điểm đến  <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{{ URL::to('/add-cartegory-product') }}">Thêm danh mục</a></li>
+                      <li><a href="{{ URL::to('/all-cartegory-product') }}">liệt kê danh mục</a></li>
+            
+                    </ul>
+                  </li>
+                  <li><a><i class="fa fa-edit"></i>Loại Hình Tour<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{{ URL::to('/add-brand-product') }}">Thêm </a></li>
+                      <li><a href="{{URL::to('/all-brand-product') }}">Danh sách  </a></li>
+                    
+                    </ul>
+                  </li>
+                  
+                       <li><a><i class="fa fa-edit"></i>Quản banner<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{{URl::to('/add-banner') }}">Thêm </a></li>
+                      <li><a href="{{ URl::to('/all-banner')}}">Danh Sách</a></li>
+                    </ul>
+                  </li>
+                    <li><a><i class="fa fa-edit"></i>Quản lý logo<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{{ URL::to('/add-footer') }}">thêm </a></li>
+                      <li><a href="{{ URL::to('/all-footer') }}">Hiển thị </a></li>
+                    </ul>
+                  </li> 
+
+                   <li><a><i class="fa fa-edit"></i>Thêm tour <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{{ URL::to('/add-product') }}">Thêm </a></li>
+                      <li><a href="{{URL::to('/all-product') }}">Danh Sách </a></li>
+ 
+                    </ul>
+                  </li>
+                  <li><a><i class="fa fa-edit"></i>Quản lý giảm giá<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{{ route('discount.create') }}">Thêm </a></li>
+                      <li><a href="{{ route('discount.index')}}">Danh Sách </a></li>
+ 
+                    </ul>
+                  </li>
+                   
 
                  
-                  <li><a><i class="fa fa-edit"></i>Quản lý chương trình<span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-edit"></i>Thông tin của Tour<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="{{ URL::to('/add-chitietkhoahoc') }}">thêm chương trình </a></li>
-                      <li><a href="{{ URL::to('/all-chitietkhoahoc') }}">Liệt Kê </a></li>
+                      <li><a href="{{ URL::to('/add-chitietkhoahoc') }}">Thêm </a></li>
+                      <li><a href="{{ URL::to('/all-chitietkhoahoc') }}">Danh sách </a></li>
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-edit"></i>Giáo viên<span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-edit"></i>Hướng Dẫn viên<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="{{ URL::to('/add-instructors') }}">Thêm giáo viên</a></li>
-                      <li><a href="{{ URL::to('/all-instructors') }}">Liệt Kê </a></li>
+                      <li><a href="{{ URL::to('/add-instructors') }}">Thêm </a></li>
+                      <li><a href="{{ URL::to('/all-instructors') }}">Danh sách </a></li>
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-edit"></i>faqs trang chi tiết <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="{{ URL::to('/add-faqs-chitiet') }}">Thêm câu hỏi  </a></li>
-                      <li><a href="{{ URL::to('/all-faqs-chitiet') }}">Liệt kê danh sách câu hỏi </a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="fa fa-edit"></i>quản Lý reviews<span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="{{ URL::to('/add-reviews') }}">thêm reviews</a></li>
-                      <li><a href="{{ URL::to('/all-reviews') }}">Liệt kê danh sách các reviews</a></li>
-                    </ul>
-                  </li> 
+                 
+                
                   <li><a><i class="fa fa-edit"></i>Quản lý bài viết<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="{{ URL::to('/add-baiviet') }}">Thêm bài viết </a></li>
-                      <li><a href="{{ URL::to('/all-baiviet') }}">Danh sách các bài viêt</a></li>
+                      <li><a href="{{ URL::to('/add-baiviet') }}">Thêm  </a></li>
+                      <li><a href="{{ URL::to('/all-baiviet') }}">Danh sách</a></li>
                     </ul>
                   </li> 
-                   <li><a><i class="fa fa-edit"></i>Quản lý faqs<span class="fa fa-chevron-down"></span></a>
+                   <li><a><i class="fa fa-edit"></i>Câu hỏi thường gặp<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="{{ URL::to('/add-faqct') }}">Thêm faqs </a></li>
-                      <li><a href="{{ URL::to('/all-faqct') }}">Danh sách faqs</a></li>
+                      <li><a href="{{ URL::to('/add-faqct') }}">Thêm  </a></li>
+                      <li><a href="{{ URL::to('/all-faqct') }}">Danh sách </a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-edit"></i>Quản lý event<span class="fa fa-chevron-down"></span></a>
@@ -136,30 +157,17 @@
                       <li><a href="{{ URL::to('/about_sections') }}"> Danh sách secition</a></li>
                     </ul>
                   </li> 
-                    <li><a><i class="fa fa-edit"></i>Quản lý footer<span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="{{ URL::to('/add-footer') }}">thêm </a></li>
-                      <li><a href="{{ URL::to('/all-footer') }}">Hiển thị </a></li>
-                    </ul>
-                  </li> 
-                   <li><a><i class="fa fa-edit"></i>Quản lý học viên<span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="{{ URL::to('/add-hocvien') }}">Thêm </a></li>
-                      <li><a href="{{ URL::to('/all-hocvien') }}">Danh Sách</a></li>
-                    </ul>
-                  </li> 
+                  
+                 
                      <li><a><i class="fa fa-edit"></i>Quản lý menu<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="{{ route('menus.create') }}">Thêm </a></li>
                       <li><a href="{{ route('menus.index') }}">Danh Sách</a></li>
                     </ul>
                   </li> 
-                   <li><a><i class="fa fa-edit"></i>Quản banner<span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="{{URl::to('/add-banner') }}">Thêm </a></li>
-                      <li><a href="{{ URl::to('/all-banner')}}">Danh Sách</a></li>
-                    </ul>
-                  </li> 
+                  
+                    
+                  
                    
                 </ul>
               </div>
@@ -197,7 +205,7 @@
               <ul class=" navbar-right">
                 <li class="nav-item dropdown open" style="padding-left: 15px;">
                   <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-                    <img src="admin/production/images/img.jpg" alt="">
+                    
                     <?php 
                     $name = Session::get('admin_name');
                     if($name){
@@ -205,81 +213,24 @@
                     }
                     ?>
                   </a>
-                  <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item"  href="javascript:;"> Profile</a>
-                      <a class="dropdown-item"  href="javascript:;">
-                        <span class="badge bg-red pull-right">50%</span>
-                        <span>Settings</span>
-                      </a>
-                  <a class="dropdown-item"  href="javascript:;">Help</a>
-                    <a class="dropdown-item"  href="{{route('login')}}"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
-                  </div>
+            <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="javascript:;"> Hồ sơ cá nhân</a>
+                
+                <a class="dropdown-item" href="javascript:;">
+                  <span class="badge bg-red pull-right">50%</span>
+                  <span>Cài đặt</span>
+                </a>
+                
+                <a class="dropdown-item" href="javascript:;">Trợ giúp</a>
+                
+                <a class="dropdown-item" href="{{ route('logout') }}">
+                  <i class="fa fa-sign-out pull-right"></i> Đăng xuất
+                </a>
+              </div>
+
                 </li>
 
-                <li role="presentation" class="nav-item dropdown open">
-                  <a href="javascript:;" class="dropdown-toggle info-number" id="navbarDropdown1" data-toggle="dropdown" aria-expanded="false">
-                    <i class="fa fa-envelope-o"></i>
-                    <span class="badge bg-green">6</span>
-                  </a>
-                  <ul class="dropdown-menu list-unstyled msg_list" role="menu" aria-labelledby="navbarDropdown1">
-                    <li class="nav-item">
-                      <a class="dropdown-item">
-                        <span class="image"><img src="admin/production/images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="dropdown-item">
-                        <span class="image"><img src="admin/production/images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="dropdown-item">
-                        <span class="image"><img src="admin/production/images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="dropdown-item">
-                        <span class="image"><img src="{{ asset('admin/production/images/img.jpg') }}" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <div class="text-center">
-                        <a class="dropdown-item">
-                          <strong>See All Alerts</strong>
-                          <i class="fa fa-angle-right"></i>
-                        </a>
-                      </div>
-                    </li>
-                  </ul>
-                </li>
+               
               </ul>
             </nav>
           </div>

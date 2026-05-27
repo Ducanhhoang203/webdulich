@@ -68,7 +68,7 @@
 
                         {{-- Chọn khóa học / sản phẩm --}}
                         <div class="item form-group">
-                            <label class="col-form-label col-md-3 col-sm-3 label-align">Khóa học</label>
+                            <label class="col-form-label col-md-3 col-sm-3 label-align">Loại Hình Tour</label>
                             <div class="col-md-6 col-sm-6">
                                 <select name="product_id" class="form-control">
                                     @foreach ($product as $pro)

@@ -41,7 +41,7 @@ class InstructorController extends Controller
             'updated_at'       => now(),
         ]);
 
-        return redirect('all-instructors')->with('message', 'Thêm giảng viên thành công!');
+        return redirect('all-instructors')->with('message', 'Thêm hướng dẫn viên thành công!');
     }
 
     // Hiển thị danh sách giảng viên
@@ -62,7 +62,7 @@ class InstructorController extends Controller
         $edit_value = DB::table('tbl_instructors')->where('instructors_id', $instructors_id)->first();
 
         if (!$edit_value) {
-            return redirect('all-instructors')->with('message', 'Giảng viên không tồn tại');
+            return redirect('all-instructors')->with('message', 'hướng dẫn viên không tồn tại');
         }
 
         return view('admin.edit_instructors', compact('product', 'edit_value'));
@@ -80,7 +80,7 @@ class InstructorController extends Controller
 
         $instructor = DB::table('tbl_instructors')->where('instructors_id', $instructors_id)->first();
         if (!$instructor) {
-            return redirect()->back()->with('message', 'Không tìm thấy giảng viên!');
+            return redirect()->back()->with('message', 'Không tìm thấy hướng dẫn viên!');
         }
 
         $data = [
@@ -107,7 +107,7 @@ class InstructorController extends Controller
 
         DB::table('tbl_instructors')->where('instructors_id', $instructors_id)->update($data);
 
-        return redirect('all-instructors')->with('message', 'Cập nhật giảng viên thành công!');
+        return redirect('all-instructors')->with('message', 'Cập nhật hướng dẫn viên thành công!');
     }
 
     // ✅ Xóa giảng viên (method DELETE)
@@ -116,7 +116,7 @@ class InstructorController extends Controller
         $instructor = DB::table('tbl_instructors')->where('instructors_id', $instructors_id)->first();
 
         if (!$instructor) {
-            return redirect('all-instructors')->with('message', 'Không tìm thấy giảng viên!');
+            return redirect('all-instructors')->with('message', 'Không tìm thấy hướng dẫn viên!');
         }
 
         if (!empty($instructor->instructors_image)) {
@@ -126,6 +126,6 @@ class InstructorController extends Controller
 
         DB::table('tbl_instructors')->where('instructors_id', $instructors_id)->delete();
 
-        return redirect('all-instructors')->with('message', 'Xóa giảng viên thành công!');
+        return redirect('all-instructors')->with('message', 'Xóa hướng dẫn viên thành công!');
     }
 }

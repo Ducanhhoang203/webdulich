@@ -5,7 +5,7 @@
         <div class="col-md-12 col-sm-12 ">
             <div class="x_panel">
                 <div class="x_title">
-                    <h2>Quản lý Khóa Học <small>Thêm Môn Học</small></h2>
+                    <h2>Quản lý <small>Thêm Tour du lịch</small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
                         <li class="dropdown">
@@ -41,21 +41,21 @@
                         @csrf
                         
                         <div class="item form-group">
-                            <label class="col-form-label col-md-3 col-sm-3 label-align">Tên Môn Học<span class="required">*</span></label>
+                            <label class="col-form-label col-md-3 col-sm-3 label-align">Tên Tour<span class="required">*</span></label>
                             <div class="col-md-6 col-sm-6 ">
                                 <input type="text" name="product_name" required class="form-control" value="{{ old('product_name') }}">
                             </div>
                         </div>
 
                         <div class="item form-group">
-                            <label class="col-form-label col-md-3 col-sm-3 label-align">Giá Môn Học<span class="required">*</span></label>
+                            <label class="col-form-label col-md-3 col-sm-3 label-align">Giá Tour<span class="required">*</span></label>
                             <div class="col-md-6 col-sm-6 ">
                                 <input type="text" name="product_price" required class="form-control" value="{{ old('product_price') }}">
                             </div>
                         </div>
 
                         <div class="item form-group">
-                            <label class="col-form-label col-md-3 col-sm-3 label-align">Hình ảnh Môn Học</label>
+                            <label class="col-form-label col-md-3 col-sm-3 label-align">Hình ảnh Tour</label>
                             <div class="col-md-6 col-sm-6 ">
                                 <input type="file" name="product_image" class="form-control" accept="image/*" onchange="previewImage(event)">
                                 <br>
@@ -64,14 +64,14 @@
                         </div>
 
                         <div class="item form-group">
-                            <label class="col-form-label col-md-3 col-sm-3 label-align">Mô tả Môn Học</label>
+                            <label class="col-form-label col-md-3 col-sm-3 label-align">Mô tả Tour</label>
                             <div class="col-md-6 col-sm-6 ">
                                 <textarea style="resize:none" rows="5" class="form-control" name="product_desc">{{ old('product_desc') }}</textarea>
                             </div>
                         </div>
 
                         <div class="item form-group">
-                            <label class="col-form-label col-md-3 col-sm-3 label-align">Nội dung Môn Học</label>
+                            <label class="col-form-label col-md-3 col-sm-3 label-align">Nội dung Tour</label>
                             <div class="col-md-6 col-sm-6 ">
                                 <textarea style="resize:none" rows="5" class="form-control" name="product_content">{{ old('product_content') }}</textarea>
                             </div>
@@ -89,7 +89,7 @@
                         </div>
 
                         <div class="item form-group">
-                            <label class="col-form-label col-md-3 col-sm-3 label-align">Khóa Học</label>
+                            <label class="col-form-label col-md-3 col-sm-3 label-align">Loại Hình Tour</label>
                             <div class="col-md-6 col-sm-6 ">
                                 <select class="form-control chon" name="product_brand">
                                     @foreach ($brand_product as $brand)

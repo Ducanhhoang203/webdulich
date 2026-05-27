@@ -4,7 +4,7 @@
                 <div class="row justify-content-center">
                     <div class="col-xl-10">
                         <div class="section-title text-center counter-text-wrap mb-50" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
-                            <h2>Câu Hỏi Thường Gặp Về Việc Học Tập</h2>
+                            <h2>Câu Hỏi Thường Gặp Về Tour</h2>
                             <p>Có <span class="count-text plus" data-speed="3000" data-stop="500">0</span> người đã hỏi </p>
                         </div>
                         <div class="accordion-one" id="faq-accordion">

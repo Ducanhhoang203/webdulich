@@ -24,12 +24,14 @@ return [
     | Định nghĩa tất cả các guard của ứng dụng. Mỗi guard có provider riêng.
     |
     */
+    
+   'guards' => [
+    'web' => [
+        'driver' => 'session',
+        'provider' => 'nguoidung', // đổi sang provider mới
+    ],
+    
 
-    'guards' => [
-        'web' => [
-            'driver' => 'session',
-            'provider' => 'users',
-        ],
 
         'admin' => [
             'driver' => 'session',
@@ -56,6 +58,10 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\Admin::class,
         ],
+        'nguoidung' => [
+        'driver' => 'eloquent',
+        'model' => App\Models\UserNguoiDung::class, // model của bạn
+    ],
     ],
 
     /*

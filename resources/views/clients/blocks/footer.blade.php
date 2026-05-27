@@ -19,7 +19,7 @@
                   
                     <div class="footer-widget footer-links ms-sm-5">
                         <div class="footer-title">
-                            <h5>Khóa Học mới</h5>
+                            <h5> Tours Mớii</h5>
                         </div>
                        <ul class="list-style-three">
                             @foreach ($product_ft as $key =>$pro)
@@ -59,7 +59,7 @@
                         </div>
                         <ul class="list-style-one">
                             <li><i class="fal fa-map-marked-alt"></i>  Tầng 3, Số 147, Phố Mai Dịch, Cầu giấy, Hà Nội</li>
-                            <li><i class="fal fa-envelope"></i> hangmnm@gmail.com</li>
+                            <li><i class="fal fa-envelope"></i> hducanh68@gmail.com</li>
 
                             <li><i class="fal fa-phone-volume"></i>  0985.95.08.95</li>
                         </ul>
@@ -77,6 +77,8 @@
 
 
 <!-- Jquery -->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
 <script src="{{ asset('assets/js/jquery-3.6.0.min.js') }}"></script>
 <!-- Bootstrap -->
 <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
@@ -96,9 +98,19 @@
 <script src="{{ asset('assets/js/isotope.pkgd.min.js') }}"></script>
 <!--  AOS Animation -->
 <script src="{{ asset('assets/js/aos.js') }}"></script>
+<!-- Bootstrap Bundle (bao gồm Popper.js) -->
+
+
 <!-- Custom script -->
 <script src="{{ asset('assets/js/script.js') }}"></script>
-
+  <script src="https://sp.zalo.me/plugins/sdk.js"></script>
+ <div class="zalo-chat-widget" 
+       data-oaid="1906943302261076404" 
+       data-welcome-message="Xin chào! DevproVN có thể giúp gì cho bạn?"
+       data-autopopup="0"
+       data-width="350"
+       data-height="420">
+  </div>
 </body>
 
 <!-- Mirrored from webtendtheme.net/html/2024/ravelo/tour-list.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 07 Oct 2024 09:28:05 GMT -->

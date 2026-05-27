@@ -5,7 +5,7 @@
         <div class="col-md-12 col-sm-12 ">
             <div class="x_panel">
                 <div class="x_title">
-                    <h2>Quản lý <small>Sửa giáo viên</small></h2>
+                    <h2>Quản lý <small>Hướng dẫn viên</small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
                         <li class="dropdown">
@@ -45,7 +45,7 @@
 
                         <!-- Tên giáo viên -->
                         <div class="item form-group">
-                            <label class="col-form-label col-md-3 col-sm-3 label-align">Tên giáo viên <span class="required">*</span></label>
+                            <label class="col-form-label col-md-3 col-sm-3 label-align">Tên Hướng Dẫn Viên<span class="required">*</span></label>
                             <div class="col-md-6 col-sm-6 ">
                                 <input type="text" name="instructors_name" required="required" class="form-control" value="{{ $edit_value->instructors_name }}">
                             </div>

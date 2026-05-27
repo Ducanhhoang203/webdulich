@@ -43,7 +43,7 @@ class AboutController extends Controller
         
 }
  public function About1(){
-    $title =' Trang about ';
+    $title =' Trang giới thiệu ';
     $instructors = DB::table('tbl_instructors')->orderBy('instructors_id','desc')->get();
     $product = DB::table('tbl_product')->orderBy('product_id','desc')->limit(4)->get();
 

@@ -5,7 +5,7 @@
         <div class="col-md-12 col-sm-12">
             <div class="x_panel">
                 <div class="x_title">
-                    <h2>Quản lý giảng viên <small>Thêm giảng viên</small></h2>
+                    <h2>Quản lý  <small>Thêm Hướng Dẫn Viên</small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
                         <li class="dropdown">
@@ -40,28 +40,28 @@
                     <form role="form" action="{{ URL::to('save-instructors') }}" method="post" enctype="multipart/form-data" data-parsley-validate class="form-horizontal form-label-left">
                         @csrf
                         <div class="item form-group">
-                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="instructors_name">Tên giáo viên <span class="required">*</span></label>
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="instructors_name">Tên Hướng Dẫn Viên  <span class="required">*</span></label>
                             <div class="col-md-6 col-sm-6">
                                 <input type="text" id="instructors_name" name="instructors_name" required class="form-control" value="{{ old('instructors_name') }}">
                             </div>
                         </div>
 
                         <div class="item form-group">
-                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="instructors_bio">Tiểu sử giáo viên <span class="required">*</span></label>
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="instructors_bio">Tiểu Sử Hướng Dẫn Viên <span class="required">*</span></label>
                             <div class="col-md-6 col-sm-6">
                                 <input type="text" id="instructors_bio" name="instructors_bio" required class="form-control" value="{{ old('instructors_bio') }}">
                             </div>
                         </div>
 
                         <div class="item form-group">
-                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="instructors_image">Hình ảnh giáo viên</label>
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="instructors_image">Hình ảnh Hướng Dẫn Viên</label>
                             <div class="col-md-6 col-sm-6">
                                 <input type="file" id="instructors_image" name="instructors_image" class="form-control">
                             </div>
                         </div>
 
                         <div class="item form-group">
-                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="product_cate">Khóa đang học <span class="required">*</span></label>
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="product_cate">Tour Đang Hướng Dẫn Viên <span class="required">*</span></label>
                             <div class="col-md-6 col-sm-6">
                                 <select class="form-control chon" name="product_cate" style="max-width: 300px;">
                                     @foreach ($product as $pro)

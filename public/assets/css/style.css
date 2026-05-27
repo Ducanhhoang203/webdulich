@@ -4015,25 +4015,25 @@ h6, .h6, blockquote {
   text-transform: uppercase; }
   @media only screen and (max-width: 1599px) {
     .hero-title {
-      font-size: 25px; } }
+      font-size: 45px; } }
   @media only screen and (max-width: 1299px) {
     .hero-title {
-      font-size: 15px; } }
+      font-size: 40px; } }
   @media only screen and (max-width: 991px) {
     .hero-title {
-      font-size: 10px; } }
+      font-size: 35px; } }
   @media only screen and (max-width: 767px) {
     .hero-title {
-      font-size: 8px; } }
+      font-size: 30px; } }
   @media only screen and (max-width: 575px) {
     .hero-title {
-      font-size: 6px; } }
+      font-size: 25px; } }
   @media only screen and (max-width: 479px) {
     .hero-title {
-      font-size: 5px; } }
+      font-size: 20px; } }
   @media only screen and (max-width: 375px) {
     .hero-title {
-      font-size: 4px; } }
+      font-size: 15px; } }
 
 .main-hero-image {
   height: 790px;

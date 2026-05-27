@@ -90,7 +90,7 @@
                             </div>
                             
                             <div class="widget widget-languages" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
-                                <h6 class="widget-title">Khóa Học</h6>
+                                <h6 class="widget-title">Loại Hình Tour</h6>
                                 @foreach ($brand as $key =>$bra)
                                 <ul class="categoryname">
                                     <li>
@@ -121,7 +121,7 @@
 
                             </div>
                             <div class="sort-text mb-15 me-4">
-                                Khóa Học mới
+                                Tours Mới
                             </div>
                             
                         </div>

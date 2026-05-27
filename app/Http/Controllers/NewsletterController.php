@@ -13,7 +13,7 @@ class NewsletterController extends Controller
         'email' => 'required|email'
     ]);
 
-    $to_email = "hangmnm@gmail.com";
+    $to_email = "hducanh68@gmail.com";
     $data = ['email' => $request->email];
 
     Mail::send('clients.newsletter', $data, function ($message) use ($to_email) {

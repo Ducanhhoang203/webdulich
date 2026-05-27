@@ -8,7 +8,7 @@
                 <div class="shop-sidebar mb-30">
                     <!-- Khóa Học -->
                     <div class="widget widget-activity" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
-                        <h6 class="widget-title">Khóa Học</h6>
+                        <h6 class="widget-title">Loại Hình Tour</h6>
                         <ul class="categoryname">
                         @foreach ($brand_product as $bra)
                             <li>
@@ -49,10 +49,10 @@
                         <li><a href="#"><i class="far fa-list"></i></a></li>
                     </ul>
                     <div class="sort-text mb-15 me-4 me-xl-auto">
-                        Số lớp học: {{ $brand_by_id->count() }}
+                        Số Tour: {{ $brand_by_id->count() }}
                     </div>
                     <div class="sort-text mb-15 me-4">
-                        Khóa Học mới
+                        Tours Mới
                     </div>
                 </div>
 

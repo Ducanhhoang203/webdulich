@@ -2,31 +2,51 @@
 
 namespace App\Models;
 
-use Illuminate\Foundation\Auth\User as Authenticatable; // <-- dùng Authenticatable
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 class Admin extends Authenticatable
 {
     use Notifiable;
 
-    protected $table = 'tbl_admin'; // tên bảng admin
+    protected $table = 'tbl_admin';
 
     protected $fillable = [
         'admin_email',
         'admin_password',
-        // các cột khác nếu cần
+        'admin_name',
+        'admin_phone',
+        'admin_level',
     ];
 
     protected $hidden = [
-        'admin_password', // ẩn mật khẩu
+        'admin_password',
         'remember_token',
     ];
 
-    public $timestamps = false; // nếu bảng không có created_at, updated_at
+    public $timestamps = false;
 
-    // Thêm hàm getAuthPassword() nếu cột mật khẩu không tên mặc định 'password'
+    // Định nghĩa cột password đúng chuẩn Laravel
     public function getAuthPassword()
     {
         return $this->admin_password;
+    }
+
+    // ==========================
+    //  HÀM PHÂN QUYỀN
+    // ==========================
+    public function isAdmin()
+    {
+        return $this->admin_level >= 1; // Admin trở lên
+    }
+
+    public function isSuperAdmin()
+    {
+        return $this->admin_level == 2; // Chỉ super admin
+    }
+
+    public function isNormalUser()
+    {
+        return $this->admin_level == 0; // user thường
     }
 }

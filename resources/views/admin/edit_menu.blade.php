@@ -33,60 +33,62 @@
                     </div>
                     @endif
 
-                    <form role="form" action="{{ route('menus.update', $menu->id) }}" method="post" class="form-horizontal form-label-left">
-                        @csrf
+                   <form role="form" action="{{ route('menus.update', $menu->id) }}" method="post" class="form-horizontal form-label-left">
+    @csrf
+    @method('PUT') <!-- Thêm dòng này để Laravel hiểu đây là PUT request -->
 
-                        <div class="item form-group">
-                            <label class="col-form-label col-md-3 col-sm-3 label-align">Tên Menu <span class="required">*</span></label>
-                            <div class="col-md-6 col-sm-6">
-                                <input type="text" name="title" required="required" class="form-control" value="{{ $menu->title }}">
-                            </div>
-                        </div>
+    <div class="item form-group">
+        <label class="col-form-label col-md-3 col-sm-3 label-align">Tên Menu <span class="required">*</span></label>
+        <div class="col-md-6 col-sm-6">
+            <input type="text" name="title" required="required" class="form-control" value="{{ $menu->title }}">
+        </div>
+    </div>
 
-                        <div class="item form-group">
-                            <label class="col-form-label col-md-3 col-sm-3 label-align">URL</label>
-                            <div class="col-md-6 col-sm-6">
-                                <input type="text" name="url" class="form-control" value="{{ $menu->url }}">
-                            </div>
-                        </div>
+    <div class="item form-group">
+        <label class="col-form-label col-md-3 col-sm-3 label-align">URL</label>
+        <div class="col-md-6 col-sm-6">
+            <input type="text" name="url" class="form-control" value="{{ $menu->url }}">
+        </div>
+    </div>
 
-                        <div class="item form-group">
-                            <label class="col-form-label col-md-3 col-sm-3 label-align">Menu cha</label>
-                            <div class="col-md-6 col-sm-6">
-                                <select class="form-control" name="parent_id">
-                                    <option value="">-- Chọn menu cha --</option>
-                                    @foreach($menus as $m)
-                                        <option value="{{ $m->id }}" @if($menu->parent_id == $m->id) selected @endif>{{ $m->title }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
+    <div class="item form-group">
+        <label class="col-form-label col-md-3 col-sm-3 label-align">Menu cha</label>
+        <div class="col-md-6 col-sm-6">
+            <select class="form-control" name="parent_id">
+                <option value="">-- Chọn menu cha --</option>
+                @foreach($menus as $m)
+                    <option value="{{ $m->id }}" @if($menu->parent_id == $m->id) selected @endif>{{ $m->title }}</option>
+                @endforeach
+            </select>
+        </div>
+    </div>
 
-                        <div class="item form-group">
-                            <label class="col-form-label col-md-3 col-sm-3 label-align">Thứ tự</label>
-                            <div class="col-md-6 col-sm-6">
-                                <input type="number" name="order" class="form-control" value="{{ $menu->order ?? 0 }}">
-                            </div>
-                        </div>
+    <div class="item form-group">
+        <label class="col-form-label col-md-3 col-sm-3 label-align">Thứ tự</label>
+        <div class="col-md-6 col-sm-6">
+            <input type="number" name="order" class="form-control" value="{{ $menu->order ?? 0 }}">
+        </div>
+    </div>
 
-                        <div class="item form-group">
-                            <label class="col-form-label col-md-3 col-sm-3 label-align">Trạng thái</label>
-                            <div class="col-md-6 col-sm-6">
-                                <select class="form-control" name="status">
-                                    <option value="1" @if($menu->status==1) selected @endif>Hiển thị</option>
-                                    <option value="0" @if($menu->status==0) selected @endif>Ẩn</option>
-                                </select>
-                            </div>
-                        </div>
+    <div class="item form-group">
+        <label class="col-form-label col-md-3 col-sm-3 label-align">Trạng thái</label>
+        <div class="col-md-6 col-sm-6">
+            <select class="form-control" name="status">
+                <option value="1" @if($menu->status==1) selected @endif>Hiển thị</option>
+                <option value="0" @if($menu->status==0) selected @endif>Ẩn</option>
+            </select>
+        </div>
+    </div>
 
-                        <div class="ln_solid"></div>
-                        <div class="item form-group">
-                            <div class="col-md-6 col-sm-6 offset-md-3">
-                                <button class="btn btn-success" type="submit">Cập nhật </button>
-                            </div>
-                        </div>
+    <div class="ln_solid"></div>
+    <div class="item form-group">
+        <div class="col-md-6 col-sm-6 offset-md-3">
+            <button class="btn btn-success" type="submit">Cập nhật </button>
+        </div>
+    </div>
 
-                    </form>
+</form>
+
                 </div>
 
             </div>

@@ -2,89 +2,69 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
+
 class galleryController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * Hiển thị danh sách bài viết
      */
     public function index()
     {
-        $title = "Trang gallery";
-        $all_baiviet = DB::table('posts')->join('tbl_category_product','tbl_category_product.catgory_id','=','posts.Baiviet_category')
-        ->where('Baiviet_status',1)
-        ->orderBy('id','desc')
+        $title = "Trang bài viết";
+
+        $all_baiviet = DB::table('posts')
+            ->join(
+                'tbl_category_product',
+                'tbl_category_product.catgory_id',
+                '=',
+                'posts.Baiviet_category'
+            )
+            ->where('posts.Baiviet_status', 1)
+            ->orderBy('posts.id', 'desc')
+            ->select('posts.*', 'tbl_category_product.*')
             ->paginate(6);
-        return view('clients.gallery',compact('title','all_baiviet'));
+
+        // Convert Markdown sang HTML
+        foreach ($all_baiviet as $post) {
+            if (!empty($post->Baiviet_content)) {
+                $post->Baiviet_content = Str::markdown($post->Baiviet_content);
+            }
+        }
+
+        return view('clients.gallery', compact('title', 'all_baiviet'));
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * Hiển thị chi tiết bài viết
      */
     public function show($id)
     {
-        //
-    }
+        $title = "Chi tiết bài viết";
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+        $post = DB::table('posts')
+            ->join(
+                'tbl_category_product',
+                'tbl_category_product.catgory_id',
+                '=',
+                'posts.Baiviet_category'
+            )
+            ->where('posts.id', $id)
+            ->where('posts.Baiviet_status', 1)
+            ->select('posts.*', 'tbl_category_product.*')
+            ->first();
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+        if (!$post) {
+            abort(404);
+        }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        // Convert Markdown
+        if (!empty($post->Baiviet_content)) {
+            $post->Baiviet_content = Str::markdown($post->Baiviet_content);
+        }
+
+        return view('clients.gallery_detail', compact('title', 'post'));
     }
 }

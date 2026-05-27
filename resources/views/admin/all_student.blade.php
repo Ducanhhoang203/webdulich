@@ -12,9 +12,9 @@ margin-left: 15%;
           <thead class="thead-dark">
             <tr>
               <th>ID</th>
-              <th>Tên Môn </th>
+              <th>Tên Tour</th>
              <th>student_email</th>
-              <th>Tên Khóa Học</th>
+              <th>Tên Tour</th>
            
               <th>Số Điện Thoại</th>
               <th>Trang thái</th>

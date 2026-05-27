@@ -47,7 +47,7 @@
                                 <input type="email" name="email" class="form-control" placeholder="Email" required>
                             </div>
                             <div class="col-md-12 mb-3">
-                                <textarea name="message" class="form-control" rows="5" placeholder="Khóa học cần tư vấn" required></textarea>
+                                <textarea name="message" class="form-control" rows="5" placeholder="Tour Cần được tư vấn" required></textarea>
                             </div>
                             <div class="col-md-12 mb-3">
                                 {!! NoCaptcha::display() !!}
@@ -89,7 +89,7 @@
                     </div>
                     <div class="circle-logo mt-3 text-center">
                         <img src="/assets/images/logos/favicon.png" alt="Logo" class="mb-2">
-                        <span class="title h2 d-block">Devpro</span>
+                        <span class="title h2 d-block">Travel</span>
                     </div>
                 </div>
             </div>
